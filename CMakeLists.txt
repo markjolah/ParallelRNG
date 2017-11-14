@@ -9,6 +9,9 @@
 cmake_minimum_required( VERSION 3.0 )
 project(ParallelRngManager VERSION 0.1 LANGUAGES CXX)
 
+option(BUILD_SHARED_LIBS "Build shared libraries" ON)
+option(BUILD_STATIC_LIBS "Build static libraries" ON)
+
 #Add to /cmake/Modules to modules path
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_LIST_DIR}/cmake/Modules)
 
@@ -33,20 +36,17 @@ elseif(UNIX AND NOT APPLE)
     add_definitions( -DLINUX )
 endif()
 
-set(GCC_WARN_FLAGS "-W -Wall -Wextra -Werror -Wno-unused-parameter")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GCC_WARN_FLAGS} ${GCC_STD_FLAGS}")
-
+# CFLAGS ##
+add_compile_options(-W -Wall -Wextra -Werror -Wno-unused-parameter)
 if(${CMAKE_BUILD_TYPE} MATCHES Debug)
     add_definitions(-DDEBUG)
-else()
+elseif()
     add_definitions(-DNDEBUG)
 endif()
-
+set(CMAKE_DEBUG_POSTFIX ".debug" CACHE STRING "Debug file extension")
 set(CMAKE_CXX_FLAGS_DEBUG "-ggdb -O2")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3")
-
-#Add debug postfix to libraries built in debug mode
-set(CMAKE_DEBUG_POSTFIX ".debug" CACHE STRING "Debug file extension")
+set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-ggdb -O3")
 
 include(PackageConfig) #Configure Package-Config and associated files for cmake exports
 
