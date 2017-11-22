@@ -8,6 +8,8 @@
 
 cmake_minimum_required( VERSION 3.0 )
 project(ParallelRngManager VERSION 0.1 LANGUAGES CXX)
+cmake_policy(SET CMP0054 NEW) #Don't derrefernce in if() statements
+cmake_policy(SET CMP0022 NEW) #LINK_INTERFACE_LIBRARIES fix
 
 option(BUILD_SHARED_LIBS "Build shared libraries" ON)
 option(BUILD_STATIC_LIBS "Build static libraries" ON)
@@ -28,7 +30,7 @@ endif()
 
 #TRNG Tina's Random Number Generator
 find_library(TRNG_LIBRARY trng4)
-
+find_package(OpenMP)
 # Compiler Definitions
 if (WIN32)
     add_definitions( -DWIN32 )
