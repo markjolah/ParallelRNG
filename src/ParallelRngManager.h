@@ -1,5 +1,5 @@
 /** @file ParallelRngManager.h
- * @author Mark J. Olah (mjo\@cs.unm.edu)
+ * @author Mark J. Olah (mjo\@cs.unm DOT edu)
  * @date 2016-2017
  * @brief Adapts TRNG parallel RNG to armadillo, maintaining a per-thread RNG.
  */

@@ -1,5 +1,5 @@
 /** @file ParallelRngManager.cpp
- * @author Mark J. Olah (mjo\@cs.unm.edu)
+ * @author Mark J. Olah (mjo\@cs.unm DOT edu)
  * @date 2016-2017
  * @brief Fast auto rng for parallel openmp code
  */
