@@ -82,8 +82,7 @@ public:
     void reset(SeedT seed, IdxT max_threads);
     SeedT get_init_seed() const;
     SeedT get_num_threads() const;
-    
-    
+        
     RngT& generator();
     SeedT operator()();
         
@@ -162,6 +161,7 @@ void ParallelRngManager<RngT>::seed(SeedT seed_)
         uni_dist[n].reset();
         norm_dist[n].reset();  //Important to reset normal distributions on seeding for repeatability
     }
+    split_rngs();
 }
 
 template<typename RngT>
