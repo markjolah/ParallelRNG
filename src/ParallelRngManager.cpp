@@ -5,7 +5,7 @@
  */
 
 #include <random>
-#include "ParallelRngManager.h"
+#include "ParallelRngManager/ParallelRngManager.h"
 
 namespace parallel_rng {
 

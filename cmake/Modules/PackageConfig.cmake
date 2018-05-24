@@ -1,4 +1,4 @@
-# BacktraceException-PackageConfig.cmake
+# ParallelRngManager - PackageConfig.cmake
 #
 # Mark J. Olah (mjo@cs.unm DOT edu)
 # Copyright 2017
@@ -29,7 +29,8 @@ configure_package_config_file(${CONFIG_TEMPLATE_FILE} ${CONFIG_FILE}
 #Install package config files
 install(FILES ${CONFIG_FILE} ${VERSION_CONFIG_FILE} 
         DESTINATION ${CONFIG_INSTALL_DIR} COMPONENT Development)
-#Install BacktraceExceptionTargets exports
+#Install exports
 install(EXPORT ${EXPORT_TARGETS_NAME} 
+        NAMESPACE ParallelRngManager::
         DESTINATION ${CONFIG_INSTALL_DIR} COMPONENT Development)
 

@@ -9,21 +9,13 @@
 
 #include <cstdint>
 #include <exception>
-
-#include <armadillo>
-#include <boost/thread/shared_mutex.hpp>
-#include <trng/lcg64_shift.hpp>
-#include <trng/yarn5s.hpp>
-#include <trng/yarn5.hpp>
-#include <trng/yarn3s.hpp>
-#include <trng/yarn3.hpp>
-#include <boost/variant.hpp>
 #include <omp.h>
 
+#include <armadillo>
+#include <trng/lcg64_shift.hpp>
 
 namespace parallel_rng {
-    
-
+  
 using SeedT = uint64_t; /**< Type for 64-bit seeds */
 using IdxT = arma::uword; /**< Type for indexes */
 
@@ -34,13 +26,6 @@ using IdxT = arma::uword; /**< Type for indexes */
  * 
  */
 using DefaultParallelRngT = trng::lcg64_shift;
-
-/** @brief Variant type containing one of a list of ParallelRNG implementations.
- * 
- * The list of distributions was chosen for a mix of good RNG quality metrics and speed.
- */
-// using ParallelRNGVariantT = boost::variant< trng::lcg64_shift, trng::yarn3, trng::yarn3s, 
-//                                             trng::yarn5, trng::yarn5s>;
 
 class ParallelRngManagerError : public std::exception
 {
@@ -60,13 +45,12 @@ SeedT generate_seed();
 IdxT openmp_estimate_max_threads();
 
 
-template<typename RngT>
+template<typename RngT=DefaultParallelRngT>
 class ParallelRngManager
 {
 public:
     using NormalDistT = std::normal_distribution<double>;
     using UniformDistT = std::uniform_real_distribution<double>;
-    
     
     ParallelRngManager();
     ParallelRngManager(SeedT seed);
@@ -79,6 +63,8 @@ public:
     ParallelRngManager& operator=(ParallelRngManager<RngT> &&) = default;
     
     void seed(SeedT seed);
+    void reset();
+    void reset(SeedT seed);
     void reset(SeedT seed, IdxT max_threads);
     SeedT get_init_seed() const;
     SeedT get_num_threads() const;
@@ -108,17 +94,16 @@ protected:
     std::vector<UniformDistT> uni_dist;
 };
 
-
 /* Factory functions */
 
 template<typename RngT=DefaultParallelRngT>
-ParallelRngManager<RngT> make_parallel_rng()
+ParallelRngManager<RngT> make_parallel_rng_manager()
 {
     return ParallelRngManager<RngT>();
 }
 
 template<typename RngT=DefaultParallelRngT>
-ParallelRngManager<RngT> make_parallel_rng(SeedT seed)
+ParallelRngManager<RngT> make_parallel_rng_manager(SeedT seed)
 {
     return ParallelRngManager<RngT>(seed);
 }
@@ -149,30 +134,40 @@ ParallelRngManager<RngT>::ParallelRngManager(SeedT seed_, IdxT num_threads_) :
 template<typename RngT>
 void ParallelRngManager<RngT>::split_rngs()
 {
-    for(IdxT i=0;i<num_threads;i++) rngs[i].split(num_threads,i);
+    for(IdxT n=0; n<rngs.size(); n++) rngs[n].split(num_threads,n);
 }
 
 template<typename RngT>
 void ParallelRngManager<RngT>::seed(SeedT seed_)
 {
-    init_seed = seed_;
-    for(IdxT n=0; n<num_threads; n++) {
-        rngs[n].seed(init_seed);
-        uni_dist[n].reset();
-        norm_dist[n].reset();  //Important to reset normal distributions on seeding for repeatability
-    }
-    split_rngs();
+    //trng does not easily allow reseeding of split parallel_rng streams.  The
+    // .split() function in general changes internal state and repeated calls are invalid.
+    // .split() also modifies the seed values.  Therefore the only what to re-seed a parallel_rng
+    // is to completely reconstruct with the desired seed, and then call .split()
+    reset(seed_, num_threads);
+}
+
+template<typename RngT>
+void ParallelRngManager<RngT>::reset()
+{
+    reset(init_seed, num_threads);
+}
+
+template<typename RngT>
+void ParallelRngManager<RngT>::reset(SeedT seed_)
+{
+    reset(seed_, num_threads);
 }
 
 template<typename RngT>
 void ParallelRngManager<RngT>::reset(SeedT seed_, IdxT num_threads_)
 {
     num_threads = num_threads_;
-    init_seed = seed_;
-    rngs = std::vector<RngT>(num_threads,RngT(init_seed));
+    rngs = std::vector<RngT>(num_threads,RngT{seed_});
     uni_dist = std::vector<UniformDistT>(num_threads,UniformDistT());
     norm_dist = std::vector<NormalDistT>(num_threads,NormalDistT());
     split_rngs();
+    init_seed = seed_;    
 }
 
 template<typename RngT>
