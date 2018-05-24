@@ -20,6 +20,7 @@ if(TRNG_INCLUDE_DIR)
     string(SUBSTRING ${TRNG_VER_SUBSTR} 13 -1 TRNG_VERSION_STRING)
 endif()
 
+include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(
   TRNG
   REQUIRED_VARS

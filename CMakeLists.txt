@@ -83,3 +83,5 @@ add_subdirectory(src)
 if(${BUILD_TESTING})
     add_subdirectory(test)
 endif()
+
+install(FILES cmake/Modules/FindTRNG.cmake DESTINATION ${CONFIG_INSTALL_DIR} COMPONENT Development)

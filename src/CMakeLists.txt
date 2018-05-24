@@ -15,6 +15,8 @@ foreach (TYPE IN ITEMS STATIC SHARED)
 endforeach()
 
 #Default the main dependency to alias to shared libraries if they are built
+#This can be used by subfolders within this project or if this project is included as
+#an in-source 3rd party sub-project.
 if (BUILD_SHARED_LIBS)
   add_library (${PROJECT_NAME} ALIAS ${PROJECT_NAME}_SHARED)
   add_library (${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME}_SHARED)
@@ -35,5 +37,4 @@ install(TARGETS ${LIB_TARGETS} EXPORT ${EXPORT_TARGETS_NAME}
         LIBRARY DESTINATION lib COMPONENT Runtime
         ARCHIVE DESTINATION lib COMPONENT Development)
 
-        
 install(DIRECTORY ${PUBLIC_HEADER_SRC_DIR}/ DESTINATION include COMPONENT Development)
