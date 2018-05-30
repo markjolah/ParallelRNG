@@ -124,7 +124,7 @@ template<typename RngT>
 ParallelRngManager<RngT>::ParallelRngManager(SeedT seed_, IdxT num_threads_) : 
     init_seed(seed_),
     num_threads(num_threads_),
-    rngs(num_threads,RngT(seed_)),
+    rngs(num_threads,RngT{seed_}),
     norm_dist(num_threads,NormalDistT()),
     uni_dist(num_threads,UniformDistT())
 {
@@ -167,7 +167,7 @@ void ParallelRngManager<RngT>::reset(SeedT seed_, IdxT num_threads_)
     uni_dist = std::vector<UniformDistT>(num_threads,UniformDistT());
     norm_dist = std::vector<NormalDistT>(num_threads,NormalDistT());
     split_rngs();
-    init_seed = seed_;    
+    init_seed = seed_;
 }
 
 template<typename RngT>

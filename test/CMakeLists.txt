@@ -1,12 +1,8 @@
 #
-# ParallelRngManager/src/test
-# Testing for ParallelRngManager using googletest
-
-message(STATUS "Enabled Testing...")
+# test/CMakeLists.txt
+# CTest integration of googletest
 
 find_package(GTest)
-
-enable_testing()
 
 set(GTEST_EXE testParallelRngManager)
 set(GTEST_SRCS test_parallel_rng.cpp)

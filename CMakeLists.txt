@@ -81,6 +81,8 @@ set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-g -O2")
 ### Source directories
 add_subdirectory(src)
 if(${BUILD_TESTING})
+    include(CTest)
+    enable_testing()
     add_subdirectory(test)
 endif()
 
