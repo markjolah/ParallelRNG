@@ -16,6 +16,8 @@
 # useage: AddExternalDependency(<package_name> <package-git-clone-url> [SHARED] [STATIC])
 cmake_policy(SET CMP0057 NEW)
 
+set(AddExternalAutotoolsDependency_include_path ${CMAKE_CURRENT_LIST_DIR} CACHE INTERNAL "Path of AddExternalAutotoolsDependency.cmake")
+
 macro(AddExternalAutotoolsDependency)
     set(ExtProjectName ${ARGV0})
     set(ExtProjectInstallPrefix ${CMAKE_INSTALL_PREFIX})
@@ -50,8 +52,8 @@ macro(AddExternalAutotoolsDependency)
         message(STATUS "[AddExternalAutotoolsDependency] 3rd Party Package Not found: ${ExtProjectName}")
         message(STATUS "[AddExternalAutotoolsDependency] Initializing as ExternalProject using git URL:${ExtProjectURL}")
         message(STATUS "[AddExternalAutotoolsDependency] BUILD_STATIC_LIBS:${ExtProject_BUILD_STATIC_LIBS} BUILD_SHARED_LIBS:${ExtProject_BUILD_SHARED_LIBS}")
-        configure_file(${CMAKE_SOURCE_DIR}/cmake/Templates/ExternalAutotools.CMakeLists.txt.in 
-                       ${ExtProjectDir}/CMakeLists.txt @ONLY)
+        find_file(EXTERNAL_ATUOTOOLS_CMAKELISTS_TEMPLATE NAME ExternalAutotools.CMakeLists.txt.in PATHS ${AddExternalAutotoolsDependency_include_path}/Templates)
+        configure_file(${EXTERNAL_ATUOTOOLS_CMAKELISTS_TEMPLATE} ${ExtProjectDir}/CMakeLists.txt @ONLY)
         execute_process(COMMAND ${CMAKE_COMMAND} . WORKING_DIRECTORY ${ExtProjectDir})
         message(STATUS "[AddExternalAutotoolsDependency] Downloading Building and Installing: ${ExtProjectName}")
         execute_process(COMMAND ${CMAKE_COMMAND} --build . WORKING_DIRECTORY ${ExtProjectDir})

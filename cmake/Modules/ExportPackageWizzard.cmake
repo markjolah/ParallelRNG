@@ -32,6 +32,7 @@ include(CMakePackageConfigHelpers)
 
 function(export_package_wizzard)
 
+### Parse arguments and set defaults
 cmake_parse_arguments(PARSE_ARGV 0 "_WIZ" 
                       "DISABLE_BUILD_EXPORT" 
                       "NAME;NAMESPACE;EXPORT_TARGETS_NAME;PACKAGE_CONFIG_TEMPLATE;VERSION_COMPATABILITY"
@@ -39,12 +40,15 @@ cmake_parse_arguments(PARSE_ARGV 0 "_WIZ"
 if(NOT _WIZ_NAME)
     set(_WIZ_NAME ${PROJECT_NAME})
 endif()
+
 if(NOT _WIZ_NAMESPACE)
     set(_WIZ_NAMESPACE ${PROJECT_NAME})
 endif()
+
 if(NOT _WIZ_EXPORT_TARGETS_NAME)
     set(_WIZ_EXPORT_TARGETS_NAME ${PROJECT_NAME}Targets)
 endif()
+
 if(NOT _WIZ_PACKAGE_CONFIG_TEMPLATE_PATH)
     find_file(_WIZ_PACKAGE_CONFIG_TEMPLATE_PATH PackageConfig.cmake.in PATHS "${CMAKE_SOURCE_DIR}/cmake" 
               PATH_SUFFIXES Templates templates NO_DEFAULT_PATH)
@@ -52,9 +56,11 @@ if(NOT _WIZ_PACKAGE_CONFIG_TEMPLATE_PATH)
         message(FATAL_ERROR "Unable to find PackageConfig.cmake.in. Cannot configure exports.")
     endif()
 endif()
+
 if(NOT _WIZ_CONFIG_INSTALL_DIR)
     set(_WIZ_CONFIG_INSTALL_DIR lib/cmake/${PROJECT_NAME}) #Where to install project Config.cmake and ConfigVersion.cmake files
 endif()
+
 if(NOT _WIZ_SHARED_CMAKE_INSTALL_DIR)
     set(_WIZ_SHARED_CMAKE_INSTALL_DIR share/${PROJECT_NAME}/cmake) #Where to install shared .cmake build scripts for downstream
 endif()
@@ -72,7 +78,7 @@ set(_WIZ_PACKAGE_CONFIG_FILE ${_WIZ_NAME}Config.cmake)
 set(_WIZ_VERSION_CONFIG_FILE ${_WIZ_NAME}ConfigVersion.cmake)
 
 
-## Generate Package Config files for downstream projects to utilize
+### Generate Package Config files for downstream projects to utilize
 #Generate:${PROJECT_NAME}ConfigVersion.cmake
 write_basic_package_version_file(${_WIZ_CONFIG_DIR}/${_WIZ_VERSION_CONFIG_FILE} COMPATIBILITY SameMajorVersion)
 

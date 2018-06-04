@@ -16,6 +16,8 @@
 # useage: AddExternalDependency(<package-name> <package-git-clone-url> [SHARED] [STATIC])
 #cmake_policy(SET CMP0057 NEW)
 
+set(AddExternalDependency_include_path ${CMAKE_CURRENT_LIST_DIR} CACHE INTERNAL "Path of AddExternalDependency.cmake")
+
 macro(AddExternalDependency)
     set(ExtProjectName ${ARGV0})
     
@@ -57,7 +59,10 @@ macro(AddExternalDependency)
         message(STATUS "[AddExternalProjectDependency] Initializing as ExternalProject URL:${ExtProjectURL}")
         message(STATUS "[AddExternalProjectDependency] BUILD_STATIC_LIBS:${ExtProject_BUILD_STATIC_LIBS} BUILD_SHARED_LIBS:${ExtProject_BUILD_SHARED_LIBS}")
         message(STATUS "[AddExternalProjectDependency] ExtProjectBuildTypes:${${ExtProjectName}_BUILD_TYPES}")
-        configure_file(${CMAKE_SOURCE_DIR}/cmake/Templates/External.CMakeLists.txt.in 
+        
+        find_file(EXTERNAL_CMAKELISTS_TEMPLATE NAME External.CMakeLists.txt.in PATHS ${AddExternalDependency_include_path}/Templates)
+        
+        configure_file(${EXTERNAL_CMAKELISTS_TEMPLATE} 
                        ${ExtProjectDir}/CMakeLists.txt @ONLY)
         execute_process(COMMAND ${CMAKE_COMMAND} . WORKING_DIRECTORY ${ExtProjectDir})
         message(STATUS "[AddExternalProjectDependency] Downloading Building and Installing: ${ExtProjectName}")
