@@ -2,7 +2,7 @@
 # test/CMakeLists.txt
 # CTest integration of googletest
 
-find_package(GTest)
+find_package(GTest REQUIRED)
 
 set(GTEST_EXE testParallelRngManager)
 set(GTEST_SRCS test_parallel_rng.cpp)

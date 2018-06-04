@@ -1,15 +1,14 @@
 # ParallelRngManager - C++ Parallel RNG Interface for OpenMP using TRNG
 #
 # Mark J. Olah (mjo@cs.unm DOT edu)
-# Copyright 2017
+# Copyright2017-2018
 # Licensed under the Apache License, Version 2.0
 # https://www.apache.org/licenses/LICENSE-2.0
 # See: LICENCE file
 
-cmake_minimum_required( VERSION 3.1 )
+
+cmake_minimum_required( VERSION 3.8 )
 project(ParallelRngManager VERSION 0.3 LANGUAGES CXX)
-# cmake_policy(SET CMP0054 NEW) #Don't derrefernce in if() statements
-# cmake_policy(SET CMP0022 NEW) #LINK_INTERFACE_LIBRARIES fix
 
 option(BUILD_SHARED_LIBS "Build shared libraries" ON)
 option(BUILD_STATIC_LIBS "Build static libraries" ON)
@@ -18,19 +17,18 @@ if(${CMAKE_BUILD_TYPE} MATCHES Debug)
 else()
     option(BUILD_TESTING "Build testing framework" OFF)
 endif()
-message(STATUS "OPTION: BUILD_SHARED_LIBS: ${BUILD_SHARED_LIBS}")
-message(STATUS "OPTION: BUILD_STATIC_LIBS: ${BUILD_STATIC_LIBS}")
-message(STATUS "OPTION: BUILD_TESTING: ${BUILD_TESTING}")
-
 
 if (NOT BUILD_SHARED_LIBS AND NOT BUILD_STATIC_LIBS)
   set (BUILD_STATIC_LIBS ON)
 endif ()
 
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_LIST_DIR}/cmake/Modules 
-                                           ${CMAKE_CURRENT_LIST_DIR}/cmake/Functions)
+message(STATUS "OPTION: BUILD_SHARED_LIBS: ${BUILD_SHARED_LIBS}")
+message(STATUS "OPTION: BUILD_STATIC_LIBS: ${BUILD_STATIC_LIBS}")
+message(STATUS "OPTION: BUILD_TESTING: ${BUILD_TESTING}")
 
-include(PackageConfig) #Configure Package-Config and associated files for cmake exports
+
+list(INSERT CMAKE_MODULE_PATH 0 ${CMAKE_CURRENT_LIST_DIR}/cmake/Modules 
+                                ${CMAKE_CURRENT_LIST_DIR}/cmake/Functions)
 
 ### Dependencies
 find_package(OpenMP REQUIRED)
@@ -38,15 +36,8 @@ find_package(OpenMP REQUIRED)
 # Armadillo
 find_package(Armadillo REQUIRED)
 add_definitions(-DARMA_USE_CXX11)
-#disable armadillo numerical dependencies which are not used in this library
-add_definitions(-DARMA_DONT_USE_WRAPPER)
-add_definitions(-DARMA_DONT_USE_LAPACK)
-add_definitions(-DARMA_DONT_USE_BLAS) 
-add_definitions(-DARMA_DONT_USE_OPENMP)
-add_definitions(-DARMA_DONT_USE_HDF5)
-if(${CMAKE_BUILD_TYPE} MATCHES Debug)
-    add_definitions(-DARMA_PRINT_ERRORS)
-endif()
+add_definitions(-DARMA_DONT_USE_LAPACK -DARMA_DONT_USE_BLAS -DARMA_DONT_USE_OPENMP -DARMA_DONT_USE_HDF5) #disable unused dependencies
+set_property(DIRECTORY APPEND PROPERTY COMPILE_DEFINITIONS $<$<CONFIG:Debug>:ARMA_PRINT_ERRORS>)
 
 #External dependencies
 #TRNG (Tina's Random Number Generator) 
@@ -56,34 +47,37 @@ endif()
 # trng to CMAKE_INSTALL_PREFIX at configure time.
 include(AddExternalAutotoolsDependency)
 set(TRNG_GIT_URL https://github.com/rabauke/trng4.git)
-AddExternalAutotoolsDependency(TRNG ${TRNG_GIT_URL} SHARED STATIC)
-
-
-# if (WIN32)
-#     add_definitions( -DWIN32 )
-# elseif(UNIX AND NOT APPLE)
-#     add_definitions( -DLINUX )
-# endif()
-
-### GLOBAL compiler settings.
-if(${CMAKE_BUILD_TYPE} MATCHES Debug)
-    add_compile_options(-W -Wall -Wextra)
-    add_definitions(-DDEBUG)
-elseif()
-    add_definitions(-DNDEBUG)
+if(BUILD_SHARED_LIBS)
+    list(APPEND EXTERN_BUILD_TYPES SHARED)
+endif()
+if(BUILD_STATIC_LIBS)
+    list(APPEND EXTERN_BUILD_TYPES STATIC)
 endif()
 
+AddExternalAutotoolsDependency(TRNG ${TRNG_GIT_URL} ${EXTERN_BUILD_TYPES})
+
+### GLOBAL compiler settings.
+add_compile_options($<$<AND:$<CONFIG:Debug>,$<CXX_COMPILER_ID:GNU>>:-O0>)
+add_compile_options($<$<CONFIG:Debug>:-W>)
+add_compile_options($<$<CONFIG:Debug>:-Wall>)
+add_compile_options($<$<CONFIG:Debug>:-Wextra>)
+
 set(CMAKE_DEBUG_POSTFIX ".debug" CACHE STRING "Debug file extension")
-set(CMAKE_CXX_FLAGS_DEBUG "-g -O2")
-set(CMAKE_CXX_FLAGS_RELEASE "-O2")
-set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-g -O2")
+
+### PackageConfig
+include(ExportPackageWizzard)
+export_package_wizzard(FIND_MODULES "cmake/Modules/FindTRNG.cmake")
 
 ### Source directories
 add_subdirectory(src)
+
+
+### Testing
 if(${BUILD_TESTING})
     include(CTest)
     enable_testing()
     add_subdirectory(test)
 endif()
 
-install(FILES cmake/Modules/FindTRNG.cmake DESTINATION ${CONFIG_INSTALL_DIR} COMPONENT Development)
+### Installation
+#Find module for TRNG is provided
