@@ -56,9 +56,11 @@ public:
     ParallelRngManager(SeedT seed);
     ParallelRngManager(SeedT seed, IdxT max_threads);
 
-    // Move only
-    ParallelRngManager(const ParallelRngManager<RngT> &) = delete;
-    ParallelRngManager& operator=(const ParallelRngManager<RngT> &) = delete;
+    //Allow copying although it will be expensive
+    //This can be useful. e.g., testing.
+    ParallelRngManager(const ParallelRngManager<RngT> &) = default;
+    ParallelRngManager& operator=(const ParallelRngManager<RngT> &) = default;
+    
     ParallelRngManager(ParallelRngManager<RngT> &&) = default;
     ParallelRngManager& operator=(ParallelRngManager<RngT> &&) = default;
     
