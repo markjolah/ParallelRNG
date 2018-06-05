@@ -48,7 +48,8 @@ set(DEPENDENT_LIBRARY_TYPES SHARED)
 if(BUILD_STATIC_LIBS)
     list(APPEND DEPENDENT_LIBRARY_TYPES STATIC)
 endif()
-AddExternalAutotoolsDependency(TRNG https://github.com/rabauke/trng4.git ${DEPENDENT_LIBRARY_TYPES})
+
+add_external_autotools_dependency(NAME TRNG URL "https://github.com/rabauke/trng4.git" ${DEPENDENT_LIBRARY_TYPES})
 
 ### GLOBAL compiler settings.
 add_compile_options($<$<AND:$<CONFIG:Debug>,$<CXX_COMPILER_ID:GNU>>:-O0>)
