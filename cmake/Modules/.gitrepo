@@ -7,5 +7,5 @@
 	remote = https://github.com/markjolah/UncommonCMakeModules.git
 	branch = master
 	commit = fe6e1952980bddf9aa49d4045fdf5b1073b3f350
-	parent = 7b58fdb46ffa73aaaf8adab95257c0f93daba9dd
+	parent = d3fd4768d49c94f347e2e77732dc5c2e5e7bbfb4
 	cmdver = 0.3.1
