@@ -65,6 +65,58 @@ TYPED_TEST( ParallelRngManagerTest, TestSeed)
     EXPECT_NE(r, r3) << "Reseeding does not change rng.";    
 }
 
+TYPED_TEST( ParallelRngManagerTest, copy_constructor)
+{
+    auto M2(this->M);
+    auto r1 = this->M();
+    auto r2 = M2();
+    EXPECT_EQ(r1,r2);
+    this->M.reset();
+    auto r12 = this->M();
+    auto r22 = M2();
+    EXPECT_EQ(r1,r12);
+    EXPECT_NE(r2,r22);
+}
+
+TYPED_TEST( ParallelRngManagerTest, copy_assignment)
+{
+    parallel_rng::ParallelRngManager<TypeParam> M2{};
+    M2 = this->M;
+    auto r1 = this->M();
+    auto r2 = M2();
+    EXPECT_EQ(r1,r2);
+    this->M.reset();
+    auto r12 = this->M();
+    auto r22 = M2();
+    EXPECT_EQ(r1,r12);
+    EXPECT_NE(r2,r22);
+}
+
+
+TYPED_TEST( ParallelRngManagerTest, move_constructor)
+{
+    auto r1 = this->M();
+    auto M2(std::move(this->M));
+    auto r2 = M2();
+    EXPECT_NE(r1,r2);
+    M2.reset();
+    auto r3 = M2();
+    EXPECT_EQ(r1,r3);
+}
+
+TYPED_TEST( ParallelRngManagerTest, move_assignment)
+{
+    parallel_rng::ParallelRngManager<TypeParam> M2{};
+    auto r1 = this->M();
+    M2 = std::move(this->M);
+    auto r2 = M2();
+    EXPECT_NE(r1,r2);
+    M2.reset();
+    auto r3 = M2();
+    EXPECT_EQ(r1,r3);
+}
+
+
 TYPED_TEST( ParallelRngManagerTest, TestReset)
 {
     auto r = this->M();
