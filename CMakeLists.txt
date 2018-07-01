@@ -52,6 +52,7 @@ endif()
 add_external_autotools_dependency(NAME TRNG URL "https://github.com/rabauke/trng4.git" ${DEPENDENT_LIBRARY_TYPES})
 
 ### GLOBAL compiler settings.
+set_property(DIRECTORY APPEND PROPERTY COMPILE_DEFINITIONS $<$<CONFIG:Debug>:PARALLEL_RNG_DEBUG>) # flag to enable debug_assert
 add_compile_options($<$<AND:$<CONFIG:Debug>,$<CXX_COMPILER_ID:GNU>>:-O0>)
 add_compile_options($<$<CONFIG:Debug>:-W>)
 add_compile_options($<$<CONFIG:Debug>:-Wall>)

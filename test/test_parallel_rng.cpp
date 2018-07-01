@@ -14,12 +14,14 @@
 #include <trng/yarn2.hpp>
 namespace {
 
+using parallel_rng::IdxT;
+using parallel_rng::SeedT;
+
 template<class ParallelRngT=parallel_rng::DefaultParallelRngT>
 class ParallelRngManagerTest : public ::testing::Test {
 public:
     using ParallelRngManagerT = parallel_rng::ParallelRngManager<ParallelRngT>;
-    using SeedT = parallel_rng::SeedT;
-    int Nsample = 100;
+    IdxT Nsample = 100;
     SeedT seed = 42;
     ParallelRngManagerT M;
     virtual void SetUp() {
@@ -133,7 +135,7 @@ TYPED_TEST( ParallelRngManagerTest, TestReset)
 void check_sample_uniform(const arma::vec &sample)
 {
     double old_r;
-    for(arma::uword i=0; i < sample.n_elem; i++){
+    for(IdxT i=0; i < sample.n_elem; i++){
         double r = sample[i];
         //Domain [0,1)
         EXPECT_TRUE(std::isfinite(r));
@@ -147,7 +149,7 @@ void check_sample_uniform(const arma::vec &sample)
 void check_sample_normal(const arma::vec &sample)
 {
     double old_r;
-    for(arma::uword i=0; i < sample.n_elem; i++){
+    for(IdxT i=0; i < sample.n_elem; i++){
         double r = sample[i];
         //Domain [0,1)
         EXPECT_TRUE(std::isfinite(r));
@@ -158,9 +160,9 @@ void check_sample_normal(const arma::vec &sample)
 
 void check_sample_category(const arma::uvec &sample, const arma::vec &weights)
 {
-    for(arma::uword i=9; i<weights.n_elem; i++) 
+    for(IdxT i=9; i<weights.n_elem; i++) 
         EXPECT_LE(0,weights[sample[i]]) << "Bin: "<<i<<" -- Weights should be non-negative."; 
-    for(arma::uword i=0; i < sample.n_elem; i++){
+    for(IdxT i=0; i < sample.n_elem; i++){
         //Domain 0 ... Nbins-1
         EXPECT_LE(0,sample[i]);
         EXPECT_GT(weights.n_elem, sample[i]);
@@ -168,11 +170,20 @@ void check_sample_category(const arma::uvec &sample, const arma::vec &weights)
     }    
 }
 
+TYPED_TEST( ParallelRngManagerTest, generic_generator)
+{
+    auto &M = this->M;
+    parallel_rng::ParallelRngManager<TypeParam> M2 = M;  //M2 is a copy of M
+    auto M_gen = M.generator(); //Typed generator
+    auto M2_ggen = M.generator(); //Generic generator AnyRNG
+    for(IdxT i=0; i < this->Nsample; i++)
+        EXPECT_EQ(M_gen(),M2_ggen());
+}
 
 TYPED_TEST( ParallelRngManagerTest, RandUScalarBounds)
 {
     arma::vec sample(this->Nsample);
-    for(int i=0; i < this->Nsample; i++)
+    for(IdxT i=0; i < this->Nsample; i++)
         sample[i] = this->M.randu();
     check_sample_uniform(sample);
 }
@@ -186,14 +197,14 @@ TYPED_TEST( ParallelRngManagerTest, RandUVectorBounds)
 TYPED_TEST( ParallelRngManagerTest, RandUMatrixBounds)
 {
     auto sample = this->M.randu(this->Nsample,this->Nsample);
-    for(int j=0; j<this->Nsample; j++)
+    for(IdxT j=0; j<this->Nsample; j++)
         check_sample_uniform(sample.col(j));
 }
 
 TYPED_TEST( ParallelRngManagerTest, RandNScalarBounds)
 {
     arma::vec sample(this->Nsample);
-    for(int i=0; i < this->Nsample; i++)
+    for(IdxT i=0; i < this->Nsample; i++)
         sample[i] = this->M.randn();
     check_sample_normal(sample);
 }
@@ -207,7 +218,7 @@ TYPED_TEST( ParallelRngManagerTest, RandNVectorBounds)
 TYPED_TEST( ParallelRngManagerTest, RandNMatrixBounds)
 {
     auto sample = this->M.randn(this->Nsample,this->Nsample);
-    for(int j=0; j<this->Nsample; j++)
+    for(IdxT j=0; j<this->Nsample; j++)
         check_sample_normal(sample.col(j));
 }
 
@@ -215,7 +226,7 @@ TYPED_TEST( ParallelRngManagerTest, ResampleDistScalarTest)
 {
     auto weights = this->M.randu(10);
     arma::uvec sample(this->Nsample);
-    for(int j=0; j<this->Nsample; j++) sample[j]=this->M.resample_dist(weights);
+    for(IdxT j=0; j<this->Nsample; j++) sample[j]=this->M.resample_dist(weights);
     check_sample_category(sample,weights);        
 }
 

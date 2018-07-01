@@ -14,10 +14,39 @@
 #include <armadillo>
 #include <trng/lcg64_shift.hpp>
 
+#include "ParallelRngManager/cache_alignment.h"
+#include "ParallelRngManager/AnyRNG.h"
+#include "ParallelRngManager/AArray.h"
+
+
+#ifdef PARALLEL_RNG_DEBUG
+    #include "ParallelRngManager/debug/debug_assert.h"
+    #ifndef PARALLEL_RNG_DEBUG_LEVEL
+        #define PARALLEL_RNG_DEBUG_LEVEL 1 // macro to control assertion level
+    #endif
+    namespace parallel_rng::assert {
+        struct handler : debug_assert::default_handler,
+                        debug_assert::set_level<PARALLEL_RNG_DEBUG_LEVEL> 
+        { };
+    } /*namespace parallel_rng::assert */
+    //ASSERT_SETUP can wrap code only necessary for calling assert statements
+    #ifndef ASSERT_SETUP
+        #define ASSERT_SETUP(x) x
+    #endif
+#elif
+    //Expand DEBUG_ASSERT to empty
+    #ifndef DEBUG_ASSERT
+        #define DEBUG_ASSERT(...)
+    #endif
+
+    //Expand ASSERT_SETUP to empty
+    #ifndef ASSERT_SETUP
+        #define ASSERT_SETUP(...)
+    #endif
+#endif
+
 namespace parallel_rng {
   
-using SeedT = uint64_t; /**< Type for 64-bit seeds */
-using IdxT = arma::uword; /**< Type for indexes */
 
 /** @brief Suggested default ParallelRNG type
  * 
@@ -38,19 +67,22 @@ public:
 
 /** @brief Use the true random interface to generate a truly random seed
  */
+using SeedT = uint64_t;
+using IdxT = arma::uword;
 SeedT generate_seed();
 
 /** @brief Use openmp to estimate the maximum number of threads that will be generated
  */
 IdxT openmp_estimate_max_threads();
 
-
-template<typename RngT=DefaultParallelRngT>
+template<class RngT=DefaultParallelRngT, class FloatT=double>
 class ParallelRngManager
 {
 public:
-    using NormalDistT = std::normal_distribution<double>;
-    using UniformDistT = std::uniform_real_distribution<double>;
+    using VecT = arma::Col<FloatT>;
+    using MatT = arma::Mat<FloatT>;
+    using NormalDistT = std::normal_distribution<FloatT>;
+    using UniformDistT = std::uniform_real_distribution<FloatT>;
     
     ParallelRngManager();
     ParallelRngManager(SeedT seed);
@@ -58,11 +90,11 @@ public:
 
     //Allow copying although it will be expensive
     //This can be useful. e.g., testing.
-    ParallelRngManager(const ParallelRngManager<RngT> &) = default;
-    ParallelRngManager& operator=(const ParallelRngManager<RngT> &) = default;
-    
-    ParallelRngManager(ParallelRngManager<RngT> &&) = default;
-    ParallelRngManager& operator=(ParallelRngManager<RngT> &&) = default;
+//     ParallelRngManager(const ParallelRngManager<RngT,FloatT> &) = default;
+//     ParallelRngManager& operator=(const ParallelRngManager<RngT,FloatT> &) = default;
+//     
+//     ParallelRngManager(ParallelRngManager<RngT,FloatT> &&) = default;
+//     ParallelRngManager& operator=(ParallelRngManager<RngT,FloatT> &&) = default;
     
     void seed(SeedT seed);
     void reset();
@@ -72,16 +104,21 @@ public:
     SeedT get_num_threads() const;
         
     RngT& generator();
+    any_rng::AnyRNG<FloatT> generic_generator(); // Make type-erased gernerator-like object with a reference.
     SeedT operator()();
         
-    double randu();
-    double randn();
-    arma::vec randu(IdxT N);
-    arma::vec randn(IdxT N);
-    arma::mat randu(IdxT rows, IdxT cols);
-    arma::mat randn(IdxT rows, IdxT cols);
-    IdxT resample_dist(const arma::vec &weights);
-    arma::uvec resample_dist(const arma::vec &weights, IdxT N);
+    FloatT randu();
+    FloatT randn();
+    VecT randu(IdxT N);
+    VecT randn(IdxT N);
+    MatT randu(IdxT rows, IdxT cols);
+    MatT randn(IdxT rows, IdxT cols);
+
+    template<class Weights=VecT,class IdxT=IdxT>
+    IdxT resample_dist(const Weights &weights);
+    
+    template<class Weights=VecT,class IdxT=IdxT>
+    arma::Col<IdxT> resample_dist(const Weights &weights, IdxT N);
     
 protected:
     void split_rngs();
@@ -98,49 +135,49 @@ protected:
 
 /* Factory functions */
 
-template<typename RngT=DefaultParallelRngT>
-ParallelRngManager<RngT> make_parallel_rng_manager()
+template<class RngT=DefaultParallelRngT, class FloatT=double>
+ParallelRngManager<RngT,FloatT> make_parallel_rng_manager()
 {
-    return ParallelRngManager<RngT>();
+    return ParallelRngManager<RngT,FloatT>();
 }
 
-template<typename RngT=DefaultParallelRngT>
-ParallelRngManager<RngT> make_parallel_rng_manager(SeedT seed)
+template<class RngT=DefaultParallelRngT, class FloatT=double>
+ParallelRngManager<RngT,FloatT> make_parallel_rng_manager(SeedT seed)
 {
-    return ParallelRngManager<RngT>(seed);
+    return ParallelRngManager<RngT,FloatT>(seed);
 }
 
 /* Template class methods */
 
-template<typename RngT>
-ParallelRngManager<RngT>::ParallelRngManager() : 
+template<class RngT, class FloatT>
+ParallelRngManager<RngT,FloatT>::ParallelRngManager() : 
     ParallelRngManager(generate_seed(), openmp_estimate_max_threads())
 {}
 
-template<typename RngT>
-ParallelRngManager<RngT>::ParallelRngManager(SeedT seed_) : 
+template<class RngT, class FloatT>
+ParallelRngManager<RngT,FloatT>::ParallelRngManager(SeedT seed_) : 
     ParallelRngManager(seed_, openmp_estimate_max_threads())
 {}
 
-template<typename RngT>
-ParallelRngManager<RngT>::ParallelRngManager(SeedT seed_, IdxT num_threads_) : 
+template<class RngT, class FloatT>
+ParallelRngManager<RngT,FloatT>::ParallelRngManager(SeedT seed_, IdxT num_threads_) : 
     init_seed(seed_),
     num_threads(num_threads_),
-    rngs(num_threads,RngT{seed_}),
+    rngs{num_threads,RngT{seed_}},
     norm_dist(num_threads,NormalDistT()),
     uni_dist(num_threads,UniformDistT())
 {
     split_rngs();
 }
 
-template<typename RngT>
-void ParallelRngManager<RngT>::split_rngs()
+template<class RngT, class FloatT>
+void ParallelRngManager<RngT,FloatT>::split_rngs()
 {
     for(IdxT n=0; n<rngs.size(); n++) rngs[n].split(num_threads,n);
 }
 
-template<typename RngT>
-void ParallelRngManager<RngT>::seed(SeedT seed_)
+template<class RngT, class FloatT>
+void ParallelRngManager<RngT,FloatT>::seed(SeedT seed_)
 {
     //trng does not easily allow reseeding of split parallel_rng streams.  The
     // .split() function in general changes internal state and repeated calls are invalid.
@@ -149,20 +186,20 @@ void ParallelRngManager<RngT>::seed(SeedT seed_)
     reset(seed_, num_threads);
 }
 
-template<typename RngT>
-void ParallelRngManager<RngT>::reset()
+template<class RngT, class FloatT>
+void ParallelRngManager<RngT,FloatT>::reset()
 {
     reset(init_seed, num_threads);
 }
 
-template<typename RngT>
-void ParallelRngManager<RngT>::reset(SeedT seed_)
+template<class RngT, class FloatT>
+void ParallelRngManager<RngT,FloatT>::reset(SeedT seed_)
 {
     reset(seed_, num_threads);
 }
 
-template<typename RngT>
-void ParallelRngManager<RngT>::reset(SeedT seed_, IdxT num_threads_)
+template<class RngT, class FloatT>
+void ParallelRngManager<RngT,FloatT>::reset(SeedT seed_, IdxT num_threads_)
 {
     num_threads = num_threads_;
     rngs = std::vector<RngT>(num_threads,RngT{seed_});
@@ -172,54 +209,62 @@ void ParallelRngManager<RngT>::reset(SeedT seed_, IdxT num_threads_)
     init_seed = seed_;
 }
 
-template<typename RngT>
-SeedT ParallelRngManager<RngT>::get_init_seed() const 
+template<class RngT, class FloatT>
+SeedT ParallelRngManager<RngT,FloatT>::get_init_seed() const 
 {
     return init_seed;
 }
 
-template<typename RngT>
-SeedT ParallelRngManager<RngT>::get_num_threads() const 
+template<class RngT, class FloatT>
+SeedT ParallelRngManager<RngT,FloatT>::get_num_threads() const 
 {
     return num_threads;
 }
 
-template<typename RngT>
-RngT& ParallelRngManager<RngT>::generator()
+template<class RngT, class FloatT>
+RngT& ParallelRngManager<RngT,FloatT>::generator()
 {
     auto id = omp_get_thread_num();
     return rngs[id];
 }
-  
+
+template<class RngT, class FloatT>
+any_rng::AnyRNG<FloatT> ParallelRngManager<RngT,FloatT>::generic_generator()
+{
+    auto id = omp_get_thread_num();
+    return rngs[id];
+}
+
 /**Random 64-bit integer */
-template<typename RngT>
-SeedT ParallelRngManager<RngT>::operator()() 
+template<class RngT, class FloatT>
+SeedT ParallelRngManager<RngT,FloatT>::operator()() 
 {
     return generator()();    
 }
 
-/**Random double uniform on [0,1) */
-template<typename RngT>
-double ParallelRngManager<RngT>::randu()
+/**Random FloatT uniform on [0,1) */
+template<class RngT, class FloatT>
+FloatT ParallelRngManager<RngT,FloatT>::randu()
 {
     auto id = omp_get_thread_num();
     return uni_dist[id](rngs[id]);
 }
 
 /**Random standard normal variate */
-template<typename RngT>
+template<class RngT, class FloatT>
 inline
-double ParallelRngManager<RngT>::randn()
+FloatT ParallelRngManager<RngT,FloatT>::randn()
 {
     auto id = omp_get_thread_num();
     return norm_dist[id](rngs[id]);
 }
 
-/**Vector of Random double uniform on [0,1) */
-template<typename RngT>
-arma::vec ParallelRngManager<RngT>::randu(IdxT N)
+/**Vector of Random FloatT uniform on [0,1) */
+template<class RngT, class FloatT>
+typename ParallelRngManager<RngT,FloatT>::VecT 
+ParallelRngManager<RngT,FloatT>::randu(IdxT N)
 {
-    arma::vec samp(N);
+    VecT samp(N);
     auto id = omp_get_thread_num();
     auto &gen = rngs[id] ;//get per-thread parallel generator
     auto &uniform = uni_dist[id];  //get per-thread normal distribution
@@ -228,10 +273,11 @@ arma::vec ParallelRngManager<RngT>::randu(IdxT N)
 }
 
 /**Vector of standard normal variate */
-template<typename RngT>
-arma::vec ParallelRngManager<RngT>::randn(IdxT N)
+template<class RngT, class FloatT>
+typename ParallelRngManager<RngT,FloatT>::VecT 
+ParallelRngManager<RngT,FloatT>::randn(IdxT N)
 {
-    arma::vec samp(N);
+    VecT samp(N);
     auto id = omp_get_thread_num();
     auto &gen = rngs[id]; //get per-thread parallel generator
     auto &normal = norm_dist[id]; //get per-thread normal distribution
@@ -239,11 +285,12 @@ arma::vec ParallelRngManager<RngT>::randn(IdxT N)
     return samp;
 }
 
-/**Matrix of Random double uniform on [0,1) */
-template<typename RngT>
-arma::mat ParallelRngManager<RngT>::randu(IdxT rows, IdxT cols)
+/**Matrix of Random FloatT uniform on [0,1) */
+template<class RngT, class FloatT>
+typename ParallelRngManager<RngT,FloatT>::MatT 
+ParallelRngManager<RngT,FloatT>::randu(IdxT rows, IdxT cols)
 {
-    arma::mat samp(rows, cols);
+    MatT samp(rows, cols);
     auto id = omp_get_thread_num();
     auto &gen = rngs[id]; //get per-thread parallel generator
     auto &uniform = uni_dist[id];  //get per-thread normal distribution
@@ -252,10 +299,11 @@ arma::mat ParallelRngManager<RngT>::randu(IdxT rows, IdxT cols)
 }
 
 /**Matrix of standard normal variate */
-template<typename RngT>
-arma::mat ParallelRngManager<RngT>::randn(IdxT rows, IdxT cols)
+template<class RngT, class FloatT>
+typename ParallelRngManager<RngT,FloatT>::MatT 
+ParallelRngManager<RngT,FloatT>::randn(IdxT rows, IdxT cols)
 {
-    arma::mat samp(rows, cols);
+    MatT samp(rows, cols);
     auto id = omp_get_thread_num();
     auto &gen = rngs[id]; //get per-thread parallel generator
     auto &normal = norm_dist[id]; //get per-thread normal distribution
@@ -263,20 +311,22 @@ arma::mat ParallelRngManager<RngT>::randn(IdxT rows, IdxT cols)
     return samp;
 }
 
-template<typename RngT>
-arma::uword
-ParallelRngManager<RngT>::resample_dist(const arma::vec &weights)
+template<class RngT, class FloatT>
+template<class Weights,class IdxT>
+IdxT 
+ParallelRngManager<RngT,FloatT>::resample_dist(const Weights &weights)
 {
-    std::discrete_distribution<arma::uword> dist(weights.begin(),weights.end());
+    std::discrete_distribution<IdxT> dist(weights.begin(),weights.end());
     return dist(generator());
 }
 
-template<typename RngT>
-arma::uvec
-ParallelRngManager<RngT>::resample_dist(const arma::vec &weights, arma::uword N)
+template<class RngT, class FloatT>
+template<class Weights,class IdxT>
+arma::Col<IdxT>
+ParallelRngManager<RngT,FloatT>::resample_dist(const Weights &weights, IdxT N)
 {
-    std::discrete_distribution<arma::uword> dist(weights.begin(),weights.end());
-    arma::uvec samp(N);
+    std::discrete_distribution<IdxT> dist(weights.begin(),weights.end());
+    arma::Col<IdxT> samp(N);
     auto &gen = generator();
     for(IdxT n=0; n<N; n++) samp(n) = dist(gen);
     return samp;
