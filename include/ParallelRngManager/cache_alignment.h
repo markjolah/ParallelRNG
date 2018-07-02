@@ -10,13 +10,12 @@
 #ifndef _PARALLEL_RNG_CACHE_ALIGNMENT_H
 #define _PARALLEL_RNG_CACHE_ALIGNMENT_H
 
-namespace parallel_rng::cache_alignment {
+namespace parallel_rng { namespace cache_alignment {
     
-extern const std::size_t DefaultCacheAlignment;
-extern const std::size_t MinimumCacheAlignment;
+extern const std::size_t CacheAlignment;
 
-size_t estimate_cache_alignment();
+std::size_t estimate_cache_alignment();
 
-} /* namespace parallel_rng::cache_alignment */
+} } /* namespace parallel_rng::cache_alignment */
 
 #endif /* _PARALLEL_RNG_CACHE_ALIGNMENT_H */

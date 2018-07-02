@@ -24,11 +24,11 @@
     #ifndef PARALLEL_RNG_DEBUG_LEVEL
         #define PARALLEL_RNG_DEBUG_LEVEL 1 // macro to control assertion level
     #endif
-    namespace parallel_rng::assert {
+    namespace parallel_rng { namespace assert {
         struct handler : debug_assert::default_handler,
                         debug_assert::set_level<PARALLEL_RNG_DEBUG_LEVEL> 
         { };
-    } /*namespace parallel_rng::assert */
+    } } /*namespace parallel_rng::assert */
     //ASSERT_SETUP can wrap code only necessary for calling assert statements
     #ifndef ASSERT_SETUP
         #define ASSERT_SETUP(x) x
@@ -125,12 +125,12 @@ protected:
     
     SeedT init_seed;
     IdxT num_threads;
-    std::vector<RngT> rngs;
+    aligned_array::AArray<RngT> rngs;
     //std::normal_distribution implementations are not thread safe.  Use per-thread distributions
-    std::vector<NormalDistT> norm_dist;
+    aligned_array::AArray<NormalDistT> norm_dist;
     //Note.  Most implementations of std::uniform_real_distribution should be thread safe.
     //But without a cross-platform guarantee we use per-thread uniform_real_distribution
-    std::vector<UniformDistT> uni_dist;
+    aligned_array::AArray<UniformDistT> uni_dist;
 };
 
 /* Factory functions */
@@ -163,9 +163,9 @@ template<class RngT, class FloatT>
 ParallelRngManager<RngT,FloatT>::ParallelRngManager(SeedT seed_, IdxT num_threads_) : 
     init_seed(seed_),
     num_threads(num_threads_),
-    rngs{num_threads,RngT{seed_}},
-    norm_dist(num_threads,NormalDistT()),
-    uni_dist(num_threads,UniformDistT())
+    rngs{num_threads,cache_alignment::CacheAlignment, RngT{seed_}},
+    norm_dist{num_threads,cache_alignment::CacheAlignment, NormalDistT{}},
+    uni_dist{num_threads,cache_alignment::CacheAlignment, UniformDistT{}}
 {
     split_rngs();
 }
@@ -202,9 +202,12 @@ template<class RngT, class FloatT>
 void ParallelRngManager<RngT,FloatT>::reset(SeedT seed_, IdxT num_threads_)
 {
     num_threads = num_threads_;
-    rngs = std::vector<RngT>(num_threads,RngT{seed_});
-    uni_dist = std::vector<UniformDistT>(num_threads,UniformDistT());
-    norm_dist = std::vector<NormalDistT>(num_threads,NormalDistT());
+    rngs.clear();
+    uni_dist.clear();
+    norm_dist.clear();
+    rngs.fill(seed_);
+    uni_dist.fill();
+    norm_dist.fill();
     split_rngs();
     init_seed = seed_;
 }
@@ -232,7 +235,7 @@ template<class RngT, class FloatT>
 any_rng::AnyRNG<FloatT> ParallelRngManager<RngT,FloatT>::generic_generator()
 {
     auto id = omp_get_thread_num();
-    return rngs[id];
+    return {rngs[id]};
 }
 
 /**Random 64-bit integer */

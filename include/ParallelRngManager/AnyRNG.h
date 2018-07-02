@@ -26,7 +26,7 @@ class AnyRNG
 {
 public:
     template<typename RNG>
-    AnyRNG(RNG &rng) 
+    explicit AnyRNG(RNG &rng) 
         : min(RNG::min()),
           max(RNG::max()),
           _generate( [&rng](){return rng();} )

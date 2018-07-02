@@ -25,11 +25,11 @@
     #ifndef PARALLEL_RNG_DEBUG_LEVEL
         #define PARALLEL_RNG_DEBUG_LEVEL 1 // macro to control assertion level
     #endif
-    namespace aligned_array::assert {
+    namespace aligned_array{ namespace assert {
         struct handler : debug_assert::default_handler,
                         debug_assert::set_level<PARALLEL_RNG_DEBUG_LEVEL> 
         { };
-    } /*namespace parallel_rng::assert */
+    } } /*namespace parallel_rng::assert */
     //ASSERT_SETUP can wrap code only necessary for calling assert statements
     #ifndef ASSERT_SETUP
         #define ASSERT_SETUP(x) x
@@ -50,13 +50,28 @@
 namespace aligned_array
 {
 
+//Forward declare namespace scope operators
+template<class T>
+class AArray;
+    
+    
+template<class T>
+typename AArray<T>::const_iterator 
+operator+(typename AArray<T>::size_type n, const typename AArray<T>::const_iterator &o) noexcept;
+
+template<class T>
+typename AArray<T>::iterator 
+operator+(typename AArray<T>::size_type n, const typename AArray<T>::iterator &o) noexcept;
+
+template<class T, bool IsConst>
+void swap(typename AArray<T>::template Iterator<IsConst> &lhs, typename AArray<T>::template Iterator<IsConst> &rhs) noexcept;
+
 
 template<class T>
 class AArray 
 {
 public:
     template<bool> class Iterator;
-
     using value_type = T;
     using size_type = size_t;
     using small_size_type = uint32_t; //Type for some elements that will not need 64-bits in any sane scenario
@@ -69,8 +84,7 @@ public:
     using iterator = Iterator<false>;
     using const_iterator = Iterator<true>;
     
-    
-    AArray(size_type max_size, small_size_type align = parallel_rng::cache_alignment::DefaultCacheAlignment)
+    AArray(size_type max_size, size_type align = parallel_rng::cache_alignment::CacheAlignment)
         : _max_size{max_size},
           _size{0},
           align_bits{ (small_size_type) std::ceil(std::log2(align)) },
@@ -80,43 +94,54 @@ public:
             throw std::invalid_argument("Align must be power of 2, not less than alignof(T) or alignof(void*)");
         alloc_buf();
     }
-    
+
+    AArray(size_type max_size, size_type align, const T &t) 
+        : AArray(max_size,align)
+    { fill(t); }
+
     AArray(const AArray &o)
         : _max_size{o._max_size},
-          _size{o._size},
+          _size{0},
           align_bits{o.align_bits},
           block_size{o.block_size}
-    { alloc_buf(); }
+    { 
+        alloc_buf(); 
+        for(auto& e: o) emplace_back(e);//Copy construct each element to new space
+    }
     
-    AArray(AArray&& o) noexcept
+    AArray(AArray &&o) noexcept
         : _max_size{o._max_size},
           _size{o._size},
           align_bits{o.align_bits},
           block_size{o.block_size},
           first{o.first}
-    { o.first = nullptr; }
+    { 
+        o.first = nullptr; //take ownership
+    }
     
-    AArray& operator=(const AArray&o)
+    AArray& operator=(const AArray &o)
     {
         if(&o == this) return *this; //self assignment guard
+        free_buf();
         _max_size = o._max_size;
-        _size = o._size;
+        _size = 0; //start empty before copy
         align_bits = o.align_bits;
         block_size = o.block_size;
-        free_buf();
         alloc_buf();
+        for(auto& e: o) emplace_back(e);//Copy construct each element to new space
         return *this;
     }
     
-    AArray& operator=(AArray&&o) noexcept
+    AArray& operator=(AArray&& o) noexcept
     {
         if(&o == this) return *this; //self assignment guard
+        free_buf();
         _max_size = o._max_size;
         _size = o._size;
         align_bits = o.align_bits;
         block_size = o.block_size;
-        free_buf();
-        first = o.first;
+        first = o.first; 
+        o.first = nullptr; //take ownership
         return *this;
     }
     
@@ -140,7 +165,9 @@ public:
     
     template<class... Ts>
     void fill(const Ts&... vs)
-    { for(;_size<_max_size; _size++) new(first+_size*block_size) T{vs...}; }
+    { 
+        for(;_size<_max_size; _size++) new(first+_size*block_size) T{vs...}; 
+    }
     
     //Exchanges the contents of the container with those of other. Does not invoke any move, copy, or swap operations on individual elements
     void swap(AArray &o) noexcept
@@ -185,16 +212,20 @@ public:
     void pop_back() noexcept { reinterpret_cast<pointer>(first + --_size * block_size)->~T(); }
     
     iterator begin() noexcept { return {*this}; }
-    const_iterator cbegin() noexcept { return {*this}; }
+    const_iterator begin() const noexcept { return {*this}; }
+    const_iterator cbegin() const noexcept  { return {*this}; }
     iterator end() noexcept { return {*this,size()}; }
-    const_iterator cend() noexcept { return {*this,size()}; }
+    const_iterator end() const noexcept { return {*this,size()}; }
+    const_iterator cend() const noexcept { return {*this,size()}; }
 
 private:
+    using ByteT = unsigned char;
+
     size_type _max_size;
     size_type _size;
     small_size_type align_bits;
     small_size_type block_size;
-    char *first;
+    ByteT *first;
 
     void alloc_buf()
     {
@@ -203,18 +234,19 @@ private:
             return;
         }
         size_type buf_size = align() + _max_size*block_size; //Allow at least align extra bytes which is enough to store a pointer
-        void *buf = new char[buf_size];
-        first = reinterpret_cast<char*>(((reinterpret_cast<size_t>(buf) >> align_bits) + 1) << align_bits); //First aligned position within buf after head
-        void **hidden_buf = reinterpret_cast<void**>(first) - 1;
-        *hidden_buf = buf; //Store buf pointer in the extra align sized space before first;       
+        auto buf = new ByteT[buf_size];
+        uintptr_t first_uint = ((uintptr_t(buf) >> align_bits) + 1) << align_bits; //Align to first cache line past head of buffer.
+        first = reinterpret_cast<ByteT*>( first_uint ); //First aligned position within buf after head
+        auto hidden_buf = reinterpret_cast<ByteT**>(first) - 1; //Location to stash the real buf ptr to free later
+        *hidden_buf = buf; //Store buf pointer in the extra align sized space before first
     }
     
     void free_buf() noexcept
     {
         if(!first) return;
-        char **hidden_buf = reinterpret_cast<char**>(first) - 1;
-        char *buf = *hidden_buf; //Retrieve buf pointer from the extra align sized space before first;
-        DEBUG_ASSERT( first-buf <= (difference_type) align() , assert::handler{},"Buf is busted!");
+        auto hidden_buf = reinterpret_cast<ByteT**>(first) - 1;
+        ByteT *buf = *hidden_buf; //Retrieve buf pointer from the extra align sized space before first;
+        DEBUG_ASSERT( first-buf <= difference_type(align()) , assert::handler{},"Hidden buf pointer is corrupted! Ouch!");
         delete[](buf);
         first = nullptr;
     }
@@ -230,18 +262,21 @@ private:
     struct type_for_const<false,Type,ConstType> 
     { using type = Type; };
     
-    
 public: 
     template<bool IsConst>
     class Iterator {
     public:
+        friend Iterator<!IsConst>;
         using iterator_category = std::bidirectional_iterator_tag;
         using value_type = AArray::value_type;
         using difference_type = AArray::difference_type;
         using pointer = typename type_for_const<IsConst,AArray::pointer,AArray::const_pointer>::type;
         using reference = typename type_for_const<IsConst,AArray::reference,AArray::const_reference>::type;
+        using AArray_reference = typename type_for_const<IsConst,AArray&, const AArray&>::type;
+        using AArray_pointer = typename type_for_const<IsConst,AArray*, const AArray*>::type;
         
-        explicit Iterator(const AArray &arr, size_t idx=0) noexcept : arr(&arr), idx(idx) {}
+        Iterator(AArray_reference arr, size_t idx=0) noexcept : arr(&arr), idx(idx) {}
+        Iterator(AArray_pointer arr, size_t idx=0) noexcept : arr(arr), idx(idx) {}
         
         //Functions as copy constructor for non-const_iterator and as converting constructor for const_iterator
         Iterator(const AArray<T>::Iterator<false> &o) noexcept
@@ -268,17 +303,38 @@ public:
             return copy;             
         }
         
+        Iterator& operator+=(size_type n) noexcept { idx+=n; return *this; }
+        Iterator& operator-=(size_type n) noexcept { idx-=n; return *this; }
+        Iterator operator+(size_type n) const noexcept { return {arr, idx+n}; }
+        Iterator operator-(size_type n) const noexcept { return {arr, idx-n}; }
+        
+        template<bool OtherIsConst>
+        difference_type operator-(const Iterator<OtherIsConst> &o) const noexcept 
+        { return difference_type(idx) - difference_type(o.idx); }
+
+        
         reference operator*() const noexcept { return arr->operator[](idx); }
         pointer operator->() const noexcept { return &arr->operator[](idx); }
-        bool operator==(const Iterator<IsConst> &o) noexcept { return idx == o.idx; } 
-        bool operator!=(const Iterator<IsConst> &o) noexcept { return idx != o.idx; } 
-        bool operator<(const Iterator<IsConst> &o) noexcept { return idx < o.idx; } 
-        bool operator<=(const Iterator<IsConst> &o) noexcept { return idx <= o.idx; } 
-        bool operator>(const Iterator<IsConst> &o) noexcept { return idx > o.idx; } 
-        bool operator>=(const Iterator<IsConst> &o) noexcept { return idx >= o.idx; } 
+        reference operator[](size_type n) const noexcept { return arr->operator[](idx+n); }
+                
+        template<bool OtherIsConst>
+        bool operator==(const Iterator<OtherIsConst> &o) const noexcept { return idx == o.idx; } 
+        template<bool OtherIsConst>
+        bool operator!=(const Iterator<OtherIsConst> &o) const noexcept { return idx != o.idx; } 
+        template<bool OtherIsConst>
+        bool operator<(const Iterator<OtherIsConst> &o) const noexcept { return idx < o.idx; } 
+        template<bool OtherIsConst>
+        bool operator<=(const Iterator<OtherIsConst> &o) const noexcept { return idx <= o.idx; } 
+        template<bool OtherIsConst>
+        bool operator>(const Iterator<OtherIsConst> &o) const noexcept { return idx > o.idx; } 
+        template<bool OtherIsConst>
+        bool operator>=(const Iterator<OtherIsConst> &o) const noexcept { return idx >= o.idx; } 
         
-        template<bool _Const>
-        friend void swap(Iterator<_Const>& lhs, Iterator<_Const>& rhs) noexcept;
+        friend
+        Iterator aligned_array::operator+<T>(size_type, const Iterator&) noexcept;
+
+        friend 
+        void aligned_array::swap<T,IsConst>(Iterator& lhs, Iterator& rhs) noexcept;
         
     private:
         using AArrayPrtT = typename type_for_const<IsConst, AArray*, const AArray*>::type;
@@ -287,14 +343,21 @@ public:
     };
 
 };
+ 
+template<class T>
+typename AArray<T>::iterator 
+operator+(typename AArray<T>::size_type n, const typename AArray<T>::iterator &o) noexcept
+{ return o+n; }
 
-// template<class T, bool IsConst>
-// void swap(typename AArray<T>::template Iterator<IsConst>& lhs, typename AArray<T>::template Iterator<IsConst>& rhs) noexcept
-// {
-//     std::swap(lhs.arr,rhs.arr);
-//     std::swap(lhs.idx,rhs.idx);
-// }
+template<class T>
+typename AArray<T>::const_iterator 
+operator+(typename AArray<T>::size_type n, const typename AArray<T>::const_iterator &o) noexcept
+{ return o+n; }
 
+
+template<class T, bool IsConst>
+void swap(typename AArray<T>::template Iterator<IsConst> &lhs, typename AArray<T>::template Iterator<IsConst> &rhs) noexcept
+{ lhs.swap(rhs); }
     
 } /* namespace parallel_rng */
 

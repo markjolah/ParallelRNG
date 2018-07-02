@@ -10,6 +10,8 @@
 #include <cstddef>
 #include <algorithm>
 
+#include "ParallelRngManager/cache_alignment.h"
+
 namespace parallel_rng::cache_alignment {
 
 static const std::size_t DefaultCacheAlignment = 64;
@@ -27,8 +29,10 @@ size_t estimate_cache_alignment()
     if(cache_line_size < MinimumCacheAlignment) return DefaultCacheAlignment; //Something went wrong;
     return cache_line_size;
 #else
-    return DefaultCacheAlignment
+    return DefaultCacheAlignment;
 #endif
 }
+
+const std::size_t CacheAlignment = estimate_cache_alignment();
 
 } /* namespace parallel_rng::cache_alignment */
