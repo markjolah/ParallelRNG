@@ -22,11 +22,11 @@ namespace any_rng
  * 
  */
 template<typename T>
-class AnyRNG
+class AnyRng
 {
 public:
     template<typename RNG>
-    explicit AnyRNG(RNG &rng) 
+    explicit AnyRng(RNG &rng) 
         : min(RNG::min()),
           max(RNG::max()),
           _generate( [&rng](){return rng();} )

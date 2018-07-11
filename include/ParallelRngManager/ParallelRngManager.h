@@ -15,7 +15,7 @@
 #include <trng/lcg64_shift.hpp>
 
 #include "ParallelRngManager/cache_alignment.h"
-#include "ParallelRngManager/AnyRNG.h"
+#include "ParallelRngManager/AnyRng.h"
 #include "ParallelRngManager/AArray.h"
 
 
@@ -104,7 +104,7 @@ public:
     SeedT get_num_threads() const;
         
     RngT& generator();
-    any_rng::AnyRNG<FloatT> generic_generator(); // Make type-erased gernerator-like object with a reference.
+    any_rng::AnyRng<FloatT> generic_generator(); // Make type-erased gernerator-like object with a reference.
     SeedT operator()();
         
     FloatT randu();
@@ -232,7 +232,7 @@ RngT& ParallelRngManager<RngT,FloatT>::generator()
 }
 
 template<class RngT, class FloatT>
-any_rng::AnyRNG<FloatT> ParallelRngManager<RngT,FloatT>::generic_generator()
+any_rng::AnyRng<FloatT> ParallelRngManager<RngT,FloatT>::generic_generator()
 {
     auto id = omp_get_thread_num();
     return {rngs[id]};
