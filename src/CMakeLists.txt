@@ -3,6 +3,7 @@
 
 file(GLOB SRCS *.cpp) 
 set(PUBLIC_HEADER_SRC_DIR ${CMAKE_CURRENT_LIST_DIR}/../include)
+#Debug only headers are not distrubted with non-debug builds
 set(PUBLIC_DEBUG_HEADER_SRC_DIR ${CMAKE_CURRENT_LIST_DIR}/../include/debug)
 
 include(AddSharedStaticLibraries)

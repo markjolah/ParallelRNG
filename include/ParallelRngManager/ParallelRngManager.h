@@ -33,7 +33,7 @@
     #ifndef ASSERT_SETUP
         #define ASSERT_SETUP(x) x
     #endif
-#elif
+#else
     //Expand DEBUG_ASSERT to empty
     #ifndef DEBUG_ASSERT
         #define DEBUG_ASSERT(...)
