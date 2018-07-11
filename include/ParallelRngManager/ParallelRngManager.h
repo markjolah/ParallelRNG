@@ -15,7 +15,7 @@
 #include <trng/lcg64_shift.hpp>
 
 #include "ParallelRngManager/cache_alignment.h"
-#include "ParallelRngManager/AnyRng.h"
+#include "ParallelRngManager/AnyRng/AnyRng.h"
 #include "ParallelRngManager/AArray.h"
 
 
