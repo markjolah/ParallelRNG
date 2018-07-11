@@ -5,7 +5,7 @@
  */
 
 #include <cstring>
-#include "ParallelRngManager/AArray.h"
+#include "ParallelRngManager/AlignedArray/AArray.h"
 #include "gtest/gtest.h"
 namespace {
 

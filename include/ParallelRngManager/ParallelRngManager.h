@@ -16,7 +16,7 @@
 
 #include "ParallelRngManager/cache_alignment.h"
 #include "ParallelRngManager/AnyRng/AnyRng.h"
-#include "ParallelRngManager/AArray.h"
+#include "ParallelRngManager/AlignedArray/AArray.h"
 
 
 #ifdef PARALLEL_RNG_DEBUG
