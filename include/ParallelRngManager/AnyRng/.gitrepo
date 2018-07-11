@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/git-commands/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/markjolah/AnyRng.git
+	branch = master
+	commit = f086e23eb4ba63bde29ad0b5426482e65a7e9635
+	parent = 4e9f68621db081b56eed801768ca92626b4f31fa
+	method = merge
+	cmdver = 0.4.0
