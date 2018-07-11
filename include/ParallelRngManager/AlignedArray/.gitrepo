@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/git-commands/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/markjolah/AlignedArray.git
+	branch = master
+	commit = b817a4843f079ea6292e17c69fd509e54cb07283
+	parent = d14f14330b697e268c56490e09b9ab47168f01f0
+	method = merge
+	cmdver = 0.4.0
