@@ -26,7 +26,7 @@ namespace any_rng
  * This is intended as a single-threaded data structure.
  * 
  */
-template<typename T>
+template<typename ResultT>
 class AnyRng
 {
 public:
@@ -37,13 +37,13 @@ public:
           _generate{ [&rng](){return rng();} }
     { }
     
-    using result_type = T;
-    T operator()() { return _generate(); }
+    using result_type = ResultT;
+    ResultT operator()() { return _generate(); }
 
-    const T min;
-    const T max;
+    const ResultT min;
+    const ResultT max;
 private:
-    std::function<T()> _generate;
+    std::function<ResultT()> _generate;
 };
 
 } /* namespace any_rng */
