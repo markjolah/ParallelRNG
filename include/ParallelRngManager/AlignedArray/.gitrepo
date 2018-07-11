@@ -6,7 +6,7 @@
 [subrepo]
 	remote = https://github.com/markjolah/AlignedArray.git
 	branch = master
-	commit = b817a4843f079ea6292e17c69fd509e54cb07283
-	parent = d14f14330b697e268c56490e09b9ab47168f01f0
+	commit = 91f4b6997a31f9fdd36ab26ef69843b7074c0705
+	parent = 036c1c277e7814240ea814ead52852531f208748
 	method = merge
 	cmdver = 0.4.0
