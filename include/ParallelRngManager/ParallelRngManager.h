@@ -14,7 +14,6 @@
 #include <armadillo>
 #include <trng/lcg64_shift.hpp>
 
-#include "ParallelRngManager/cache_alignment.h"
 #include "ParallelRngManager/AnyRng/AnyRng.h"
 #include "ParallelRngManager/AlignedArray/AArray.h"
 
@@ -125,6 +124,7 @@ protected:
     
     SeedT init_seed;
     IdxT num_threads;
+    std::size_t cache_alignment;
     aligned_array::AArray<RngT> rngs;
     //std::normal_distribution implementations are not thread safe.  Use per-thread distributions
     aligned_array::AArray<NormalDistT> norm_dist;
@@ -163,9 +163,10 @@ template<class RngT, class FloatT>
 ParallelRngManager<RngT,FloatT>::ParallelRngManager(SeedT seed_, IdxT num_threads_) : 
     init_seed(seed_),
     num_threads(num_threads_),
-    rngs{num_threads,cache_alignment::CacheAlignment, RngT{seed_}},
-    norm_dist{num_threads,cache_alignment::CacheAlignment, NormalDistT{}},
-    uni_dist{num_threads,cache_alignment::CacheAlignment, UniformDistT{}}
+    cache_alignment{aligned_array::alignment::estimate_cache_alignment()},
+    rngs{num_threads,cache_alignment, RngT{seed_}},
+    norm_dist{num_threads,cache_alignment, NormalDistT{}},
+    uni_dist{num_threads,cache_alignment, UniformDistT{}}
 {
     split_rngs();
 }
