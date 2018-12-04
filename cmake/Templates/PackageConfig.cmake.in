@@ -5,7 +5,10 @@ include("${CMAKE_CURRENT_LIST_DIR}/@EXPORT_TARGETS_NAME@.cmake")
 check_required_components("@PROJECT_NAME@")
 
 include(CMakeFindDependencyMacro)
-list(INSERT CMAKE_MODULE_PATH 0 ${CMAKE_CURRENT_LIST_DIR})
+#Temporarily set CMake path to find exported Find<XXX>.cmake modules provided by this package
+#PACKAGE_WIZ_FIND_MODULES_PATH is configured by export_package_wizzard differently
+#for build-tree and install-tree exports
+list(INSERT CMAKE_MODULE_PATH 0 @PACKAGE_WIZ_FIND_MODULES_PATH@)
 set(TRNG_PREFIX_HINTS @CMAKE_INSTALL_PREFIX@)
 find_dependency(TRNG REQUIRED)
 list(REMOVE_AT CMAKE_MODULE_PATH 0)
