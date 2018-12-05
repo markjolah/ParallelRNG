@@ -24,7 +24,7 @@ message(STATUS "OPTION: BUILD_SHARED_LIBS: ${BUILD_SHARED_LIBS}")
 message(STATUS "OPTION: BUILD_STATIC_LIBS: ${BUILD_STATIC_LIBS}")
 message(STATUS "OPTION: BUILD_TESTING: ${BUILD_TESTING}")
 
-list(INSERT CMAKE_MODULE_PATH 0 ${CMAKE_CURRENT_LIST_DIR}/cmake/Modules)
+list(INSERT CMAKE_MODULE_PATH 0 ${CMAKE_CURRENT_LIST_DIR}/cmake/UncommonCmakeModules)
 
 ### Dependencies
 #OpenMP
@@ -53,16 +53,12 @@ add_external_autotools_dependency(NAME TRNG URL "https://github.com/rabauke/trng
 
 ### GLOBAL compiler settings.
 set_property(DIRECTORY APPEND PROPERTY COMPILE_DEFINITIONS $<$<CONFIG:Debug>:PARALLEL_RNG_DEBUG>) # flag to enable debug_assert
-add_compile_options($<$<AND:$<CONFIG:Debug>,$<CXX_COMPILER_ID:GNU>>:-O0>)
-add_compile_options($<$<CONFIG:Debug>:-W>)
-add_compile_options($<$<CONFIG:Debug>:-Wall>)
-add_compile_options($<$<CONFIG:Debug>:-Wextra>)
-
-set(CMAKE_DEBUG_POSTFIX ".debug" CACHE STRING "Debug file extension")
+include(ConfigureDebugBuilds)
 
 ### PackageConfig
 include(ExportPackageWizzard)
-export_package_wizzard(FIND_MODULES "cmake/Modules/FindTRNG.cmake")
+#Give path to FindTRNG.cmake so it can be called by PackageConfig.cmake correctly from build tree or install tree
+export_package_wizzard(FIND_MODULES "cmake/UncommonCmakeModules/FindTRNG.cmake")
 
 ### Source directories
 add_subdirectory(src)
