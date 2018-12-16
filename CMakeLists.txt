@@ -5,7 +5,7 @@
 # Licensed under the Apache License, Version 2.0
 # https://www.apache.org/licenses/LICENSE-2.0
 # See: LICENCE file
-cmake_minimum_required( VERSION 3.8 )
+cmake_minimum_required( VERSION 3.9 )
 project(ParallelRngManager VERSION 0.3 LANGUAGES CXX)
 
 option(BUILD_SHARED_LIBS "Build shared libraries" ON)
@@ -64,7 +64,7 @@ export_package_wizzard(FIND_MODULES "cmake/UncommonCmakeModules/FindTRNG.cmake")
 add_subdirectory(src)
 
 ### Testing
-if(${BUILD_TESTING})
+if(BUILD_TESTING)
     include(CTest)
     enable_testing()
     add_subdirectory(test)

@@ -2,20 +2,24 @@
 
 #ParallelRngManagerConfig.cmake
 
-#Include targets file.  This will create IMPORTED targets
-include("${CMAKE_CURRENT_LIST_DIR}/@EXPORT_TARGETS_NAME@.cmake")
-check_required_components("@PROJECT_NAME@")
-
+### Find dependencies
 include(CMakeFindDependencyMacro)
+find_dependency(OpenMP)
+find_dependency(Armadillo)
+add_definitions(-DARMA_USE_CXX11)
+
 #Temporarily set CMake path to find exported Find<XXX>.cmake modules provided by this package
 #PACKAGE_WIZ_FIND_MODULES_PATH is configured by export_package_wizzard differently
 #for build-tree and install-tree exports
-message(STATUS "[@PROJECT_NAME@Config.cmake] Location: ${CMAKE_CURRENT_LIST_DIR}")
-message(STATUS "[@PROJECT_NAME@Config.cmake] Using FIND_MODULES_PATH: @PACKAGE__WIZ_FIND_MODULES_PATH@")
-list(INSERT CMAKE_MODULE_PATH 0 @PACKAGE__WIZ_FIND_MODULES_PATH@)
+set_and_check(PACKAGE_FIND_MODULES_PATH @PACKAGE_FIND_MODULES_PATH@)
+list(INSERT CMAKE_MODULE_PATH 0 ${PACKAGE_FIND_MOULES_PATH})
 set(TRNG_PREFIX_HINTS @CMAKE_INSTALL_PREFIX@)
 find_dependency(TRNG REQUIRED)
 list(REMOVE_AT CMAKE_MODULE_PATH 0)
+
+
+### Include targets file.  This will create IMPORTED targets for each build configuration.
+include("${CMAKE_CURRENT_LIST_DIR}/@EXPORT_TARGETS_NAME@.cmake")
 
 #Single-library package with eponymous library with static and shared build options
 #Sets:
@@ -36,10 +40,6 @@ else()
     set(@PROJECT_NAME@_STATIC_LIBRARIES @PROJECT_NAME@::@PROJECT_NAME@)
 endif()
 
-get_target_property(BUILD_TYPES @PROJECT_NAME@::@PROJECT_NAME@ IMPORTED_CONFIGURATIONS)
-set(@PROJECT_NAME@_BUILD_TYPES ${BUILD_TYPES})
+get_target_property(@PROJECT_NAME@_BUILD_TYPES @PROJECT_NAME@::@PROJECT_NAME@ IMPORTED_CONFIGURATIONS)
 
-message(STATUS "[@PROJECT_NAME@Config.cmake] @PROJECT_NAME@_LIBRARIES: ${@PROJECT_NAME@_LIBRARIES}")
-message(STATUS "[@PROJECT_NAME@Config.cmake] @PROJECT_NAME@_SHARED_LIBRARIES: ${@PROJECT_NAME@_SHARED_LIBRARIES}")
-message(STATUS "[@PROJECT_NAME@Config.cmake] @PROJECT_NAME@_STATIC_LIBRARIES: ${@PROJECT_NAME@_STATIC_LIBRARIES}")
-message(STATUS "[@PROJECT_NAME@Config.cmake] @PROJECT_NAME@_BUILD_TYPES: ${@PROJECT_NAME@_BUILD_TYPES}")
+check_required_components("@PROJECT_NAME@")
