@@ -14,4 +14,4 @@ add_shared_static_libraries(SOURCES ${SRCS}
                             PUBLIC_COMPILE_FEATURES cxx_std_11
                             PUBLIC_LINK_LIBRARIES OpenMP::OpenMP_CXX TRNG::TRNG
                             PUBLIC_HEADER_DIR ${CMAKE_SOURCE_DIR}/include
-                            PUBLIC_DEBUG_HEADER_DIR $${CMAKE_SOURCE_DIR}/include/debug)
+                            PUBLIC_DEBUG_HEADER_DIR ${CMAKE_SOURCE_DIR}/include/debug)
