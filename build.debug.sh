@@ -1,12 +1,12 @@
-#!/bin/bash
+##!/bin/bash
 
 INSTALL_PATH=_install
-BUILD_PATH=_build
+BUILD_PATH=_build/Debug
 NUM_PROCS=`grep -c ^processor /proc/cpuinfo`
-COMMON_ARGS="-DCMAKE_INSTALL_PREFIX=$INSTALL_PATH -DBUILD_SHARED_LIBS=ON -DBUILD_STATIC_LIBS=ON -DBUILD_TESTING=ON"
+ARGS=""
+ARGS="${ARGS} -DBUILD_TESTING=On -DBUILD_STATIC_LIBS=On -DBUILD_SHARED_LIBS=On"
+
+set -ex
 rm -rf $INSTALL_PATH $BUILD_PATH
-
-set -e
-
-cmake -H. -B$BUILD_PATH/Debug -DCMAKE_BUILD_TYPE=Debug ${COMMON_ARGS} 
-VERBOSE=1 cmake --build $BUILD_PATH/Debug --target install -- -j${NUM_PROCS}
+cmake -H. -B$BUILD_PATH -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=$INSTALL_PATH ${ARGS}
+VERBOSE=1 cmake --build $BUILD_PATH --target install -- -j${NUM_PROCS}

@@ -24,7 +24,7 @@ message(STATUS "OPTION: BUILD_SHARED_LIBS: ${BUILD_SHARED_LIBS}")
 message(STATUS "OPTION: BUILD_STATIC_LIBS: ${BUILD_STATIC_LIBS}")
 message(STATUS "OPTION: BUILD_TESTING: ${BUILD_TESTING}")
 
-list(INSERT CMAKE_MODULE_PATH 0 ${CMAKE_CURRENT_LIST_DIR}/cmake/UncommonCmakeModules)
+list(INSERT CMAKE_MODULE_PATH 0 ${CMAKE_CURRENT_LIST_DIR}/cmake/UncommonCMakeModules)
 
 ### Dependencies
 #OpenMP
@@ -58,7 +58,7 @@ include(ConfigureDebugBuilds)
 ### PackageConfig
 include(ExportPackageWizzard)
 #Give path to FindTRNG.cmake so it can be called by PackageConfig.cmake correctly from build tree or install tree
-export_package_wizzard(FIND_MODULES "cmake/UncommonCmakeModules/FindTRNG.cmake")
+export_package_wizzard(FIND_MODULES "cmake/UncommonCMakeModules/FindTRNG.cmake")
 
 ### Source directories
 add_subdirectory(src)
