@@ -15,6 +15,7 @@ if(${CMAKE_BUILD_TYPE} MATCHES Debug)
 else()
     option(BUILD_TESTING "Build testing framework" OFF)
 endif()
+option(OPT_EXPORT_BUILD_TREE "Configure the package so it is usable from the build tree.  Useful for development." OFF)
 
 if (NOT BUILD_SHARED_LIBS AND NOT BUILD_STATIC_LIBS)
   set (BUILD_STATIC_LIBS ON)
@@ -23,6 +24,7 @@ endif ()
 message(STATUS "OPTION: BUILD_SHARED_LIBS: ${BUILD_SHARED_LIBS}")
 message(STATUS "OPTION: BUILD_STATIC_LIBS: ${BUILD_STATIC_LIBS}")
 message(STATUS "OPTION: BUILD_TESTING: ${BUILD_TESTING}")
+message(STATUS "OPTION: OPT_EXPORT_BUILD_TREE: ${OPT_EXPORT_BUILD_TREE}")
 
 list(INSERT CMAKE_MODULE_PATH 0 ${CMAKE_CURRENT_LIST_DIR}/cmake/UncommonCMakeModules)
 
@@ -58,7 +60,7 @@ include(ConfigureDebugBuilds)
 ### PackageConfig
 include(ExportPackageWizzard)
 #Give path to FindTRNG.cmake so it can be called by PackageConfig.cmake correctly from build tree or install tree
-export_package_wizzard(FIND_MODULES "cmake/UncommonCMakeModules/FindTRNG.cmake")
+export_package_wizzard(FIND_MODULES "cmake/UncommonCMakeModules/FindTRNG.cmake" EXPORT_BUILD_TREE ${OPT_EXPORT_BUILD_TREE})
 
 ### Source directories
 add_subdirectory(src)
