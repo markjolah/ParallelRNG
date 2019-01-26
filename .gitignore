@@ -2,6 +2,7 @@
 _build
 _install
 _gcc*
+_win64*
 
 # Prerequisites
 *.d

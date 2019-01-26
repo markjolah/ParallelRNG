@@ -120,12 +120,13 @@ public:
     template<class Weights=VecT,class IdxT=IdxT>
     arma::Col<IdxT> resample_dist(const Weights &weights, IdxT N);
     
-protected:
+private:
     void split_rngs();
-    
     SeedT init_seed;
     IdxT num_threads;
     std::size_t cache_alignment;
+    std::function<SeedT()> seeder;
+
     aligned_array::AArray<RngT> rngs;
     //std::normal_distribution implementations are not thread safe.  Use per-thread distributions
     aligned_array::AArray<NormalDistT> norm_dist;
@@ -165,7 +166,8 @@ ParallelRngManager<RngT,FloatT>::ParallelRngManager(SeedT seed_, IdxT num_thread
     init_seed(seed_),
     num_threads(num_threads_),
     cache_alignment{aligned_array::alignment::estimate_cache_alignment()},
-    rngs{num_threads,cache_alignment, RngT{seed_}},
+    seeder{[seed_](){return seed_;}},
+    rngs{num_threads,cache_alignment, RngT{seeder}},
     norm_dist{num_threads,cache_alignment, NormalDistT{}},
     uni_dist{num_threads,cache_alignment, UniformDistT{}}
 {
@@ -207,7 +209,8 @@ void ParallelRngManager<RngT,FloatT>::reset(SeedT seed_, IdxT num_threads_)
     rngs.clear();
     uni_dist.clear();
     norm_dist.clear();
-    rngs.fill(seed_);
+    seeder = [seed_](){return seed_;}; //change the seeder lambda to reflect new seed.
+    rngs.fill(seeder);
     uni_dist.fill();
     norm_dist.fill();
     split_rngs();
