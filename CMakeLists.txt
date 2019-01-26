@@ -31,6 +31,12 @@ list(INSERT CMAKE_MODULE_PATH 0 ${CMAKE_CURRENT_LIST_DIR}/cmake/UncommonCMakeMod
 ### Dependencies
 #OpenMP
 find_package(OpenMP REQUIRED)
+find_package(Pthread REQUIRED)
+# if (WIN32)
+#     find_library(PTHREAD_LIBRARY libwinpthread.dll REQUIRED)
+# elseif(UNIX)
+#     find_library(PTHREAD_LIBRARY libpthread.so REQUIRED NO_CMAKE_FIND_ROOT_PATH)
+# endif()
 
 # Armadillo
 find_package(Armadillo REQUIRED)
@@ -38,6 +44,7 @@ add_definitions(-DARMA_USE_CXX11)
 add_definitions(-DARMA_DONT_USE_LAPACK -DARMA_DONT_USE_BLAS -DARMA_DONT_USE_OPENMP -DARMA_DONT_USE_HDF5) #disable unused dependencies
 set_property(DIRECTORY APPEND PROPERTY COMPILE_DEFINITIONS $<$<CONFIG:Debug>:ARMA_PRINT_ERRORS>)
 set_property(DIRECTORY APPEND PROPERTY COMPILE_DEFINITIONS $<$<NOT:$<CONFIG:Debug>>:ARMA_NO_DEBUG>)
+
 
 ### External dependencies
 #TRNG (Tina's Random Number Generator) 

@@ -1,6 +1,6 @@
 /** @file test_AArray.cpp
  * @author Mark J. Olah (mjo\@cs.unm DOT edu)
- * @date 2018
+ * @date 2018-2019
  * @brief Use googletest to test the AArray class
  */
 

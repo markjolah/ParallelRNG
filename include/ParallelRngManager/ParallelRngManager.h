@@ -82,7 +82,8 @@ public:
     using MatT = arma::Mat<FloatT>;
     using NormalDistT = std::normal_distribution<FloatT>;
     using UniformDistT = std::uniform_real_distribution<FloatT>;
-    
+    using result_type = typename RngT::result_type;
+
     ParallelRngManager();
     ParallelRngManager(SeedT seed);
     ParallelRngManager(SeedT seed, IdxT max_threads);
@@ -103,8 +104,8 @@ public:
     SeedT get_num_threads() const;
         
     RngT& generator();
-    any_rng::AnyRng<FloatT> generic_generator(); // Make type-erased gernerator-like object with a reference.
-    SeedT operator()();
+    any_rng::AnyRng<result_type> generic_generator(); // Make type-erased gernerator-like object with a reference.
+    result_type operator()();
         
     FloatT randu();
     FloatT randn();
@@ -233,15 +234,17 @@ RngT& ParallelRngManager<RngT,FloatT>::generator()
 }
 
 template<class RngT, class FloatT>
-any_rng::AnyRng<FloatT> ParallelRngManager<RngT,FloatT>::generic_generator()
+any_rng::AnyRng<typename ParallelRngManager<RngT,FloatT>::result_type>
+ParallelRngManager<RngT,FloatT>::generic_generator()
 {
     auto id = omp_get_thread_num();
-    return {rngs[id]};
+    return any_rng::AnyRng<result_type>{rngs[id]};
 }
 
 /**Random 64-bit integer */
 template<class RngT, class FloatT>
-SeedT ParallelRngManager<RngT,FloatT>::operator()() 
+typename ParallelRngManager<RngT,FloatT>::result_type
+ParallelRngManager<RngT,FloatT>::operator()()
 {
     return generator()();    
 }
