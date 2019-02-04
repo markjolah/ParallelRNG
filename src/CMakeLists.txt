@@ -12,6 +12,7 @@ include(AddSharedStaticLibraries)
 # * returns lsit SHARED_STATIC_LIB_TARGETS of created targets for adjusting additional target properties
 add_shared_static_libraries(SOURCES ${SRCS}
                             COMPILE_FEATURES cxx_std_11
-                            LINK_LIBRARIES OpenMP::OpenMP_CXX TRNG::TRNG Pthread::Pthread
+                            LINK_LIBRARIES OpenMP::OpenMP_CXX TRNG::TRNG Pthread::Pthread Armadillo::Armadillo
                             PUBLIC_HEADER_DIR ${CMAKE_SOURCE_DIR}/include
                             PUBLIC_DEBUG_HEADER_DIR ${CMAKE_SOURCE_DIR}/include/debug)
+
