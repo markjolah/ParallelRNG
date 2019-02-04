@@ -7,12 +7,18 @@ include(AddSharedStaticLibraries)
 # add_shared_static_libraries()
 # * Add shared and static library targets to project namespace
 # * Sets target_include_directories
-# * Sets target_compile_features and target_link_libraries
+# * Sets target_compile_features
 # * Installs target libraries and headers
-# * returns lsit SHARED_STATIC_LIB_TARGETS of created targets for adjusting additional target properties
+# * returns list: lib_targets - of created targets for adjusting additional target properties
 add_shared_static_libraries(SOURCES ${SRCS}
                             COMPILE_FEATURES cxx_std_11
-                            LINK_LIBRARIES OpenMP::OpenMP_CXX TRNG::TRNG Pthread::Pthread Armadillo::Armadillo
                             PUBLIC_HEADER_DIR ${CMAKE_SOURCE_DIR}/include
-                            PUBLIC_DEBUG_HEADER_DIR ${CMAKE_SOURCE_DIR}/include/debug)
+                            PUBLIC_DEBUG_HEADER_DIR ${CMAKE_SOURCE_DIR}/include/debug
+                            RETURN_TARGETS lib_targets)
 
+#Custom target settings for each lib_target from add_shared_static_libraries
+foreach(target IN LISTS lib_targets)
+    target_link_libraries(${target} PUBLIC OpenMP::OpenMP_CXX Pthread::Pthread)
+    target_link_libraries(${target} INTERFACE Armadillo::Armadillo)
+    target_link_libraries(${target} INTERFACE TRNG::TRNG)
+endforeach()
