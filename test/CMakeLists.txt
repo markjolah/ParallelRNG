@@ -1,11 +1,13 @@
 # ParallelRngManager/test/CMakeLists.txt
 
 find_package(GTest REQUIRED)
+
 set(TEST_TARGET test${PROJECT_NAME})
 file(GLOB GTEST_SRCS test_*.cpp)
+
 add_executable(${TEST_TARGET} ${GTEST_SRCS})
 target_link_libraries(${TEST_TARGET} PUBLIC ${PROJECT_NAME}::${PROJECT_NAME})
-target_link_libraries(${TEST_TARGET} PUBLIC GTest::GTest GTest::Main)
+target_link_libraries(${TEST_TARGET} PUBLIC GTest::GTest)
 set_target_properties(${TEST_TARGET} PROPERTIES DEBUG_POSTFIX ${CMAKE_DEBUG_POSTFIX})
 add_test(NAME GTest COMMAND ${TEST_TARGET})
 

@@ -17,7 +17,6 @@ else()
 endif()
 option(OPT_INSTALL_TESTING "Install testing executables" OFF)
 option(OPT_EXPORT_BUILD_TREE "Configure the package so it is usable from the build tree.  Useful for development." OFF)
-option(OPT_ARMADILLO_INT64 "Use 64-bit integers for Armadillo, Blas, and Lapack." ON)
 
 if(NOT BUILD_SHARED_LIBS AND NOT BUILD_STATIC_LIBS)
   set (BUILD_SHARED_LIBS ON)  #Must build at least one of SHARED_ and STATIC_LIBS.  Default SHARED_
@@ -68,15 +67,12 @@ include(ConfigureDebugBuilds)
 include(ExportPackageWizzard)
 set(EXPORTED_FIND_MODULES FindArmadillo.cmake FindTRNG.cmake)
 list(TRANSFORM EXPORTED_FIND_MODULES PREPEND cmake/UncommonCMakeModules/)
-export_package_wizzard(PROVIDED_COMPONENTS ${ARMADILLO_INT64_COMPONENT}
-                       FIND_MODULES ${EXPORTED_FIND_MODULES})
+export_package_wizzard(FIND_MODULES ${EXPORTED_FIND_MODULES})
 
 ### Source directories
 add_subdirectory(src)
 
 ### Testing
 if(BUILD_TESTING)
-    include(CTest)
-    enable_testing()
     add_subdirectory(test)
 endif()
