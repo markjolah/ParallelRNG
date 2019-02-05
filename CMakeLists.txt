@@ -67,7 +67,8 @@ include(ConfigureDebugBuilds)
 include(ExportPackageWizzard)
 set(EXPORTED_FIND_MODULES FindArmadillo.cmake FindTRNG.cmake)
 list(TRANSFORM EXPORTED_FIND_MODULES PREPEND cmake/UncommonCMakeModules/)
-export_package_wizzard(FIND_MODULES ${EXPORTED_FIND_MODULES})
+export_package_wizzard(PROVIDED_COMPONENTS ${ARMADILLO_INT64_COMPONENT}
+                       FIND_MODULES ${EXPORTED_FIND_MODULES})
 
 ### Source directories
 add_subdirectory(src)
