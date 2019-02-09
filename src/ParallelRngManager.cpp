@@ -5,6 +5,8 @@
  */
 
 #include <random>
+#include <thread>
+#include "omp.h"
 #include "ParallelRngManager/ParallelRngManager.h"
 
 namespace parallel_rng {
@@ -17,7 +19,10 @@ SeedT generate_seed()
 
 IdxT openmp_estimate_max_threads()
 {
-    return std::max(omp_get_num_threads(),omp_get_num_procs());
+    IdxT num_threads = omp_get_num_threads();
+    IdxT num_procs = omp_get_num_procs();
+    IdxT hw_conc = std::thread::hardware_concurrency();
+    return std::max(num_threads,std::max(num_procs, hw_conc));
 }
 
 } /* namespace parallel_rng */

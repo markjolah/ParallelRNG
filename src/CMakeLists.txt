@@ -18,6 +18,7 @@ add_shared_static_libraries(SOURCES ${SRCS}
 
 #Custom target settings for each lib_target from add_shared_static_libraries
 foreach(target IN LISTS lib_targets)
+    target_compile_definitions(${target} PUBLIC $<$<CONFIG:Debug>:PARALLEL_RNG_DEBUG>)
     target_link_libraries(${target} PUBLIC OpenMP::OpenMP_CXX Pthread::Pthread)
     target_link_libraries(${target} INTERFACE Armadillo::Armadillo)
     target_link_libraries(${target} INTERFACE TRNG::TRNG)
