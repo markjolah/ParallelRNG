@@ -13,8 +13,8 @@ branches:
 addons:
   apt:
     packages:
-        - armadillo
-
+        - libarmadillo9
+        - libarmadillo-dev
 env:
     global:
         - BUILD_TYPE=Release
