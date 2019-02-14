@@ -91,6 +91,7 @@ matrix:
 
 #MATRIX_EVAL allows CC and CXX to be set before dependencies are installed
 before_install:
+    - sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 762E3157
     - eval "${MATRIX_EVAL}"
 
 script:
