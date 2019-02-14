@@ -90,6 +90,7 @@ install:
     - if [ "${CXX}" == "g++-7" ];     then sudo apt-get install -y g++-7;     fi
     - if [ "${CXX}" == "clang++-5" ]; then sudo apt-get install -y clang-5.0; fi
     - sudo apt-get install -y libarmadillo-dev libgtest-dev
+    - cd /usr/src/gtest && sudo cmake . -DINSTALL_PREFIX=/usr && sudo make install
 
 script:
     - ./scripts/travis-build-test.sh
