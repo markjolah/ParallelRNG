@@ -85,7 +85,7 @@ matrix:
 
 #MATRIX_EVAL allows CC and CXX to be set before dependencies are installed
 before_install:
-    - sudo apt-key adv --keyserver packagecloud.io --recv-keys 762E3157
+    #- sudo apt-key adv --keyserver packagecloud.io --recv-keys 762E3157
     - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
     - sudo apt-get update
     - sudo apt-get install -y libarmadillo-dev libarmadillo9
