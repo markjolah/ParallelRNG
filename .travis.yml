@@ -15,13 +15,13 @@ matrix:
       - env:
           - MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9"
           - OPT_ARMADILLO_INT64=On
-      - env:
-          - MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9"
-          - OPT_ARMADILLO_INT64=Off
-      - env:
-          - BUILD_TYPE="Debug"
-          - MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9"
-          - OPT_ARMADILLO_INT64=On
+      #- env:
+          #- MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9"
+          #- OPT_ARMADILLO_INT64=Off
+      #- env:
+          #- BUILD_TYPE="Debug"
+          #- MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9"
+          #- OPT_ARMADILLO_INT64=On
       - env:
           - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
           - OPT_ARMADILLO_INT64=On
@@ -90,7 +90,8 @@ install:
     - if [ "${CXX}" == "g++-7" ];     then sudo apt-get install -y g++-7;     fi
     - if [ "${CXX}" == "clang++-5" ]; then sudo apt-get install -y clang-5.0; fi
     - sudo apt-get install -y libarmadillo-dev libgtest-dev
-    - cd /usr/src/gtest && sudo cmake -H. -DCMAKE_INSTALL_PREFIX=/usr && sudo make install
+    - cd /usr/src/gtest
+    - sudo cmake -H. -DCMAKE_INSTALL_PREFIX=/usr && make install
 
 script:
     - ./scripts/travis-build-test.sh
