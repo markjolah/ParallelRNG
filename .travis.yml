@@ -20,78 +20,75 @@ env:
 
 matrix:
   include:
-      - addons:
-          apt:
-            sources:
-                - ubuntu-toolchain-r-test
-            packages:
-                - g++-4.9
-                - libarmadillo9
-                - libarmadillo-dev
+      - before-install:
+          - apt-get install -y gcc-4.9
         env:
             - MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9"
             - OPT_ARMADILLO_INT64=Off
 
-      - addons:
-          apt:
-            sources:
-                - ubuntu-toolchain-r-test
-            packages:
-                - g++-4.9
-                - libarmadillo9
-                - libarmadillo-dev
-        env:
-            - MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9"
+      #- addons:
+          #apt:
+            #sources:
+                #- ubuntu-toolchain-r-test
+            #packages:
+                #- g++-4.9
+                #- libarmadillo9
+                #- libarmadillo-dev
+        #env:
+            #- MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9"
 
-      - addons:
-          apt:
-            sources:
-                - ubuntu-toolchain-r-test
-            packages:
-                - g++-6
-                - libarmadillo9
-                - libarmadillo-dev
-        env:
-            - MATRIX_EVAL="CC=gcc-6 && CXX=g++-6"
+      #- addons:
+          #apt:
+            #sources:
+                #- ubuntu-toolchain-r-test
+            #packages:
+                #- g++-6
+                #- libarmadillo9
+                #- libarmadillo-dev
+        #env:
+            #- MATRIX_EVAL="CC=gcc-6 && CXX=g++-6"
 
-      - addons:
-          apt:
-            sources:
-                - ubuntu-toolchain-r-test
-            packages:
-                - g++-7
-                - libarmadillo9
-                - libarmadillo-dev
-        env:
-            - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
+      #- addons:
+          #apt:
+            #sources:
+                #- ubuntu-toolchain-r-test
+            #packages:
+                #- g++-7
+                #- libarmadillo9
+                #- libarmadillo-dev
+        #env:
+            #- MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
 
-      - addons:
-          apt:
-            sources:
-                - llvm-toolchain-trusty-5.0
-            packages:
-                - clang-5.0
-                - libarmadillo9
-                - libarmadillo-dev
-        env:
-            - MATRIX_EVAL="CC=clang-5.0 && CXX=clang++-5.0"
+      #- addons:
+          #apt:
+            #sources:
+                #- llvm-toolchain-trusty-5.0
+            #packages:
+                #- clang-5.0
+                #- libarmadillo9
+                #- libarmadillo-dev
+        #env:
+            #- MATRIX_EVAL="CC=clang-5.0 && CXX=clang++-5.0"
 
-      #Documentation build
-      - addons:
-          apt:
-            packages:
-                - libarmadillo9
-                - libarmadillo-dev
-                - doxygen
-                - doxygen-latex
-                - graphviz
-        env: DOC=On
-        script: ./scripts/doc-build.sh
+      ##Documentation build
+      #- addons:
+          #apt:
+            #packages:
+                #- libarmadillo9
+                #- libarmadillo-dev
+                #- doxygen
+                #- doxygen-latex
+                #- graphviz
+        #env: DOC=On
+        #script: ./scripts/doc-build.sh
 
 
 #MATRIX_EVAL allows CC and CXX to be set before dependencies are installed
 before_install:
-    - sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 762E3157
+    - sudo apt-key adv --keyserver packagecloud.io --recv-keys 762E3157
+    - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
+    - sudo apt-get update
+    - sudo apt-get install -y libarmadillo-dev libarmadillo9
     - eval "${MATRIX_EVAL}"
 
 script:
