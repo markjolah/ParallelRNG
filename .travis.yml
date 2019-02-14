@@ -10,21 +10,21 @@ branches:
     only:
         - master
 
-addons:
-  apt:
-    packages:
-env:
-    global:
-        - BUILD_TYPE=Release
-        - OPT_ARMADILLO_INT64=On
-
 matrix:
   include:
-      - before-install:
-          - apt-get install -y g++-4.9
-        env:
-            - MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9"
-            - OPT_ARMADILLO_INT64=Off
+      - env:
+          - MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9"
+          - OPT_ARMADILLO_INT64=On
+      - env:
+          - MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9"
+          - OPT_ARMADILLO_INT64=Off
+      - env:
+          - BUILD_TYPE="Debug"
+          - MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9"
+          - OPT_ARMADILLO_INT64=On
+      - env:
+          - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
+          - OPT_ARMADILLO_INT64=On
 
       #- addons:
           #apt:
@@ -71,16 +71,8 @@ matrix:
             #- MATRIX_EVAL="CC=clang-5.0 && CXX=clang++-5.0"
 
       ##Documentation build
-      #- addons:
-          #apt:
-            #packages:
-                #- libarmadillo9
-                #- libarmadillo-dev
-                #- doxygen
-                #- doxygen-latex
-                #- graphviz
-        #env: DOC=On
-        #script: ./scripts/doc-build.sh
+      - env: DOC=On
+        script: ./scripts/doc-build.sh
 
 
 #MATRIX_EVAL allows CC and CXX to be set before dependencies are installed
@@ -88,9 +80,16 @@ before_install:
     #- sudo apt-key adv --keyserver packagecloud.io --recv-keys 762E3157
     - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
     - sudo apt-get update
-    - sudo apt-get install -y libarmadillo-dev
     - eval "${MATRIX_EVAL}"
-    - if [ "${CC}" == "gcc-4.9" ]; then sudo apt-get install -y g++-4.9; fi
+
+install:
+    - if [ "${DOC}" == "On" ]; then sudo apt-get install -y doxygen doxygen-latex graphviz; fi
+    - if [ "${CXX}" == "g++-4.9" ];   then sudo apt-get install -y g++-4.9;   fi
+    - if [ "${CXX}" == "g++-5" ];     then sudo apt-get install -y g++-5;     fi
+    - if [ "${CXX}" == "g++-6" ];     then sudo apt-get install -y g++-6;     fi
+    - if [ "${CXX}" == "g++-7" ];     then sudo apt-get install -y g++-7;     fi
+    - if [ "${CXX}" == "clang++-5" ]; then sudo apt-get install -y clang-5.0; fi
+    - sudo apt-get install -y libarmadillo-dev
 
 script:
     - ./scripts/travis-build-test.sh
