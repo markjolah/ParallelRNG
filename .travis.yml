@@ -13,8 +13,6 @@ branches:
 addons:
   apt:
     packages:
-        - libarmadillo9
-        - libarmadillo-dev
 env:
     global:
         - BUILD_TYPE=Release
@@ -27,17 +25,9 @@ matrix:
             sources:
                 - ubuntu-toolchain-r-test
             packages:
-              - g++-4.9
-        env:
-            - MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9"
-            - BUILD_TYPE=Debug
-
-      - addons:
-          apt:
-            sources:
-                - ubuntu-toolchain-r-test
-            packages:
-              - g++-4.9
+                - g++-4.9
+                - libarmadillo9
+                - libarmadillo-dev
         env:
             - MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9"
             - OPT_ARMADILLO_INT64=Off
@@ -47,7 +37,9 @@ matrix:
             sources:
                 - ubuntu-toolchain-r-test
             packages:
-              - g++-4.9
+                - g++-4.9
+                - libarmadillo9
+                - libarmadillo-dev
         env:
             - MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9"
 
@@ -56,16 +48,9 @@ matrix:
             sources:
                 - ubuntu-toolchain-r-test
             packages:
-              - g++-5
-        env:
-            - MATRIX_EVAL="CC=gcc-5 && CXX=g++-5"
-
-      - addons:
-          apt:
-            sources:
-                - ubuntu-toolchain-r-test
-            packages:
-              - g++-6
+                - g++-6
+                - libarmadillo9
+                - libarmadillo-dev
         env:
             - MATRIX_EVAL="CC=gcc-6 && CXX=g++-6"
 
@@ -74,18 +59,11 @@ matrix:
             sources:
                 - ubuntu-toolchain-r-test
             packages:
-              - g++-7
+                - g++-7
+                - libarmadillo9
+                - libarmadillo-dev
         env:
             - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
-
-      - addons:
-          apt:
-            sources:
-                - ubuntu-toolchain-r-test
-            packages:
-              - g++-4.9
-        env:
-            - MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9"
 
       - addons:
           apt:
@@ -93,6 +71,8 @@ matrix:
                 - llvm-toolchain-trusty-5.0
             packages:
                 - clang-5.0
+                - libarmadillo9
+                - libarmadillo-dev
         env:
             - MATRIX_EVAL="CC=clang-5.0 && CXX=clang++-5.0"
 
@@ -100,6 +80,8 @@ matrix:
       - addons:
           apt:
             packages:
+                - libarmadillo9
+                - libarmadillo-dev
                 - doxygen
                 - doxygen-latex
                 - graphviz
