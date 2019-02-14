@@ -88,7 +88,7 @@ before_install:
     #- sudo apt-key adv --keyserver packagecloud.io --recv-keys 762E3157
     - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
     - sudo apt-get update
-    - sudo apt-get install -y libarmadillo-dev libarmadillo9
+    - sudo apt-get install -y libarmadillo-dev
     - eval "${MATRIX_EVAL}"
 
 script:
