@@ -3,6 +3,8 @@ _build
 _install
 _gcc*
 _win64*
+_travis*
+_dist*
 
 # Prerequisites
 *.d

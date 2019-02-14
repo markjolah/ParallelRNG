@@ -1,0 +1,115 @@
+#ParallelRngManager
+language: cpp
+os: linux
+
+git:
+  depth: 3
+  quiet: true
+
+branches:
+    only:
+        - master
+
+addons:
+  apt:
+    sources:
+        - ubuntu-toolchain-r-test
+    packages:
+        - armadillo
+
+env:
+    global:
+        - BUILD_TYPE=Release
+        - OPT_ARMADILLO_INT64=On
+
+matrix:
+  include:
+      - addons:
+          apt:
+            packages:
+              - g++-4.9
+        env:
+            - MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9"
+            - BUILD_TYPE=Debug
+
+      - addons:
+          apt:
+            packages:
+              - g++-4.9
+        env:
+            - MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9"
+            - OPT_ARMADILLO_INT64=Off
+
+      - addons:
+          apt:
+            packages:
+              - g++-4.9
+        env:
+            - MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9"
+
+      - addons:
+          apt:
+            packages:
+              - g++-5
+        env:
+            - MATRIX_EVAL="CC=gcc-5 && CXX=g++-5"
+
+      - addons:
+          apt:
+            packages:
+              - g++-6
+        env:
+            - MATRIX_EVAL="CC=gcc-6 && CXX=g++-6"
+
+      - addons:
+          apt:
+            packages:
+              - g++-7
+        env:
+            - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
+
+      - addons:
+          apt:
+            packages:
+              - g++-4.9
+        env:
+            - MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9"
+
+      - addons:
+          apt:
+            sources:
+                - llvm-toolchain-trusty-5.0
+            packages:
+                - clang-5.0
+          env:
+            - MATRIX_EVAL="CC=clang-5.0 && CXX=clang++-5.0"
+
+      #Documentation build
+      - addons:
+          apt:
+            packages:
+                - doxygen
+                - doxygen-latex
+                - graphviz
+        env: DOC=On
+        script: ./scripts/doc-build.sh
+
+
+#MATRIX_EVAL allows CC and CXX to be set before dependencies are installed
+before_install:
+    - eval "${MATRIX_EVAL}"
+
+script:
+    - ./scripts/travis-build-test.sh
+
+deploy:
+    name: Docu-Bot
+    provider: pages
+    skip-cleanup: true
+    github-token: $GH_TRAVISCI_DOCUMENTATION_TOKEN
+    keep-history: true
+    verbosed: true
+    local_dir: doc/html
+    on:
+        branch: master
+        condition: $DOC = On
