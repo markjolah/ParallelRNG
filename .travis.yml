@@ -21,7 +21,7 @@ env:
 matrix:
   include:
       - before-install:
-          - apt-get install -y gcc-4.9
+          - apt-get install -y g++-4.9
         env:
             - MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9"
             - OPT_ARMADILLO_INT64=Off
