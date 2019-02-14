@@ -8,7 +8,9 @@
 #  OPT_ARMADILLO_INT64
 #
 PACKAGE_NAME=ParallelRngManager
-if [ -z "$BUILD_TYPE" ]; then echo "No BUILD_TYPE"; exit 1; fi
+if [ -z "$BUILD_TYPE" ]; then
+    BUILD_TYPE="Release"
+fi
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 SRC_PATH=${SCRIPT_DIR}/..
 INSTALL_PATH=${SCRIPT_DIR}/../_travis.install
