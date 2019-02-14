@@ -7,7 +7,8 @@ NUM_PROCS=`grep -c ^processor /proc/cpuinfo`
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 SRC_PATH=${SCRIPT_DIR}/..
 BUILD_PATH=${SCRIPT_DIR}/../_build/documentation
-ARGS=""
+INSTALL_PATH=${SCRIPT_DIR}/../_install.documentation
+ARGS="-DCMAKE_INSTALL_PATH=$INSTALL_PATH"
 ARGS="${ARGS} -DOPT_DOC=On"
 
 set -ex
