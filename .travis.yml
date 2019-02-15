@@ -88,8 +88,9 @@ install:
     - sudo apt-get install -y libgtest-dev
     - sudo chown -R travis /usr/src/gtest
     - cd /usr/src/gtest
-    - cmake CMakeLists.txt -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS=On
-    - sudo make install
+    - cmake CMakeLists.txt -DBUILD_SHARED_LIBS=On
+    - sudo make
+    - sudo cp libgtest.so libgtest_main.so /usr/lib/
     - cd -
     - sudo apt-get install -y libarmadillo-dev libgtest-dev
     - if [ "${DOC}" == "On" ]; then sudo apt-get install -y doxygen doxygen-latex graphviz; fi
