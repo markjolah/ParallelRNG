@@ -15,6 +15,10 @@ More generally, a _parallel random number generator_ (PRNG) provides a set of N 
 
  * A *ParallelRngManager* object manages a single stream and uses OpenMP `get_num_threads()` to  allocate the correct number of sub-streams, which are kept on separate cache lines using [`aligned_array::AArray<RngT>`](https://github.com/markjolah/AlignedArray).
 
+## Documentation
+The ParallelRngManager Doxygen documentation can be build with the `OPT_DOC` CMake option and is also available on online:
+  * [ParallelRngManager HTML Manual](https://markjolah.github.io/ParallelRngManager/index.html)
+  * [ParallelRngManager PDF Manual](https://markjolah.github.io/ParallelRngManager/pdf/ParallelRngManager-0.3-reference.pdf)
 
 ## Installation
 
@@ -63,10 +67,7 @@ ParallelRngManager uses these reusable header-only component libraries via  [`gi
   *  [AnyRng](https://github.com/markjolah/AnyRng) - Provides `any_rng::AnyRng<result_type>` which is a type-erased STL random number generator type.
   *  [UncommonCMakeModules](https://github.com/markjolah/UncommonCMakeModules) - Provides `FindTRNG.cmake` `FindArmadillo.cmake` and other useful CMake functions like `ExportPackageWizzard.cmake`.  ParallelRngManager only uses a small portion of these CMake modules but using a `git subrepo` pulls in the entire repository.
 
-## Documentation
-The ParallelRngManager Doxygen documentation can be build with the `OPT_DOC` CMake option and is also available on online:
-  * [ParallelRngManager HTML Manual](https://markjolah.github.io/ParallelRngManager/index.html)
-  * [ParallelRngManager PDF Manual](https://markjolah.github.io/ParallelRngManager/pdf/ParallelRngManager-0.3-reference.pdf)
+
 
 ## Testing
 ParallelRngManager uses [googletest](https://github.com/google/googletest) for C++ unit testing and integrates with CTest.  To build tests, enable the `BUILD_TESTING` CMake option and possibly also the `OPT_INSTALL_TESTING` option to install tests along with ParallelRngManager.
