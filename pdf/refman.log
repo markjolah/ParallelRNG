@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2019.2.15)  15 FEB 2019 07:20
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2019.2.15)  15 FEB 2019 07:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -975,42 +975,37 @@ LaTeX Font Info:    Try loading font information for T1+pcr on input line 1.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
-Overfull \hbox (37.96877pt too wide) in paragraph at lines 1--2
-[][]\T1/pcr/m/n/10 ![]Build Status[](https-://travis-ci.-org/markjolah/-Paralle
-l-Rng-Manager.-svg?branch=master)[][] 
- []
-
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <12> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 3.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 1.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 10.79993pt on input line 3.
+(Font)              scaled to size 10.79993pt on input line 1.
 LaTeX Font Info:    Font shape `T1/phv/bc/n' will be
-(Font)              scaled to size 10.79993pt on input line 3.
+(Font)              scaled to size 10.79993pt on input line 1.
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 9.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 7.
 LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
-(Font)              scaled to size 8.99994pt on input line 9.
+(Font)              scaled to size 8.99994pt on input line 7.
 LaTeX Font Info:    Font shape `T1/phv/bc/n' will be
-(Font)              scaled to size 8.99994pt on input line 11.
-LaTeX Font Info:    Try loading font information for TS1+phv on input line 15.
+(Font)              scaled to size 8.99994pt on input line 9.
+LaTeX Font Info:    Try loading font information for TS1+phv on input line 13.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1phv.fd
 File: ts1phv.fd 2001/06/04 scalable font definitions for TS1/phv.
 )
 LaTeX Font Info:    Font shape `TS1/phv/m/n' will be
-(Font)              scaled to size 8.99994pt on input line 15.
+(Font)              scaled to size 8.99994pt on input line 13.
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 7.19995pt on input line 30.
 [1] [2]) (./namespaces.tex) (./hierarchy.tex [3]) (./annotated.tex) (./files.te
 x) (./namespaceparallel__rng.tex
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <9> not available
 (Font)              Font shape `T1/phv/m/sl' tried instead on input line 15.
 LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
 (Font)              scaled to size 8.09995pt on input line 15.
-LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 7.19995pt on input line 27.
+[4]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 27.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 27.
-[4]
 LaTeX Font Info:    Font shape `T1/phv/bc/it' in size <10> not available
 (Font)              Font shape `T1/phv/bc/sl' tried instead on input line 101.
 LaTeX Font Info:    Font shape `T1/phv/bc/sl' will be
@@ -1044,14 +1039,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 6--7
 /markjolah/-Parallel-Rng-Manager/include/-Parallel-Rng-
  []
 
-[6] [7]) (./classparallel__rng_1_1ParallelRngManagerError.tex
+[6] [7] [8]) (./classparallel__rng_1_1ParallelRngManagerError.tex
 Underfull \hbox (badness 10000) in paragraph at lines 6--7
 \T1/pcr/m/n/10 #include $\OML/ztmcm/m/it/10 <$\T1/pcr/m/n/10 /home/travis/build
 /markjolah/-Parallel-Rng-Manager/include/-Parallel-Rng-
  []
 
-[8]
-<classparallel__rng_1_1ParallelRngManagerError__inherit__graph.pdf, id=416, 198
+
+<classparallel__rng_1_1ParallelRngManagerError__inherit__graph.pdf, id=417, 198
 .7425pt x 166.6225pt>
 File: classparallel__rng_1_1ParallelRngManagerError__inherit__graph.pdf Graphic
  file (type pdf)
@@ -1060,7 +1055,7 @@ Package pdftex.def Info: classparallel__rng_1_1ParallelRngManagerError__inherit
 __graph.pdf used on input line 14.
 (pdftex.def)             Requested size: 198.0pt x 166.00426pt.
 
-<classparallel__rng_1_1ParallelRngManagerError__coll__graph.pdf, id=417, 243.91
+<classparallel__rng_1_1ParallelRngManagerError__coll__graph.pdf, id=418, 243.91
 125pt x 244.915pt>
 File: classparallel__rng_1_1ParallelRngManagerError__coll__graph.pdf Graphic fi
 le (type pdf)
@@ -1079,16 +1074,13 @@ ingle page
 LaTeX Font Warning: Font shape `T1/pcr/bc/n' undefined
 (Font)              using `T1/pcr/m/n' instead on input line 54.
 
-) (./ParallelRngManager_8cpp.tex <ParallelRngManager_8cpp__incl.pdf, id=443, 82
+) (./ParallelRngManager_8cpp.tex <ParallelRngManager_8cpp__incl.pdf, id=441, 82
 8.09375pt x 232.87pt>
 File: ParallelRngManager_8cpp__incl.pdf Graphic file (type pdf)
 <use ParallelRngManager_8cpp__incl.pdf>
 Package pdftex.def Info: ParallelRngManager_8cpp__incl.pdf used on input line 1
 7.
 (pdftex.def)             Requested size: 350.0pt x 98.42654pt.
-
-Underfull \vbox (badness 2057) has occurred while \output is active []
-
 [10]
 Underfull \hbox (badness 10000) detected at line 35
 [][][]
@@ -1099,7 +1091,7 @@ Underfull \hbox (badness 10000) detected at line 38
 [][][]
  []
 
-) (./ParallelRngManager_8h.tex <ParallelRngManager_8h__incl.pdf, id=457, 769.87
+) (./ParallelRngManager_8h.tex <ParallelRngManager_8h__incl.pdf, id=458, 769.87
 625pt x 166.6225pt>
 File: ParallelRngManager_8h__incl.pdf Graphic file (type pdf)
 <use ParallelRngManager_8h__incl.pdf>
@@ -1107,7 +1099,7 @@ Package pdftex.def Info: ParallelRngManager_8h__incl.pdf used on input line 21.
 
 (pdftex.def)             Requested size: 350.0pt x 75.75233pt.
 [11 <./ParallelRngManager_8cpp__incl.pdf>] <ParallelRngManager_8h__dep__incl.pd
-f, id=472, 198.7425pt x 156.585pt>
+f, id=473, 198.7425pt x 156.585pt>
 File: ParallelRngManager_8h__dep__incl.pdf Graphic file (type pdf)
 <use ParallelRngManager_8h__dep__incl.pdf>
 Package pdftex.def Info: ParallelRngManager_8h__dep__incl.pdf used on input lin
@@ -1146,13 +1138,13 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 156.
  ) 
 Here is how much of TeX's memory you used:
- 12419 strings out of 495028
- 176772 string characters out of 6181497
- 253742 words of memory out of 5000000
- 15233 multiletter control sequences out of 15000+600000
- 77345 words of font info for 121 fonts, out of 8000000 for 9000
+ 12421 strings out of 495028
+ 176790 string characters out of 6181497
+ 252742 words of memory out of 5000000
+ 15234 multiletter control sequences out of 15000+600000
+ 77966 words of font info for 123 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 48i,13n,43p,838b,472s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 48i,13n,43p,838b,510s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{ParallelRngManager_8h_source} has been referenced
  but does not exist, replaced by a fixed one
 
@@ -1167,10 +1159,10 @@ w/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/u
 hvb8ac.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8ac.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on refman.pdf (17 pages, 165296 bytes).
+Output written on refman.pdf (17 pages, 165471 bytes).
 PDF statistics:
- 658 PDF objects out of 1000 (max. 8388607)
- 614 compressed objects within 7 object streams
+ 659 PDF objects out of 1000 (max. 8388607)
+ 615 compressed objects within 7 object streams
  164 named destinations out of 1000 (max. 500000)
  290 words of extra memory for PDF output out of 10000 (max. 10000000)
 

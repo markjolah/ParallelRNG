@@ -85,11 +85,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">README.md</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="README_8md.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;[![Build Status](https:<span class="comment">//travis-ci.org/markjolah/ParallelRngManager.svg?branch=master)](https://travis-ci.org/markjolah/ParallelRngManager)</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
+<a href="README_8md.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;&lt;!--[![Build Status](https:<span class="comment">//travis-ci.org/markjolah/ParallelRngManager.svg?branch=master)](https://travis-ci.org/markjolah/ParallelRngManager)--&gt;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;&lt;a href=<span class="stringliteral">&quot;https://travis-ci.org/markjolah/ParallelRngManager&quot;</span>&gt;&lt;img src=<span class="stringliteral">&quot;https://travis-ci.org/markjolah/ParallelRngManager.svg?branch=master&quot;</span>/&gt;&lt;/a&gt;</div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"># Parallel RNG Manager</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;A ParallelRngManager simplifies the task of initializing and coordinating random number generation <span class="keywordflow">for</span> multiple threads in OpenMP and other multi-threaded programming environments without the need <span class="keywordflow">for</span> locks or the possibility of <span class="keyword">false</span> sharing.  A single integer value is used to seed a single random number generator that is partitioned into independent parallel random number generator streams.</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;The [`ParallelRngManager`](https:<span class="comment">//markjolah.github.io/ParallelRngManager/classparallel__rng_1_1ParallelRngManager.html) class simplifies the task of initializing and coordinating random number generation for multiple threads in OpenMP and other multi-threaded programming environments without the need for locks or the possibility of false sharing.  A single integer value is used to seed a single random number generator that is partitioned into independent parallel random number generator streams.</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;Using a single random number generator seed makes deterministic testing and debugging of parallel stochastic algorithms practical.  Additionally it is important to use a random number generator specifically designed <span class="keywordflow">for</span> parallel use, as it is not in general safe to use independent random seeds <span class="keywordflow">for each</span> processor <span class="keywordflow">if</span> strong randomness properties and guaranteed a-correlation of the streams are arithmetically important considerations.</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
@@ -102,68 +102,67 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; * A *ParallelRngManager* object manages a single stream and uses OpenMP `get_num_threads()` to  allocate the correct number of sub-streams, which are kept on separate cache lines using [`aligned_array::AArray&lt;RngT&gt;`](https:<span class="comment">//github.com/markjolah/AlignedArray).</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;## Installation</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;The easiest method is to use the default build script, which can be easily customized.  The default build directory is `./_build` and the default install directory is `./_install`.</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;```</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; &gt; git clone https:<span class="comment">//github.com/markjolah/ParallelRngManager.git</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; &gt; cd ParallelRngManager</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; &gt; ./build.sh</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;```</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;If TRNG is not available on the system, it is important to have `CMAKE_INSTALL_PREFIX` set to a valid install directory, even if it is just a local directory, as the autotools build is designed to install into the `CMAKE_INSTALL_PREFIX` and ParallelRngManager is then expecting to find the TRNG library there.</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;## CMake options</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;The following CMake options control the build.</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; * `BUILD_SHARED_LIBS` - Build shared libraries</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; * `BUILD_STATIC_LIBS` - Build static libraries</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; * `BUILD_TESTING` - Build testing framework</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; * `OPT_DOC` - Build documentation</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; * `OPT_INSTALL_TESTING` - Install testing executables in install-tree.</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; * `OPT_EXPORT_BUILD_TREE` - Configure the package so it is usable from the build tree.  Useful for development.</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; * `OPT_ARMADILLO_INT64` - Use 64-bit integers for Armadillo, BLAS, and LAPACK.</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;## Dependencies</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;ParallelRngManager is designed to be portable, but relies on several system development and numerical libraries.</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;Currently Travis CI uses the *trusty* image to test ParallelRngManager</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;Standard system dependencies</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; * *&gt;=g++-4.9* - A `--std=c++11` compliant GCC compiler</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; * *&gt;=CMake-3.9*</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; * [*OpenMP*](https:<span class="comment">//www.openmp.org/)</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; * [*Armadillo*](http:<span class="comment">//arma.sourceforge.net/docs.html) - A high-performance array library for C++.</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; * [*googletest*](https:<span class="comment">//github.com/google/googletest) - Required for testing (`BUILD_TESTING=On`)</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; * [*Doxygen*](https:<span class="comment">//github.com/google/googletest) - Required to generate documentation (`OPT_DOC=On`)</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    * *graphviz* - Required to generate documentation (`make doc`)</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    * *LAPACK* - Required for generate pdf documenation (`make pdf`)</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;### Tina&#39;s Random Number Generator (TRNG)</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;The ParallelRngManager is a lightweight wrapper around the [Tina&#39;s Random Number Generator (TRNG)](https:<span class="comment">//www.numbercrunch.de/trng/) library.  This rather specialized numerical library is normally not available on most Linux distributions, so for convenience the ParallelRngManager CMake build system will automatically download, configure, build, and install TRNG (`libtrng4.so`) into the `CMAKE_INSTALL_PREFIX` path if it is not already present on the build system.  This process uses the `AddExternalAutotoolsDependency.cmake` function from the [UncommonCMakeModules](https://github.com/markjolah/UncommonCMakeModules) dependency.</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  * [TRNG Manual](https:<span class="comment">//www.numbercrunch.de/trng/trng.pdf)</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  * [H. Bauke and S. Mertens.  _Random Numbers for Large Scale Distributed Monte Carlo Simulations_.](http:<span class="comment">//arxiv.org/abs/cond-mat/0609584)</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;## Documentation</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;The ParallelRngManager Doxygen documentation can be build with the `OPT_DOC` CMake option and is also available on online:</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  * [ParallelRngManager HTML Manual](https:<span class="comment">//markjolah.github.io/ParallelRngManager/index.html)</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  * [ParallelRngManager PDF Manual](https:<span class="comment">//markjolah.github.io/ParallelRngManager/pdf/ParallelRngManager-0.3-reference.pdf)</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  * [ParallelRngManager github repository](https:<span class="comment">//github.com/markjolah/ParallelRngManager)</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;## Installation</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;The easiest method is to use the default build script, which can be easily customized.  The default build directory is `./_build` and the default install directory is `./_install`.</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    &gt; git clone https:<span class="comment">//github.com/markjolah/ParallelRngManager.git</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    &gt; cd ParallelRngManager</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    &gt; ./build.sh</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;If TRNG is not available on the system, it is important to have `CMAKE_INSTALL_PREFIX` set to a valid install directory, even if it is just a local directory, as the autotools build is designed to install into the `CMAKE_INSTALL_PREFIX` and ParallelRngManager is then expecting to find the TRNG library there.</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;## CMake options</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;The following CMake options control the build.</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; * `BUILD_SHARED_LIBS` - Build shared libraries</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; * `BUILD_STATIC_LIBS` - Build static libraries</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; * `BUILD_TESTING` - Build testing framework</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; * `OPT_DOC` - Build documentation</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; * `OPT_INSTALL_TESTING` - Install testing executables in install-tree.</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; * `OPT_EXPORT_BUILD_TREE` - Configure the package so it is usable from the build tree.  Useful for development.</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; * `OPT_ARMADILLO_INT64` - Use 64-bit integers for Armadillo, BLAS, and LAPACK.</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;## Dependencies</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;ParallelRngManager is designed to be portable, but relies on several system development and numerical libraries.</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;Currently Travis CI uses the *trusty* image to test ParallelRngManager</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;Standard system dependencies</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; * *&gt;=g++-4.9* - A `--std=c++11` compliant GCC compiler</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; * *&gt;=CMake-3.9*</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; * [*OpenMP*](https:<span class="comment">//www.openmp.org/)</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; * [*Armadillo*](http:<span class="comment">//arma.sourceforge.net/docs.html) - A high-performance array library for C++.</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; * [*googletest*](https:<span class="comment">//github.com/google/googletest) - Required for testing (`BUILD_TESTING=On`)</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; * [*Doxygen*](https:<span class="comment">//github.com/google/googletest) - Required to generate documentation (`OPT_DOC=On`)</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    * *graphviz* - Required to generate documentation (`make doc`)</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    * *LAPACK* - Required for generate pdf documenation (`make pdf`)</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;### Tina&#39;s Random Number Generator (TRNG)</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;The ParallelRngManager is a lightweight wrapper around the [Tina&#39;s Random Number Generator (TRNG)](https:<span class="comment">//www.numbercrunch.de/trng/) library.  This rather specialized numerical library is normally not available on most Linux distributions, so for convenience the ParallelRngManager CMake build system will automatically download, configure, build, and install TRNG (`libtrng4.so`) into the `CMAKE_INSTALL_PREFIX` path if it is not already present on the build system.  This process uses the `AddExternalAutotoolsDependency.cmake` function from the [UncommonCMakeModules](https://github.com/markjolah/UncommonCMakeModules) dependency.</span></div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;### Other dependencies</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;ParallelRngManager uses these reusable header-only component libraries via  [`git subrepo`](https:<span class="comment">//github.com/ingydotnet/git-subrepo)</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  *  [AlignedArray](https:<span class="comment">//github.com/markjolah/AlignedArray) - Provides `aligned_array::AArray&lt;T&gt;` which is an STL conforming fixed-length array container which guarantees no two elements share a cache line, preventing false sharing in multi-threaded or OpenMP programs.  ParallelRngManager stores RNG streams in an `AArray&lt;RngT&gt;` array to prevent false sharing.</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  *  [AnyRng](https:<span class="comment">//github.com/markjolah/AnyRng) - Provides `any_rng::AnyRng&lt;result_type&gt;` which is a type-erased STL random number generator type.</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  *  [UncommonCMakeModules](https:<span class="comment">//github.com/markjolah/UncommonCMakeModules) - Provides `FindTRNG.cmake` `FindArmadillo.cmake` and other useful CMake functions like `ExportPackageWizzard.cmake`.  ParallelRngManager only uses a small portion of these CMake modules but using a `git subrepo` pulls in the entire repository.</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;## Documentation</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;The ParallelRngManager Doxygen documentation can be build with the `OPT_DOC` CMake option and is also available on online:</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  * [ParallelRngManager HTML Manual](https:<span class="comment">//markjolah.github.io/ParallelRngManager/index.html)</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  * [ParallelRngManager PDF Manual](https:<span class="comment">//markjolah.github.io/ParallelRngManager/pdf/ParallelRngManager-0.3-reference.pdf)</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  * [TRNG Manual](https:<span class="comment">//www.numbercrunch.de/trng/trng.pdf)</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  * [H. Bauke and S. Mertens.  _Random Numbers for Large Scale Distributed Monte Carlo Simulations_.](http:<span class="comment">//arxiv.org/abs/cond-mat/0609584)</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;### Other dependencies</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;ParallelRngManager uses these reusable header-only component libraries via  [`git subrepo`](https:<span class="comment">//github.com/ingydotnet/git-subrepo)</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  *  [AlignedArray](https:<span class="comment">//github.com/markjolah/AlignedArray) - Provides `aligned_array::AArray&lt;T&gt;` which is an STL conforming fixed-length array container which guarantees no two elements share a cache line, preventing false sharing in multi-threaded or OpenMP programs.  ParallelRngManager stores RNG streams in an `AArray&lt;RngT&gt;` array to prevent false sharing.</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  *  [AnyRng](https:<span class="comment">//github.com/markjolah/AnyRng) - Provides `any_rng::AnyRng&lt;result_type&gt;` which is a type-erased STL random number generator type.</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  *  [UncommonCMakeModules](https:<span class="comment">//github.com/markjolah/UncommonCMakeModules) - Provides `FindTRNG.cmake` `FindArmadillo.cmake` and other useful CMake functions like `ExportPackageWizzard.cmake`.  ParallelRngManager only uses a small portion of these CMake modules but using a `git subrepo` pulls in the entire repository.</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;## Testing</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;ParallelRngManager uses [googletest](https:<span class="comment">//github.com/google/googletest) for C++ unit testing and integrates with CTest.  To build tests, enable the `BUILD_TESTING` CMake option and possibly also the `OPT_INSTALL_TESTING` option to install tests along with ParallelRngManager.</span></div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;Tests can be run with:</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;```</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;&gt; make test</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;````</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    &gt; make test</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

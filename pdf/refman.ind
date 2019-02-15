@@ -26,7 +26,7 @@
 		\hyperpage{5}
   \item {generator}
     \subitem {parallel\discretionary {-}{}{}\_\discretionary {-}{}{}rng\discretionary {-}{}{}::\discretionary {-}{}{}Parallel\discretionary {-}{}{}Rng\discretionary {-}{}{}Manager}, 
-		\hyperpage{7}
+		\hyperpage{8}
   \item {generic\discretionary {-}{}{}\_\discretionary {-}{}{}generator}
     \subitem {parallel\discretionary {-}{}{}\_\discretionary {-}{}{}rng\discretionary {-}{}{}::\discretionary {-}{}{}Parallel\discretionary {-}{}{}Rng\discretionary {-}{}{}Manager}, 
 		\hyperpage{8}
@@ -88,7 +88,7 @@
     \subitem {rngs}, \hyperpage{6}
     \subitem {Seed\discretionary {-}{}{}T}, \hyperpage{5}
   \item {parallel\discretionary {-}{}{}\_\discretionary {-}{}{}rng\discretionary {-}{}{}::\discretionary {-}{}{}Parallel\discretionary {-}{}{}Rng\discretionary {-}{}{}Manager}
-    \subitem {generator}, \hyperpage{7}
+    \subitem {generator}, \hyperpage{8}
     \subitem {generic\discretionary {-}{}{}\_\discretionary {-}{}{}generator}, 
 		\hyperpage{8}
     \subitem {get\discretionary {-}{}{}\_\discretionary {-}{}{}init\discretionary {-}{}{}\_\discretionary {-}{}{}seed}, 

@@ -79,9 +79,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Parallel RNG Manager Documentation</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a href="https://travis-ci.org/markjolah/ParallelRngManager">![Build Status](https://travis-ci.org/markjolah/ParallelRngManager.svg?branch=master)</a></p>
+<div class="textblock"><p><a href="https://travis-ci.org/markjolah/ParallelRngManager"></a> </p>
 <h1>Parallel RNG Manager</h1>
-<p>A ParallelRngManager simplifies the task of initializing and coordinating random number generation for multiple threads in OpenMP and other multi-threaded programming environments without the need for locks or the possibility of false sharing. A single integer value is used to seed a single random number generator that is partitioned into independent parallel random number generator streams.</p>
+<p>The <a href="https://markjolah.github.io/ParallelRngManager/classparallel__rng_1_1ParallelRngManager.html">`ParallelRngManager`</a> class simplifies the task of initializing and coordinating random number generation for multiple threads in OpenMP and other multi-threaded programming environments without the need for locks or the possibility of false sharing. A single integer value is used to seed a single random number generator that is partitioned into independent parallel random number generator streams.</p>
 <p>Using a single random number generator seed makes deterministic testing and debugging of parallel stochastic algorithms practical. Additionally it is important to use a random number generator specifically designed for parallel use, as it is not in general safe to use independent random seeds for each processor if strong randomness properties and guaranteed a-correlation of the streams are arithmetically important considerations.</p>
 <p>More generally, a <em>parallel random number generator</em> (PRNG) provides a set of N random number generator streams for multi-threaded applications, where each stream is produced from a single underlying random number generator with a single global seed. For certain classes of random number generators, a single stream can efficiently be partitioned into N threads without communication overhead. The <a href="https://markjolah.github.io/ParallelRngManager/classparallel__rng_1_1ParallelRngManager.html">`parallel_rng::ParallelRngManager`</a> class functions as an OpenMP-aware manager for the PRNGs from the <a href="https://www.numbercrunch.de/trng/">Tina's Random Number Generator (TRNG) Library</a>.</p>
 <h2>Features</h2>
@@ -91,15 +91,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li><em>ParallelRngManager</em> is designed to work seamlessly with OpenMP. It automatically manages the number of RNG streams based on hardware concurrency and prevents false sharing.</li>
 <li>A <em>ParallelRngManager</em> object manages a single stream and uses OpenMP <code>get_num_threads()</code> to allocate the correct number of sub-streams, which are kept on separate cache lines using <a href="https://github.com/markjolah/AlignedArray">`aligned_array::AArray&lt;RngT&gt;`</a>.</li>
 </ul>
+<h2>Documentation</h2>
+<p>The ParallelRngManager Doxygen documentation can be build with the <code>OPT_DOC</code> CMake option and is also available on online:</p>
+<ul>
+<li><a href="https://markjolah.github.io/ParallelRngManager/index.html">ParallelRngManager HTML Manual</a></li>
+<li><a href="https://markjolah.github.io/ParallelRngManager/pdf/ParallelRngManager-0.3-reference.pdf">ParallelRngManager PDF Manual</a></li>
+<li><a href="https://github.com/markjolah/ParallelRngManager">ParallelRngManager github repository</a></li>
+</ul>
 <h2>Installation</h2>
-<p>The easiest method is to use the default build script, which can be easily customized. The default build directory is <code>./_build</code> and the default install directory is <code>./_install</code>.</p>
-<p>``` </p>
-<blockquote class="doxtable">
-<p>git clone <a href="https://github.com/markjolah/ParallelRngManager.git">https://github.com/markjolah/ParallelRngManager.git</a> cd ParallelRngManager ./build.sh</p>
-<p></p>
-</blockquote>
-<p>```</p>
-<p>If TRNG is not available on the system, it is important to have <code>CMAKE_INSTALL_PREFIX</code> set to a valid install directory, even if it is just a local directory, as the autotools build is designed to install into the <code>CMAKE_INSTALL_PREFIX</code> and ParallelRngManager is then expecting to find the TRNG library there.</p>
+<p>The easiest method is to use the default build script, which can be easily customized. The default build directory is <code>./_build</code> and the default install directory is <code>./_install</code>. </p>
+<pre class="fragment">&gt; git clone https://github.com/markjolah/ParallelRngManager.git
+&gt; cd ParallelRngManager
+&gt; ./build.sh
+</pre><p>If TRNG is not available on the system, it is important to have <code>CMAKE_INSTALL_PREFIX</code> set to a valid install directory, even if it is just a local directory, as the autotools build is designed to install into the <code>CMAKE_INSTALL_PREFIX</code> and ParallelRngManager is then expecting to find the TRNG library there.</p>
 <h2>CMake options</h2>
 <p>The following CMake options control the build.</p>
 <ul>
@@ -138,21 +142,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li><a href="https://github.com/markjolah/AnyRng">AnyRng</a> - Provides <code>any_rng::AnyRng&lt;result_type&gt;</code> which is a type-erased STL random number generator type.</li>
 <li><a href="https://github.com/markjolah/UncommonCMakeModules">UncommonCMakeModules</a> - Provides <code>FindTRNG.cmake</code> <code>FindArmadillo.cmake</code> and other useful CMake functions like <code>ExportPackageWizzard.cmake</code>. ParallelRngManager only uses a small portion of these CMake modules but using a <code>git subrepo</code> pulls in the entire repository.</li>
 </ul>
-<h2>Documentation</h2>
-<p>The ParallelRngManager Doxygen documentation can be build with the <code>OPT_DOC</code> CMake option and is also available on online:</p>
-<ul>
-<li><a href="https://markjolah.github.io/ParallelRngManager/index.html">ParallelRngManager HTML Manual</a></li>
-<li><a href="https://markjolah.github.io/ParallelRngManager/pdf/ParallelRngManager-0.3-reference.pdf">ParallelRngManager PDF Manual</a></li>
-</ul>
 <h2>Testing</h2>
 <p>ParallelRngManager uses <a href="https://github.com/google/googletest">googletest</a> for C++ unit testing and integrates with CTest. To build tests, enable the <code>BUILD_TESTING</code> CMake option and possibly also the <code>OPT_INSTALL_TESTING</code> option to install tests along with ParallelRngManager.</p>
-<p>Tests can be run with: ``` </p>
-<blockquote class="doxtable">
-<p>make test</p>
-<p></p>
-</blockquote>
-<p>```` </p>
-</div></div><!-- contents -->
+<p>Tests can be run with: </p>
+<pre class="fragment">&gt; make test</pre> </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

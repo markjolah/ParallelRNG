@@ -1,8 +1,6 @@
-\href{https://travis-ci.org/markjolah/ParallelRngManager}{\tt !\mbox{[}Build Status\mbox{]}(https\-://travis-\/ci.\-org/markjolah/\-Parallel\-Rng\-Manager.\-svg?branch=master)}
+\href{https://travis-ci.org/markjolah/ParallelRngManager}{\tt } \subsection*{Parallel R\-N\-G Manager}
 
-\subsection*{Parallel R\-N\-G Manager}
-
-A Parallel\-Rng\-Manager simplifies the task of initializing and coordinating random number generation for multiple threads in Open\-M\-P and other multi-\/threaded programming environments without the need for locks or the possibility of false sharing. A single integer value is used to seed a single random number generator that is partitioned into independent parallel random number generator streams.
+The \href{https://markjolah.github.io/ParallelRngManager/classparallel__rng_1_1ParallelRngManager.html}{\tt `\-Parallel\-Rng\-Manager`} class simplifies the task of initializing and coordinating random number generation for multiple threads in Open\-M\-P and other multi-\/threaded programming environments without the need for locks or the possibility of false sharing. A single integer value is used to seed a single random number generator that is partitioned into independent parallel random number generator streams.
 
 Using a single random number generator seed makes deterministic testing and debugging of parallel stochastic algorithms practical. Additionally it is important to use a random number generator specifically designed for parallel use, as it is not in general safe to use independent random seeds for each processor if strong randomness properties and guaranteed a-\/correlation of the streams are arithmetically important considerations.
 
@@ -18,15 +16,22 @@ More generally, a {\itshape parallel random number generator} (P\-R\-N\-G) provi
 \item A {\itshape Parallel\-Rng\-Manager} object manages a single stream and uses Open\-M\-P {\ttfamily get\-\_\-num\-\_\-threads()} to allocate the correct number of sub-\/streams, which are kept on separate cache lines using \href{https://github.com/markjolah/AlignedArray}{\tt `aligned\-\_\-array\-::\-A\-Array$<$\-Rng\-T$>$`}.
 \end{DoxyItemize}
 
+\subsubsection*{Documentation}
+
+The Parallel\-Rng\-Manager Doxygen documentation can be build with the {\ttfamily O\-P\-T\-\_\-\-D\-O\-C} C\-Make option and is also available on online\-:
+\begin{DoxyItemize}
+\item \href{https://markjolah.github.io/ParallelRngManager/index.html}{\tt Parallel\-Rng\-Manager H\-T\-M\-L Manual}
+\item \href{https://markjolah.github.io/ParallelRngManager/pdf/ParallelRngManager-0.3-reference.pdf}{\tt Parallel\-Rng\-Manager P\-D\-F Manual}
+\item \href{https://github.com/markjolah/ParallelRngManager}{\tt Parallel\-Rng\-Manager github repository}
+\end{DoxyItemize}
+
 \subsubsection*{Installation}
 
-The easiest method is to use the default build script, which can be easily customized. The default build directory is {\ttfamily ./\-\_\-build} and the default install directory is {\ttfamily ./\-\_\-install}.
+The easiest method is to use the default build script, which can be easily customized. The default build directory is {\ttfamily ./\-\_\-build} and the default install directory is {\ttfamily ./\-\_\-install}. \begin{DoxyVerb}> git clone https://github.com/markjolah/ParallelRngManager.git
+> cd ParallelRngManager
+> ./build.sh
+\end{DoxyVerb}
 
-``` \begin{quotation}
-git clone \href{https://github.com/markjolah/ParallelRngManager.git}{\tt https\-://github.\-com/markjolah/\-Parallel\-Rng\-Manager.\-git} cd Parallel\-Rng\-Manager ./build.sh
-
-\end{quotation}
-```
 
 If T\-R\-N\-G is not available on the system, it is important to have {\ttfamily C\-M\-A\-K\-E\-\_\-\-I\-N\-S\-T\-A\-L\-L\-\_\-\-P\-R\-E\-F\-I\-X} set to a valid install directory, even if it is just a local directory, as the autotools build is designed to install into the {\ttfamily C\-M\-A\-K\-E\-\_\-\-I\-N\-S\-T\-A\-L\-L\-\_\-\-P\-R\-E\-F\-I\-X} and Parallel\-Rng\-Manager is then expecting to find the T\-R\-N\-G library there.
 
@@ -78,20 +83,9 @@ Parallel\-Rng\-Manager uses these reusable header-\/only component libraries via
 \item \href{https://github.com/markjolah/UncommonCMakeModules}{\tt Uncommon\-C\-Make\-Modules} -\/ Provides {\ttfamily Find\-T\-R\-N\-G.\-cmake} {\ttfamily Find\-Armadillo.\-cmake} and other useful C\-Make functions like {\ttfamily Export\-Package\-Wizzard.\-cmake}. Parallel\-Rng\-Manager only uses a small portion of these C\-Make modules but using a {\ttfamily git subrepo} pulls in the entire repository.
 \end{DoxyItemize}
 
-\subsubsection*{Documentation}
-
-The Parallel\-Rng\-Manager Doxygen documentation can be build with the {\ttfamily O\-P\-T\-\_\-\-D\-O\-C} C\-Make option and is also available on online\-:
-\begin{DoxyItemize}
-\item \href{https://markjolah.github.io/ParallelRngManager/index.html}{\tt Parallel\-Rng\-Manager H\-T\-M\-L Manual}
-\item \href{https://markjolah.github.io/ParallelRngManager/pdf/ParallelRngManager-0.3-reference.pdf}{\tt Parallel\-Rng\-Manager P\-D\-F Manual}
-\end{DoxyItemize}
-
 \subsubsection*{Testing}
 
 Parallel\-Rng\-Manager uses \href{https://github.com/google/googletest}{\tt googletest} for C++ unit testing and integrates with C\-Test. To build tests, enable the {\ttfamily B\-U\-I\-L\-D\-\_\-\-T\-E\-S\-T\-I\-N\-G} C\-Make option and possibly also the {\ttfamily O\-P\-T\-\_\-\-I\-N\-S\-T\-A\-L\-L\-\_\-\-T\-E\-S\-T\-I\-N\-G} option to install tests along with Parallel\-Rng\-Manager.
 
-Tests can be run with\-: ``` \begin{quotation}
-make test
-
-\end{quotation}
-```` 
+Tests can be run with\-: \begin{DoxyVerb}> make test\end{DoxyVerb}
+ 
