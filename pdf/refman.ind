@@ -1,0 +1,189 @@
+\begin{theindex}
+
+  \item {\discretionary {-}{}{}\_\discretionary {-}{}{}what}
+    \subitem {parallel\discretionary {-}{}{}\_\discretionary {-}{}{}rng\discretionary {-}{}{}::\discretionary {-}{}{}Parallel\discretionary {-}{}{}Rng\discretionary {-}{}{}Manager\discretionary {-}{}{}Error}, 
+		\hyperpage{8}
+
+  \indexspace
+
+  \item {A\discretionary {-}{}{}S\discretionary {-}{}{}S\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}S\discretionary {-}{}{}E\discretionary {-}{}{}T\discretionary {-}{}{}U\discretionary {-}{}{}P}
+    \subitem {Parallel\discretionary {-}{}{}Rng\discretionary {-}{}{}Manager.\discretionary {-}{}{}h}, 
+		\hyperpage{10}
+
+  \indexspace
+
+  \item {D\discretionary {-}{}{}E\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}G\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}A\discretionary {-}{}{}S\discretionary {-}{}{}S\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}T}
+    \subitem {Parallel\discretionary {-}{}{}Rng\discretionary {-}{}{}Manager.\discretionary {-}{}{}h}, 
+		\hyperpage{10}
+  \item {Default\discretionary {-}{}{}Parallel\discretionary {-}{}{}Rng\discretionary {-}{}{}T}
+    \subitem {parallel\discretionary {-}{}{}\_\discretionary {-}{}{}rng}, 
+		\hyperpage{2}
+
+  \indexspace
+
+  \item {generate\discretionary {-}{}{}\_\discretionary {-}{}{}seed}
+    \subitem {parallel\discretionary {-}{}{}\_\discretionary {-}{}{}rng}, 
+		\hyperpage{3}
+  \item {generator}
+    \subitem {parallel\discretionary {-}{}{}\_\discretionary {-}{}{}rng\discretionary {-}{}{}::\discretionary {-}{}{}Parallel\discretionary {-}{}{}Rng\discretionary {-}{}{}Manager}, 
+		\hyperpage{5}
+  \item {generic\discretionary {-}{}{}\_\discretionary {-}{}{}generator}
+    \subitem {parallel\discretionary {-}{}{}\_\discretionary {-}{}{}rng\discretionary {-}{}{}::\discretionary {-}{}{}Parallel\discretionary {-}{}{}Rng\discretionary {-}{}{}Manager}, 
+		\hyperpage{5}
+  \item {get\discretionary {-}{}{}\_\discretionary {-}{}{}init\discretionary {-}{}{}\_\discretionary {-}{}{}seed}
+    \subitem {parallel\discretionary {-}{}{}\_\discretionary {-}{}{}rng\discretionary {-}{}{}::\discretionary {-}{}{}Parallel\discretionary {-}{}{}Rng\discretionary {-}{}{}Manager}, 
+		\hyperpage{5}
+  \item {get\discretionary {-}{}{}\_\discretionary {-}{}{}num\discretionary {-}{}{}\_\discretionary {-}{}{}threads}
+    \subitem {parallel\discretionary {-}{}{}\_\discretionary {-}{}{}rng\discretionary {-}{}{}::\discretionary {-}{}{}Parallel\discretionary {-}{}{}Rng\discretionary {-}{}{}Manager}, 
+		\hyperpage{5}
+
+  \indexspace
+
+  \item {Idx\discretionary {-}{}{}T}
+    \subitem {parallel\discretionary {-}{}{}\_\discretionary {-}{}{}rng}, 
+		\hyperpage{2}
+
+  \indexspace
+
+  \item {make\discretionary {-}{}{}\_\discretionary {-}{}{}parallel\discretionary {-}{}{}\_\discretionary {-}{}{}rng\discretionary {-}{}{}\_\discretionary {-}{}{}manager}
+    \subitem {parallel\discretionary {-}{}{}\_\discretionary {-}{}{}rng}, 
+		\hyperpage{3}
+  \item {Mat\discretionary {-}{}{}T}
+    \subitem {parallel\discretionary {-}{}{}\_\discretionary {-}{}{}rng\discretionary {-}{}{}::\discretionary {-}{}{}Parallel\discretionary {-}{}{}Rng\discretionary {-}{}{}Manager}, 
+		\hyperpage{4}
+
+  \indexspace
+
+  \item {norm\discretionary {-}{}{}\_\discretionary {-}{}{}dist}
+    \subitem {parallel\discretionary {-}{}{}\_\discretionary {-}{}{}rng}, 
+		\hyperpage{3}
+  \item {Normal\discretionary {-}{}{}Dist\discretionary {-}{}{}T}
+    \subitem {parallel\discretionary {-}{}{}\_\discretionary {-}{}{}rng\discretionary {-}{}{}::\discretionary {-}{}{}Parallel\discretionary {-}{}{}Rng\discretionary {-}{}{}Manager}, 
+		\hyperpage{4}
+
+  \indexspace
+
+  \item {openmp\discretionary {-}{}{}\_\discretionary {-}{}{}estimate\discretionary {-}{}{}\_\discretionary {-}{}{}max\discretionary {-}{}{}\_\discretionary {-}{}{}threads}
+    \subitem {parallel\discretionary {-}{}{}\_\discretionary {-}{}{}rng}, 
+		\hyperpage{3}
+  \item {operator()}
+    \subitem {parallel\discretionary {-}{}{}\_\discretionary {-}{}{}rng\discretionary {-}{}{}::\discretionary {-}{}{}Parallel\discretionary {-}{}{}Rng\discretionary {-}{}{}Manager}, 
+		\hyperpage{5}
+
+  \indexspace
+
+  \item {parallel\discretionary {-}{}{}\_\discretionary {-}{}{}rng}, 
+		\hyperpage{2}
+    \subitem {Default\discretionary {-}{}{}Parallel\discretionary {-}{}{}Rng\discretionary {-}{}{}T}, 
+		\hyperpage{2}
+    \subitem {generate\discretionary {-}{}{}\_\discretionary {-}{}{}seed}, 
+		\hyperpage{3}
+    \subitem {Idx\discretionary {-}{}{}T}, \hyperpage{2}
+    \subitem {make\discretionary {-}{}{}\_\discretionary {-}{}{}parallel\discretionary {-}{}{}\_\discretionary {-}{}{}rng\discretionary {-}{}{}\_\discretionary {-}{}{}manager}, 
+		\hyperpage{3}
+    \subitem {norm\discretionary {-}{}{}\_\discretionary {-}{}{}dist}, 
+		\hyperpage{3}
+    \subitem {openmp\discretionary {-}{}{}\_\discretionary {-}{}{}estimate\discretionary {-}{}{}\_\discretionary {-}{}{}max\discretionary {-}{}{}\_\discretionary {-}{}{}threads}, 
+		\hyperpage{3}
+    \subitem {rngs}, \hyperpage{3}
+    \subitem {Seed\discretionary {-}{}{}T}, \hyperpage{2}
+  \item {parallel\discretionary {-}{}{}\_\discretionary {-}{}{}rng\discretionary {-}{}{}::\discretionary {-}{}{}Parallel\discretionary {-}{}{}Rng\discretionary {-}{}{}Manager}
+    \subitem {generator}, \hyperpage{5}
+    \subitem {generic\discretionary {-}{}{}\_\discretionary {-}{}{}generator}, 
+		\hyperpage{5}
+    \subitem {get\discretionary {-}{}{}\_\discretionary {-}{}{}init\discretionary {-}{}{}\_\discretionary {-}{}{}seed}, 
+		\hyperpage{5}
+    \subitem {get\discretionary {-}{}{}\_\discretionary {-}{}{}num\discretionary {-}{}{}\_\discretionary {-}{}{}threads}, 
+		\hyperpage{5}
+    \subitem {Mat\discretionary {-}{}{}T}, \hyperpage{4}
+    \subitem {Normal\discretionary {-}{}{}Dist\discretionary {-}{}{}T}, 
+		\hyperpage{4}
+    \subitem {operator()}, \hyperpage{5}
+    \subitem {Parallel\discretionary {-}{}{}Rng\discretionary {-}{}{}Manager}, 
+		\hyperpage{5}
+    \subitem {randn}, \hyperpage{5}
+    \subitem {randu}, \hyperpage{5}
+    \subitem {resample\discretionary {-}{}{}\_\discretionary {-}{}{}dist}, 
+		\hyperpage{6}
+    \subitem {reset}, \hyperpage{6}
+    \subitem {result\discretionary {-}{}{}\_\discretionary {-}{}{}type}, 
+		\hyperpage{4}
+    \subitem {seed}, \hyperpage{6}
+    \subitem {Uniform\discretionary {-}{}{}Dist\discretionary {-}{}{}T}, 
+		\hyperpage{4}
+    \subitem {Vec\discretionary {-}{}{}T}, \hyperpage{4}
+  \item {parallel\discretionary {-}{}{}\_\discretionary {-}{}{}rng\discretionary {-}{}{}::\discretionary {-}{}{}Parallel\discretionary {-}{}{}Rng\discretionary {-}{}{}Manager$<$ Rng\discretionary {-}{}{}T, Float\discretionary {-}{}{}T $>$}, 
+		\hyperpage{3}
+  \item {parallel\discretionary {-}{}{}\_\discretionary {-}{}{}rng\discretionary {-}{}{}::\discretionary {-}{}{}Parallel\discretionary {-}{}{}Rng\discretionary {-}{}{}Manager\discretionary {-}{}{}Error}, 
+		\hyperpage{6}
+    \subitem {\discretionary {-}{}{}\_\discretionary {-}{}{}what}, 
+		\hyperpage{8}
+    \subitem {Parallel\discretionary {-}{}{}Rng\discretionary {-}{}{}Manager\discretionary {-}{}{}Error}, 
+		\hyperpage{7}
+    \subitem {what}, \hyperpage{7}
+  \item {Parallel\discretionary {-}{}{}Rng\discretionary {-}{}{}Manager}
+    \subitem {parallel\discretionary {-}{}{}\_\discretionary {-}{}{}rng\discretionary {-}{}{}::\discretionary {-}{}{}Parallel\discretionary {-}{}{}Rng\discretionary {-}{}{}Manager}, 
+		\hyperpage{5}
+  \item {Parallel\discretionary {-}{}{}Rng\discretionary {-}{}{}Manager.\discretionary {-}{}{}cpp}, 
+		\hyperpage{8}
+  \item {Parallel\discretionary {-}{}{}Rng\discretionary {-}{}{}Manager.\discretionary {-}{}{}h}, 
+		\hyperpage{9}
+    \subitem {A\discretionary {-}{}{}S\discretionary {-}{}{}S\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}S\discretionary {-}{}{}E\discretionary {-}{}{}T\discretionary {-}{}{}U\discretionary {-}{}{}P}, 
+		\hyperpage{10}
+    \subitem {D\discretionary {-}{}{}E\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}G\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}A\discretionary {-}{}{}S\discretionary {-}{}{}S\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}T}, 
+		\hyperpage{10}
+  \item {Parallel\discretionary {-}{}{}Rng\discretionary {-}{}{}Manager\discretionary {-}{}{}Error}
+    \subitem {parallel\discretionary {-}{}{}\_\discretionary {-}{}{}rng\discretionary {-}{}{}::\discretionary {-}{}{}Parallel\discretionary {-}{}{}Rng\discretionary {-}{}{}Manager\discretionary {-}{}{}Error}, 
+		\hyperpage{7}
+
+  \indexspace
+
+  \item {R\discretionary {-}{}{}E\discretionary {-}{}{}A\discretionary {-}{}{}D\discretionary {-}{}{}M\discretionary {-}{}{}E.\discretionary {-}{}{}md}, 
+		\hyperpage{11}
+  \item {randn}
+    \subitem {parallel\discretionary {-}{}{}\_\discretionary {-}{}{}rng\discretionary {-}{}{}::\discretionary {-}{}{}Parallel\discretionary {-}{}{}Rng\discretionary {-}{}{}Manager}, 
+		\hyperpage{5}
+  \item {randu}
+    \subitem {parallel\discretionary {-}{}{}\_\discretionary {-}{}{}rng\discretionary {-}{}{}::\discretionary {-}{}{}Parallel\discretionary {-}{}{}Rng\discretionary {-}{}{}Manager}, 
+		\hyperpage{5}
+  \item {resample\discretionary {-}{}{}\_\discretionary {-}{}{}dist}
+    \subitem {parallel\discretionary {-}{}{}\_\discretionary {-}{}{}rng\discretionary {-}{}{}::\discretionary {-}{}{}Parallel\discretionary {-}{}{}Rng\discretionary {-}{}{}Manager}, 
+		\hyperpage{6}
+  \item {reset}
+    \subitem {parallel\discretionary {-}{}{}\_\discretionary {-}{}{}rng\discretionary {-}{}{}::\discretionary {-}{}{}Parallel\discretionary {-}{}{}Rng\discretionary {-}{}{}Manager}, 
+		\hyperpage{6}
+  \item {result\discretionary {-}{}{}\_\discretionary {-}{}{}type}
+    \subitem {parallel\discretionary {-}{}{}\_\discretionary {-}{}{}rng\discretionary {-}{}{}::\discretionary {-}{}{}Parallel\discretionary {-}{}{}Rng\discretionary {-}{}{}Manager}, 
+		\hyperpage{4}
+  \item {rngs}
+    \subitem {parallel\discretionary {-}{}{}\_\discretionary {-}{}{}rng}, 
+		\hyperpage{3}
+
+  \indexspace
+
+  \item {seed}
+    \subitem {parallel\discretionary {-}{}{}\_\discretionary {-}{}{}rng\discretionary {-}{}{}::\discretionary {-}{}{}Parallel\discretionary {-}{}{}Rng\discretionary {-}{}{}Manager}, 
+		\hyperpage{6}
+  \item {Seed\discretionary {-}{}{}T}
+    \subitem {parallel\discretionary {-}{}{}\_\discretionary {-}{}{}rng}, 
+		\hyperpage{2}
+
+  \indexspace
+
+  \item {Uniform\discretionary {-}{}{}Dist\discretionary {-}{}{}T}
+    \subitem {parallel\discretionary {-}{}{}\_\discretionary {-}{}{}rng\discretionary {-}{}{}::\discretionary {-}{}{}Parallel\discretionary {-}{}{}Rng\discretionary {-}{}{}Manager}, 
+		\hyperpage{4}
+
+  \indexspace
+
+  \item {Vec\discretionary {-}{}{}T}
+    \subitem {parallel\discretionary {-}{}{}\_\discretionary {-}{}{}rng\discretionary {-}{}{}::\discretionary {-}{}{}Parallel\discretionary {-}{}{}Rng\discretionary {-}{}{}Manager}, 
+		\hyperpage{4}
+
+  \indexspace
+
+  \item {what}
+    \subitem {parallel\discretionary {-}{}{}\_\discretionary {-}{}{}rng\discretionary {-}{}{}::\discretionary {-}{}{}Parallel\discretionary {-}{}{}Rng\discretionary {-}{}{}Manager\discretionary {-}{}{}Error}, 
+		\hyperpage{7}
+
+\end{theindex}
