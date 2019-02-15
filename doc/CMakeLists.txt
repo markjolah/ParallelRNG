@@ -20,7 +20,7 @@ if(DOXYGEN_FOUND)
     string(REPLACE ";" " " DOXYGEN_INPUT "${DOXYGEN_INPUT}")
 #     file(GLOB SRC_FILES src/*.h src/*.cpp)
 
-    set(DOXYGEN_PDF_DIR ${CMAKE_BINARY_DIR}/doc/pdf)
+    set(DOXYGEN_PDF_DIR ${CMAKE_BINARY_DIR}/doc/html/pdf)
     set(DOXYGEN_HTML_DIR ${CMAKE_BINARY_DIR}/doc/html)
     set(DOXYGEN_PDF_NAME refman.pdf) #Output name produced by doxygen pdf process.
 

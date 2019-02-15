@@ -104,7 +104,7 @@ deploy:
     github-token: $GH_TRAVISCI_DOCUMENTATION_TOKEN
     keep-history: true
     verbosed: true
-    local_dir: doc/html
+    local_dir: _build/documentation/doc/html
     on:
         branch: master
         condition: $DOC = On
