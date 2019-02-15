@@ -91,8 +91,9 @@ install:
     - if [ "${CXX}" == "clang++-5" ]; then sudo apt-get install -y clang-5.0; fi
     - sudo apt-get install -y libarmadillo-dev libgtest-dev
     - cd /usr/src/gtest
-    - sudo cmake -H. -DCMAKE_INSTALL_PREFIX=/usr
-    - sudo make install
+    - sudo -E cmake -H. -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS=On
+    - sudo -E make install
+    - cd -
 
 script:
     - ./scripts/travis-build-test.sh
