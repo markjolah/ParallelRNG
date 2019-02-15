@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/markjolah/ParallelRngManager.svg?branch=master)](https://travis-ci.org/markjolah/ParallelRngManager)
-
+<!--[![Build Status](https://travis-ci.org/markjolah/ParallelRngManager.svg?branch=master)](https://travis-ci.org/markjolah/ParallelRngManager)-->
+<a href="https://travis-ci.org/markjolah/ParallelRngManager"><img src="https://travis-ci.org/markjolah/ParallelRngManager.svg?branch=master"/></a>
 # Parallel RNG Manager
 
 A ParallelRngManager simplifies the task of initializing and coordinating random number generation for multiple threads in OpenMP and other multi-threaded programming environments without the need for locks or the possibility of false sharing.  A single integer value is used to seed a single random number generator that is partitioned into independent parallel random number generator streams.
@@ -20,11 +20,9 @@ More generally, a _parallel random number generator_ (PRNG) provides a set of N 
 
 The easiest method is to use the default build script, which can be easily customized.  The default build directory is `./_build` and the default install directory is `./_install`.
 
-```
- > git clone https://github.com/markjolah/ParallelRngManager.git
- > cd ParallelRngManager
- > ./build.sh
-```
+    > git clone https://github.com/markjolah/ParallelRngManager.git
+    > cd ParallelRngManager
+    > ./build.sh
 
 If TRNG is not available on the system, it is important to have `CMAKE_INSTALL_PREFIX` set to a valid install directory, even if it is just a local directory, as the autotools build is designed to install into the `CMAKE_INSTALL_PREFIX` and ParallelRngManager is then expecting to find the TRNG library there.
 
@@ -74,6 +72,5 @@ The ParallelRngManager Doxygen documentation can be build with the `OPT_DOC` CMa
 ParallelRngManager uses [googletest](https://github.com/google/googletest) for C++ unit testing and integrates with CTest.  To build tests, enable the `BUILD_TESTING` CMake option and possibly also the `OPT_INSTALL_TESTING` option to install tests along with ParallelRngManager.
 
 Tests can be run with:
-```
-> make test
-````
+
+    > make test

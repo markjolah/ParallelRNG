@@ -15,66 +15,18 @@ matrix:
       - env:
           - MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9"
           - OPT_ARMADILLO_INT64=On
-      #- env:
-          #- MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9"
-          #- OPT_ARMADILLO_INT64=Off
-      #- env:
-          #- BUILD_TYPE="Debug"
-          #- MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9"
-          #- OPT_ARMADILLO_INT64=On
+      - env:
+          - MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9"
+          - OPT_ARMADILLO_INT64=Off
       - env:
           - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
           - OPT_ARMADILLO_INT64=On
 
-      #- addons:
-          #apt:
-            #sources:
-                #- ubuntu-toolchain-r-test
-            #packages:
-                #- g++-4.9
-                #- libarmadillo9
-                #- libarmadillo-dev
-        #env:
-            #- MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9"
-
-      #- addons:
-          #apt:
-            #sources:
-                #- ubuntu-toolchain-r-test
-            #packages:
-                #- g++-6
-                #- libarmadillo9
-                #- libarmadillo-dev
-        #env:
-            #- MATRIX_EVAL="CC=gcc-6 && CXX=g++-6"
-
-      #- addons:
-          #apt:
-            #sources:
-                #- ubuntu-toolchain-r-test
-            #packages:
-                #- g++-7
-                #- libarmadillo9
-                #- libarmadillo-dev
-        #env:
-            #- MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
-
-      #- addons:
-          #apt:
-            #sources:
-                #- llvm-toolchain-trusty-5.0
-            #packages:
-                #- clang-5.0
-                #- libarmadillo9
-                #- libarmadillo-dev
-        #env:
-            #- MATRIX_EVAL="CC=clang-5.0 && CXX=clang++-5.0"
-
       ##Documentation build
-      - env: DOC=On
-        script: ./scripts/doc-build.sh
       - env: DOC=On PDFDOC=On
         script: ./scripts/pdf-doc-build.sh
+      #- env: DOC=On
+      #  script: ./scripts/doc-build.sh
 
 
 #MATRIX_EVAL allows CC and CXX to be set before dependencies are installed
