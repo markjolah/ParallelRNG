@@ -12,6 +12,8 @@
 #ifndef _ANY_RNG_ANYRNG_H
 #define _ANY_RNG_ANYRNG_H
 
+#include <functional>
+
 namespace any_rng
 {
 

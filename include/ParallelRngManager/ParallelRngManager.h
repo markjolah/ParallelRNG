@@ -9,6 +9,8 @@
 
 #include <cstdint>
 #include <exception>
+#include <functional>
+
 #include <omp.h>
 
 #include <armadillo>
