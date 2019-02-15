@@ -84,7 +84,7 @@ before_install:
 
 install:
     - sudo apt-get install -y libgtest-dev
-    - sudo chown -R travisci /usr/src/gtest
+    - sudo chown -R travis /usr/src/gtest
     - cd /usr/src/gtest
     - cmake -H. -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS=On
     - sudo make install
