@@ -6,7 +6,7 @@
 [subrepo]
 	remote = https://github.com/markjolah/AnyRng.git
 	branch = master
-	commit = 07e3dc58abbd0df7b18f53cdf23eecc279ff7611
-	parent = 2fa683149efcc6aa2028c8561c078be69a181086
+	commit = 7331bce39b531698ef553f23380c9ca0c693cf97
+	parent = 7d0fed3ce4c7b45eb43ac927a75c61cd33a0bd7d
 	method = merge
 	cmdver = 0.4.0
