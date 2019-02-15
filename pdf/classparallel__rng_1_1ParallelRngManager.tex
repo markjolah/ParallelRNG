@@ -1,0 +1,278 @@
+\hypertarget{classparallel__rng_1_1ParallelRngManager}{\subsection{parallel\-\_\-rng\-:\-:Parallel\-Rng\-Manager$<$ Rng\-T, Float\-T $>$ Class Template Reference}
+\label{classparallel__rng_1_1ParallelRngManager}\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager$<$ Rng\-T, Float\-T $>$@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager$<$ Rng\-T, Float\-T $>$}}
+}
+
+
+{\ttfamily \#include $<$/home/travis/build/markjolah/\-Parallel\-Rng\-Manager/include/\-Parallel\-Rng\-Manager/\-Parallel\-Rng\-Manager.\-h$>$}
+
+\subsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \hyperlink{classparallel__rng_1_1ParallelRngManager_a85a7225592fc063e7c0bb6d1c947f177}{Vec\-T} = arma\-::\-Col$<$ Float\-T $>$
+\item 
+using \hyperlink{classparallel__rng_1_1ParallelRngManager_af73ca29a72b66f92794f435a6163770d}{Mat\-T} = arma\-::\-Mat$<$ Float\-T $>$
+\item 
+using \hyperlink{classparallel__rng_1_1ParallelRngManager_a8eebc9754ce2a75faeca6b9736d2872f}{Normal\-Dist\-T} = std\-::normal\-\_\-distribution$<$ Float\-T $>$
+\item 
+using \hyperlink{classparallel__rng_1_1ParallelRngManager_a5df9dbb440b976fbc769d564dfccb597}{Uniform\-Dist\-T} = std\-::uniform\-\_\-real\-\_\-distribution$<$ Float\-T $>$
+\item 
+using \hyperlink{classparallel__rng_1_1ParallelRngManager_a199ad0d83c322a1f4415280002dcb386}{result\-\_\-type} = typename Rng\-T\-::result\-\_\-type
+\end{DoxyCompactItemize}
+\subsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparallel__rng_1_1ParallelRngManager_a496be695fb13bb12b157995751b27c36}{Parallel\-Rng\-Manager} ()
+\item 
+\hyperlink{classparallel__rng_1_1ParallelRngManager_aa355c6c8171aab195ab4d1b99482c1dd}{Parallel\-Rng\-Manager} (\hyperlink{namespaceparallel__rng_a462b8721a1aabe3b86582e864640c707}{Seed\-T} \hyperlink{classparallel__rng_1_1ParallelRngManager_a27fce29ff0415e0652d1cad60c3caea6}{seed})
+\item 
+\hyperlink{classparallel__rng_1_1ParallelRngManager_a04140678f44723851da5a9fd2d15e4a7}{Parallel\-Rng\-Manager} (\hyperlink{namespaceparallel__rng_a462b8721a1aabe3b86582e864640c707}{Seed\-T} \hyperlink{classparallel__rng_1_1ParallelRngManager_a27fce29ff0415e0652d1cad60c3caea6}{seed}, \hyperlink{namespaceparallel__rng_aa22fa3e339aee5927780aac099dfc6f3}{Idx\-T} max\-\_\-threads)
+\item 
+void \hyperlink{classparallel__rng_1_1ParallelRngManager_a27fce29ff0415e0652d1cad60c3caea6}{seed} (\hyperlink{namespaceparallel__rng_a462b8721a1aabe3b86582e864640c707}{Seed\-T} seed)
+\item 
+void \hyperlink{classparallel__rng_1_1ParallelRngManager_ae2d6bfb8558004b9a89c5de84d9beab6}{reset} ()
+\item 
+void \hyperlink{classparallel__rng_1_1ParallelRngManager_a62a8227d353a02dbaa52836520cde365}{reset} (\hyperlink{namespaceparallel__rng_a462b8721a1aabe3b86582e864640c707}{Seed\-T} \hyperlink{classparallel__rng_1_1ParallelRngManager_a27fce29ff0415e0652d1cad60c3caea6}{seed})
+\item 
+void \hyperlink{classparallel__rng_1_1ParallelRngManager_a239005e74c441129856969702e2461f4}{reset} (\hyperlink{namespaceparallel__rng_a462b8721a1aabe3b86582e864640c707}{Seed\-T} \hyperlink{classparallel__rng_1_1ParallelRngManager_a27fce29ff0415e0652d1cad60c3caea6}{seed}, \hyperlink{namespaceparallel__rng_aa22fa3e339aee5927780aac099dfc6f3}{Idx\-T} max\-\_\-threads)
+\item 
+\hyperlink{namespaceparallel__rng_a462b8721a1aabe3b86582e864640c707}{Seed\-T} \hyperlink{classparallel__rng_1_1ParallelRngManager_a415ec367ffcf7828b47d941dd881bfb7}{get\-\_\-init\-\_\-seed} () const 
+\item 
+\hyperlink{namespaceparallel__rng_a462b8721a1aabe3b86582e864640c707}{Seed\-T} \hyperlink{classparallel__rng_1_1ParallelRngManager_ab11a27b2a5f33ecda2969a3eb42b9e3c}{get\-\_\-num\-\_\-threads} () const 
+\item 
+Rng\-T \& \hyperlink{classparallel__rng_1_1ParallelRngManager_a969cdf585fbcf56bbc819c6fc83c58c6}{generator} ()
+\item 
+any\-\_\-rng\-::\-Any\-Rng$<$ \hyperlink{classparallel__rng_1_1ParallelRngManager_a199ad0d83c322a1f4415280002dcb386}{result\-\_\-type} $>$ \hyperlink{classparallel__rng_1_1ParallelRngManager_a7868b3d416636d9a6054dee7ea9cb5a6}{generic\-\_\-generator} ()
+\item 
+\hyperlink{classparallel__rng_1_1ParallelRngManager_a199ad0d83c322a1f4415280002dcb386}{result\-\_\-type} \hyperlink{classparallel__rng_1_1ParallelRngManager_a47112a035567940db2fd55669661d3fd}{operator()} ()
+\item 
+Float\-T \hyperlink{classparallel__rng_1_1ParallelRngManager_ae739518cd6d23a283e38f8e3d1e1608b}{randu} ()
+\item 
+Float\-T \hyperlink{classparallel__rng_1_1ParallelRngManager_a5de4e9e9d6e29912c7433b5c3b447ec9}{randn} ()
+\item 
+\hyperlink{classparallel__rng_1_1ParallelRngManager_a85a7225592fc063e7c0bb6d1c947f177}{Vec\-T} \hyperlink{classparallel__rng_1_1ParallelRngManager_ab38cd0beff70131e8e2f8863489c1f63}{randu} (\hyperlink{namespaceparallel__rng_aa22fa3e339aee5927780aac099dfc6f3}{Idx\-T} N)
+\item 
+\hyperlink{classparallel__rng_1_1ParallelRngManager_a85a7225592fc063e7c0bb6d1c947f177}{Vec\-T} \hyperlink{classparallel__rng_1_1ParallelRngManager_a84c2c76aef6083e80cd2ab6668d6e7d6}{randn} (\hyperlink{namespaceparallel__rng_aa22fa3e339aee5927780aac099dfc6f3}{Idx\-T} N)
+\item 
+\hyperlink{classparallel__rng_1_1ParallelRngManager_af73ca29a72b66f92794f435a6163770d}{Mat\-T} \hyperlink{classparallel__rng_1_1ParallelRngManager_a877c1742bbe45a4e53ad0c6ba69a96b5}{randu} (\hyperlink{namespaceparallel__rng_aa22fa3e339aee5927780aac099dfc6f3}{Idx\-T} rows, \hyperlink{namespaceparallel__rng_aa22fa3e339aee5927780aac099dfc6f3}{Idx\-T} cols)
+\item 
+\hyperlink{classparallel__rng_1_1ParallelRngManager_af73ca29a72b66f92794f435a6163770d}{Mat\-T} \hyperlink{classparallel__rng_1_1ParallelRngManager_a38ad5e7224e35275d94d84c66c62cb60}{randn} (\hyperlink{namespaceparallel__rng_aa22fa3e339aee5927780aac099dfc6f3}{Idx\-T} rows, \hyperlink{namespaceparallel__rng_aa22fa3e339aee5927780aac099dfc6f3}{Idx\-T} cols)
+\item 
+{\footnotesize template$<$class Weights  = Vec\-T, class Idx\-T  = Idx\-T$>$ }\\\hyperlink{namespaceparallel__rng_aa22fa3e339aee5927780aac099dfc6f3}{Idx\-T} \hyperlink{classparallel__rng_1_1ParallelRngManager_add4bd5a95d4923135406e4b9eb72737d}{resample\-\_\-dist} (const Weights \&weights)
+\item 
+{\footnotesize template$<$class Weights  = Vec\-T, class Idx\-T  = Idx\-T$>$ }\\arma\-::\-Col$<$ \hyperlink{namespaceparallel__rng_aa22fa3e339aee5927780aac099dfc6f3}{Idx\-T} $>$ \hyperlink{classparallel__rng_1_1ParallelRngManager_a6251dc0cbf866e03d568b7b0e1896681}{resample\-\_\-dist} (const Weights \&weights, \hyperlink{namespaceparallel__rng_aa22fa3e339aee5927780aac099dfc6f3}{Idx\-T} N)
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Detailed Description}
+\subsubsection*{template$<$class Rng\-T = Default\-Parallel\-Rng\-T, class Float\-T = double$>$class parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager$<$ Rng\-T, Float\-T $>$}
+
+
+
+Definition at line 80 of file Parallel\-Rng\-Manager.\-h.
+
+
+
+\subsubsection{Member Typedef Documentation}
+\hypertarget{classparallel__rng_1_1ParallelRngManager_af73ca29a72b66f92794f435a6163770d}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!Mat\-T@{Mat\-T}}
+\index{Mat\-T@{Mat\-T}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
+\paragraph[{Mat\-T}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ using {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::{\bf Mat\-T} =  arma\-::\-Mat$<$Float\-T$>$}}\label{classparallel__rng_1_1ParallelRngManager_af73ca29a72b66f92794f435a6163770d}
+
+
+Definition at line 84 of file Parallel\-Rng\-Manager.\-h.
+
+\hypertarget{classparallel__rng_1_1ParallelRngManager_a8eebc9754ce2a75faeca6b9736d2872f}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!Normal\-Dist\-T@{Normal\-Dist\-T}}
+\index{Normal\-Dist\-T@{Normal\-Dist\-T}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
+\paragraph[{Normal\-Dist\-T}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ using {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::{\bf Normal\-Dist\-T} =  std\-::normal\-\_\-distribution$<$Float\-T$>$}}\label{classparallel__rng_1_1ParallelRngManager_a8eebc9754ce2a75faeca6b9736d2872f}
+
+
+Definition at line 85 of file Parallel\-Rng\-Manager.\-h.
+
+\hypertarget{classparallel__rng_1_1ParallelRngManager_a199ad0d83c322a1f4415280002dcb386}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!result\-\_\-type@{result\-\_\-type}}
+\index{result\-\_\-type@{result\-\_\-type}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
+\paragraph[{result\-\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ using {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::{\bf result\-\_\-type} =  typename Rng\-T\-::result\-\_\-type}}\label{classparallel__rng_1_1ParallelRngManager_a199ad0d83c322a1f4415280002dcb386}
+
+
+Definition at line 87 of file Parallel\-Rng\-Manager.\-h.
+
+\hypertarget{classparallel__rng_1_1ParallelRngManager_a5df9dbb440b976fbc769d564dfccb597}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!Uniform\-Dist\-T@{Uniform\-Dist\-T}}
+\index{Uniform\-Dist\-T@{Uniform\-Dist\-T}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
+\paragraph[{Uniform\-Dist\-T}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ using {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::{\bf Uniform\-Dist\-T} =  std\-::uniform\-\_\-real\-\_\-distribution$<$Float\-T$>$}}\label{classparallel__rng_1_1ParallelRngManager_a5df9dbb440b976fbc769d564dfccb597}
+
+
+Definition at line 86 of file Parallel\-Rng\-Manager.\-h.
+
+\hypertarget{classparallel__rng_1_1ParallelRngManager_a85a7225592fc063e7c0bb6d1c947f177}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!Vec\-T@{Vec\-T}}
+\index{Vec\-T@{Vec\-T}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
+\paragraph[{Vec\-T}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ using {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::{\bf Vec\-T} =  arma\-::\-Col$<$Float\-T$>$}}\label{classparallel__rng_1_1ParallelRngManager_a85a7225592fc063e7c0bb6d1c947f177}
+
+
+Definition at line 83 of file Parallel\-Rng\-Manager.\-h.
+
+
+
+\subsubsection{Constructor \& Destructor Documentation}
+\hypertarget{classparallel__rng_1_1ParallelRngManager_a496be695fb13bb12b157995751b27c36}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!Parallel\-Rng\-Manager@{Parallel\-Rng\-Manager}}
+\index{Parallel\-Rng\-Manager@{Parallel\-Rng\-Manager}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
+\paragraph[{Parallel\-Rng\-Manager}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T , class Float\-T $>$ {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::{\bf Parallel\-Rng\-Manager} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classparallel__rng_1_1ParallelRngManager_a496be695fb13bb12b157995751b27c36}
+
+
+Definition at line 157 of file Parallel\-Rng\-Manager.\-h.
+
+\hypertarget{classparallel__rng_1_1ParallelRngManager_aa355c6c8171aab195ab4d1b99482c1dd}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!Parallel\-Rng\-Manager@{Parallel\-Rng\-Manager}}
+\index{Parallel\-Rng\-Manager@{Parallel\-Rng\-Manager}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
+\paragraph[{Parallel\-Rng\-Manager}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T , class Float\-T $>$ {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::{\bf Parallel\-Rng\-Manager} (
+\begin{DoxyParamCaption}
+\item[{{\bf Seed\-T}}]{seed}
+\end{DoxyParamCaption}
+)}}\label{classparallel__rng_1_1ParallelRngManager_aa355c6c8171aab195ab4d1b99482c1dd}
+
+
+Definition at line 162 of file Parallel\-Rng\-Manager.\-h.
+
+\hypertarget{classparallel__rng_1_1ParallelRngManager_a04140678f44723851da5a9fd2d15e4a7}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!Parallel\-Rng\-Manager@{Parallel\-Rng\-Manager}}
+\index{Parallel\-Rng\-Manager@{Parallel\-Rng\-Manager}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
+\paragraph[{Parallel\-Rng\-Manager}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T , class Float\-T $>$ {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::{\bf Parallel\-Rng\-Manager} (
+\begin{DoxyParamCaption}
+\item[{{\bf Seed\-T}}]{seed, }
+\item[{{\bf Idx\-T}}]{max\-\_\-threads}
+\end{DoxyParamCaption}
+)}}\label{classparallel__rng_1_1ParallelRngManager_a04140678f44723851da5a9fd2d15e4a7}
+
+
+Definition at line 167 of file Parallel\-Rng\-Manager.\-h.
+
+
+
+\subsubsection{Member Function Documentation}
+\hypertarget{classparallel__rng_1_1ParallelRngManager_a969cdf585fbcf56bbc819c6fc83c58c6}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!generator@{generator}}
+\index{generator@{generator}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
+\paragraph[{generator}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ Rng\-T\& {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::generator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classparallel__rng_1_1ParallelRngManager_a969cdf585fbcf56bbc819c6fc83c58c6}
+\hypertarget{classparallel__rng_1_1ParallelRngManager_a7868b3d416636d9a6054dee7ea9cb5a6}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!generic\-\_\-generator@{generic\-\_\-generator}}
+\index{generic\-\_\-generator@{generic\-\_\-generator}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
+\paragraph[{generic\-\_\-generator}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ any\-\_\-rng\-::\-Any\-Rng$<${\bf result\-\_\-type}$>$ {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::generic\-\_\-generator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classparallel__rng_1_1ParallelRngManager_a7868b3d416636d9a6054dee7ea9cb5a6}
+\hypertarget{classparallel__rng_1_1ParallelRngManager_a415ec367ffcf7828b47d941dd881bfb7}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!get\-\_\-init\-\_\-seed@{get\-\_\-init\-\_\-seed}}
+\index{get\-\_\-init\-\_\-seed@{get\-\_\-init\-\_\-seed}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
+\paragraph[{get\-\_\-init\-\_\-seed}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ {\bf Seed\-T} {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::get\-\_\-init\-\_\-seed (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classparallel__rng_1_1ParallelRngManager_a415ec367ffcf7828b47d941dd881bfb7}
+\hypertarget{classparallel__rng_1_1ParallelRngManager_ab11a27b2a5f33ecda2969a3eb42b9e3c}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!get\-\_\-num\-\_\-threads@{get\-\_\-num\-\_\-threads}}
+\index{get\-\_\-num\-\_\-threads@{get\-\_\-num\-\_\-threads}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
+\paragraph[{get\-\_\-num\-\_\-threads}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ {\bf Seed\-T} {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::get\-\_\-num\-\_\-threads (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classparallel__rng_1_1ParallelRngManager_ab11a27b2a5f33ecda2969a3eb42b9e3c}
+\hypertarget{classparallel__rng_1_1ParallelRngManager_a47112a035567940db2fd55669661d3fd}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!operator()@{operator()}}
+\index{operator()@{operator()}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
+\paragraph[{operator()}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ {\bf result\-\_\-type} {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::operator() (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classparallel__rng_1_1ParallelRngManager_a47112a035567940db2fd55669661d3fd}
+\hypertarget{classparallel__rng_1_1ParallelRngManager_a5de4e9e9d6e29912c7433b5c3b447ec9}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!randn@{randn}}
+\index{randn@{randn}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
+\paragraph[{randn}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ Float\-T {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::randn (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classparallel__rng_1_1ParallelRngManager_a5de4e9e9d6e29912c7433b5c3b447ec9}
+\hypertarget{classparallel__rng_1_1ParallelRngManager_a84c2c76aef6083e80cd2ab6668d6e7d6}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!randn@{randn}}
+\index{randn@{randn}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
+\paragraph[{randn}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ {\bf Vec\-T} {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::randn (
+\begin{DoxyParamCaption}
+\item[{{\bf Idx\-T}}]{N}
+\end{DoxyParamCaption}
+)}}\label{classparallel__rng_1_1ParallelRngManager_a84c2c76aef6083e80cd2ab6668d6e7d6}
+\hypertarget{classparallel__rng_1_1ParallelRngManager_a38ad5e7224e35275d94d84c66c62cb60}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!randn@{randn}}
+\index{randn@{randn}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
+\paragraph[{randn}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ {\bf Mat\-T} {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::randn (
+\begin{DoxyParamCaption}
+\item[{{\bf Idx\-T}}]{rows, }
+\item[{{\bf Idx\-T}}]{cols}
+\end{DoxyParamCaption}
+)}}\label{classparallel__rng_1_1ParallelRngManager_a38ad5e7224e35275d94d84c66c62cb60}
+\hypertarget{classparallel__rng_1_1ParallelRngManager_ae739518cd6d23a283e38f8e3d1e1608b}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!randu@{randu}}
+\index{randu@{randu}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
+\paragraph[{randu}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ Float\-T {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::randu (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classparallel__rng_1_1ParallelRngManager_ae739518cd6d23a283e38f8e3d1e1608b}
+\hypertarget{classparallel__rng_1_1ParallelRngManager_ab38cd0beff70131e8e2f8863489c1f63}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!randu@{randu}}
+\index{randu@{randu}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
+\paragraph[{randu}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ {\bf Vec\-T} {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::randu (
+\begin{DoxyParamCaption}
+\item[{{\bf Idx\-T}}]{N}
+\end{DoxyParamCaption}
+)}}\label{classparallel__rng_1_1ParallelRngManager_ab38cd0beff70131e8e2f8863489c1f63}
+\hypertarget{classparallel__rng_1_1ParallelRngManager_a877c1742bbe45a4e53ad0c6ba69a96b5}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!randu@{randu}}
+\index{randu@{randu}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
+\paragraph[{randu}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ {\bf Mat\-T} {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::randu (
+\begin{DoxyParamCaption}
+\item[{{\bf Idx\-T}}]{rows, }
+\item[{{\bf Idx\-T}}]{cols}
+\end{DoxyParamCaption}
+)}}\label{classparallel__rng_1_1ParallelRngManager_a877c1742bbe45a4e53ad0c6ba69a96b5}
+\hypertarget{classparallel__rng_1_1ParallelRngManager_add4bd5a95d4923135406e4b9eb72737d}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!resample\-\_\-dist@{resample\-\_\-dist}}
+\index{resample\-\_\-dist@{resample\-\_\-dist}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
+\paragraph[{resample\-\_\-dist}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ template$<$class Weights  = Vec\-T, class Idx\-T  = Idx\-T$>$ {\bf Idx\-T} {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::resample\-\_\-dist (
+\begin{DoxyParamCaption}
+\item[{const Weights \&}]{weights}
+\end{DoxyParamCaption}
+)}}\label{classparallel__rng_1_1ParallelRngManager_add4bd5a95d4923135406e4b9eb72737d}
+\hypertarget{classparallel__rng_1_1ParallelRngManager_a6251dc0cbf866e03d568b7b0e1896681}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!resample\-\_\-dist@{resample\-\_\-dist}}
+\index{resample\-\_\-dist@{resample\-\_\-dist}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
+\paragraph[{resample\-\_\-dist}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ template$<$class Weights  = Vec\-T, class Idx\-T  = Idx\-T$>$ arma\-::\-Col$<${\bf Idx\-T}$>$ {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::resample\-\_\-dist (
+\begin{DoxyParamCaption}
+\item[{const Weights \&}]{weights, }
+\item[{{\bf Idx\-T}}]{N}
+\end{DoxyParamCaption}
+)}}\label{classparallel__rng_1_1ParallelRngManager_a6251dc0cbf866e03d568b7b0e1896681}
+\hypertarget{classparallel__rng_1_1ParallelRngManager_ae2d6bfb8558004b9a89c5de84d9beab6}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!reset@{reset}}
+\index{reset@{reset}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
+\paragraph[{reset}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ void {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::reset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classparallel__rng_1_1ParallelRngManager_ae2d6bfb8558004b9a89c5de84d9beab6}
+\hypertarget{classparallel__rng_1_1ParallelRngManager_a62a8227d353a02dbaa52836520cde365}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!reset@{reset}}
+\index{reset@{reset}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
+\paragraph[{reset}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ void {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::reset (
+\begin{DoxyParamCaption}
+\item[{{\bf Seed\-T}}]{seed}
+\end{DoxyParamCaption}
+)}}\label{classparallel__rng_1_1ParallelRngManager_a62a8227d353a02dbaa52836520cde365}
+\hypertarget{classparallel__rng_1_1ParallelRngManager_a239005e74c441129856969702e2461f4}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!reset@{reset}}
+\index{reset@{reset}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
+\paragraph[{reset}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ void {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::reset (
+\begin{DoxyParamCaption}
+\item[{{\bf Seed\-T}}]{seed, }
+\item[{{\bf Idx\-T}}]{max\-\_\-threads}
+\end{DoxyParamCaption}
+)}}\label{classparallel__rng_1_1ParallelRngManager_a239005e74c441129856969702e2461f4}
+\hypertarget{classparallel__rng_1_1ParallelRngManager_a27fce29ff0415e0652d1cad60c3caea6}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!seed@{seed}}
+\index{seed@{seed}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
+\paragraph[{seed}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ void {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::seed (
+\begin{DoxyParamCaption}
+\item[{{\bf Seed\-T}}]{seed}
+\end{DoxyParamCaption}
+)}}\label{classparallel__rng_1_1ParallelRngManager_a27fce29ff0415e0652d1cad60c3caea6}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{ParallelRngManager_8h}{Parallel\-Rng\-Manager.\-h}\end{DoxyCompactItemize}
