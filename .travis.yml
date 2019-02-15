@@ -73,8 +73,8 @@ matrix:
       ##Documentation build
       - env: DOC=On
         script: ./scripts/doc-build.sh
-      #- env: DOC=On PDFDOC=On
-        #script: ./scripts/pdf-doc-build.sh
+      - env: DOC=On PDFDOC=On
+        script: ./scripts/pdf-doc-build.sh
 
 
 #MATRIX_EVAL allows CC and CXX to be set before dependencies are installed
