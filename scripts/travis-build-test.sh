@@ -32,13 +32,13 @@ fi
 set -ex
 rm -rf $INSTALL_PATH $BUILD_PATH
 cmake -H$SRC_PATH -B$BUILD_PATH -DCMAKE_BUILD_TYPE=$BUILD_TYPE $ARGS $@
-cmake --build $BUILD_PATH --target install -- -j$NUM_PROCS
+VERBOSE=1 cmake --build $BUILD_PATH --target install -- -j$NUM_PROCS
 
 
 if [ "$BUILD_TYPE" == "Debug" ]; then
     SUFFIX=".debug"
 fi
 #CTest in build directory
-VERBOSE=1 cmake --build $BUILD_PATH --target test -- -j$NUM_PROCS
+cmake --build $BUILD_PATH --target test -- -j$NUM_PROCS
 #Run test in install directory
 ${INSTALL_PATH}/lib/${PACKAGE_NAME}/test/test${PACKAGE_NAME}${SUFFIX}
