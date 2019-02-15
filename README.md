@@ -2,7 +2,7 @@
 <a href="https://travis-ci.org/markjolah/ParallelRngManager"><img src="https://travis-ci.org/markjolah/ParallelRngManager.svg?branch=master"/></a>
 # Parallel RNG Manager
 
-A ParallelRngManager simplifies the task of initializing and coordinating random number generation for multiple threads in OpenMP and other multi-threaded programming environments without the need for locks or the possibility of false sharing.  A single integer value is used to seed a single random number generator that is partitioned into independent parallel random number generator streams.
+The [`ParallelRngManager`](https://markjolah.github.io/ParallelRngManager/classparallel__rng_1_1ParallelRngManager.html) class simplifies the task of initializing and coordinating random number generation for multiple threads in OpenMP and other multi-threaded programming environments without the need for locks or the possibility of false sharing.  A single integer value is used to seed a single random number generator that is partitioned into independent parallel random number generator streams.
 
 Using a single random number generator seed makes deterministic testing and debugging of parallel stochastic algorithms practical.  Additionally it is important to use a random number generator specifically designed for parallel use, as it is not in general safe to use independent random seeds for each processor if strong randomness properties and guaranteed a-correlation of the streams are arithmetically important considerations.
 
@@ -19,6 +19,7 @@ More generally, a _parallel random number generator_ (PRNG) provides a set of N 
 The ParallelRngManager Doxygen documentation can be build with the `OPT_DOC` CMake option and is also available on online:
   * [ParallelRngManager HTML Manual](https://markjolah.github.io/ParallelRngManager/index.html)
   * [ParallelRngManager PDF Manual](https://markjolah.github.io/ParallelRngManager/pdf/ParallelRngManager-0.3-reference.pdf)
+  * [ParallelRngManager github repository](https://github.com/markjolah/ParallelRngManager)
 
 ## Installation
 
