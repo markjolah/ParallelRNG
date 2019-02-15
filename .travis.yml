@@ -83,17 +83,19 @@ before_install:
     - eval "${MATRIX_EVAL}"
 
 install:
+    - sudo apt-get install -y libgtest-dev
+    - sudo chown -R travisci /usr/src/gtest
+    - cd /usr/src/gtest
+    - cmake -H. -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS=On
+    - sudo make install
+    - cd -
+    - sudo apt-get install -y libarmadillo-dev libgtest-dev
     - if [ "${DOC}" == "On" ]; then sudo apt-get install -y doxygen doxygen-latex graphviz; fi
     - if [ "${CXX}" == "g++-4.9" ];   then sudo apt-get install -y g++-4.9;   fi
     - if [ "${CXX}" == "g++-5" ];     then sudo apt-get install -y g++-5;     fi
     - if [ "${CXX}" == "g++-6" ];     then sudo apt-get install -y g++-6;     fi
     - if [ "${CXX}" == "g++-7" ];     then sudo apt-get install -y g++-7;     fi
     - if [ "${CXX}" == "clang++-5" ]; then sudo apt-get install -y clang-5.0; fi
-    - sudo apt-get install -y libarmadillo-dev libgtest-dev
-    - cd /usr/src/gtest
-    - sudo -E cmake -H. -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS=On
-    - sudo -E make install
-    - cd -
 
 script:
     - ./scripts/travis-build-test.sh
