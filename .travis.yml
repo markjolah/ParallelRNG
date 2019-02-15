@@ -73,6 +73,8 @@ matrix:
       ##Documentation build
       - env: DOC=On
         script: ./scripts/doc-build.sh
+      #- env: DOC=On PDFDOC=On
+        #script: ./scripts/pdf-doc-build.sh
 
 
 #MATRIX_EVAL allows CC and CXX to be set before dependencies are installed
@@ -80,7 +82,7 @@ before_install:
     #- sudo apt-key adv --keyserver packagecloud.io --recv-keys 762E3157
     - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
     - sudo apt-get update
-    - eval "${MATRIX_EVAL}"
+    #- eval "${MATRIX_EVAL}"
 
 install:
     - sudo apt-get install -y libgtest-dev
@@ -91,6 +93,7 @@ install:
     - cd -
     - sudo apt-get install -y libarmadillo-dev libgtest-dev
     - if [ "${DOC}" == "On" ]; then sudo apt-get install -y doxygen doxygen-latex graphviz; fi
+    - if [ "${PDFDOC}" == "On" ]; then sudo apt-get install -y doxygen-latex; fi
     - if [ "${CXX}" == "g++-4.9" ];   then sudo apt-get install -y g++-4.9;   fi
     - if [ "${CXX}" == "g++-5" ];     then sudo apt-get install -y g++-5;     fi
     - if [ "${CXX}" == "g++-6" ];     then sudo apt-get install -y g++-6;     fi
