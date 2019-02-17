@@ -18,7 +18,6 @@ if(DOXYGEN_FOUND)
                       ${CMAKE_SOURCE_DIR}/src/
                       ${CMAKE_SOURCE_DIR}/include/ParallelRngManager)
     string(REPLACE ";" " " DOXYGEN_INPUT "${DOXYGEN_INPUT}")
-#     file(GLOB SRC_FILES src/*.h src/*.cpp)
 
     set(DOXYGEN_PDF_DIR ${CMAKE_BINARY_DIR}/doc/html/pdf)
     set(DOXYGEN_HTML_DIR ${CMAKE_BINARY_DIR}/doc/html)

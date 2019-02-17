@@ -1,27 +1,41 @@
 #!/bin/bash
-# dist-build.sh <INSTALL_PREFIX>
-# Release-only build for distribution.  Testing is enabled.
-# Does not clear INSTALL_PATH for obvious reasons.
+# scripts/dist-build.sh <INSTALL_DIR> <cmake-args...>
+#
+# Builds a re-distributable release-only build for C++ libraries.
+# Testing and documentation are enabled.
+# Creates a .zip and .tar.gz archives.
 #
 # Args:
-#  <INSTALL_PREFIX> - path to distribution install directory [Default: _dist].
-#                     Interpreted relative to current directory.
+#  <INSTALL_DIR> - path to distribution install directory [Default: ${SRC_PATH}/_dist].
+#                  The distribution files will be created under this directory with names based on
+#                  package and versions.
+#  <cmake_args...> - additional cmake arguments.
+#
+# Optional environment variables:
+# OPT_ARMADILLO_INT64 - enable armadillo 64-bit integer support
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 SRC_PATH=${SCRIPT_DIR}/..
 
-if [ -z $1 ]; then
-    INSTALL_DIR="${SRC_PATH}/_dist_intstall"
-else
-    INSTALL_DIR=$1
+NAME=$(grep -Po "project\(\K([A-Za-z]+)" ${SRC_PATH}/CMakeLists.txt)
+VERSION=$(grep -Po "project\([A-Za-z]+ VERSION \K([0-9.]+)" ${SRC_PATH}/CMakeLists.txt)
+if [ -z $NAME ] || [ -z $VERSION ]; then
+    echo "Unable to find package name and version from: ${SRC_PATH}/CMakeLists.txt"
+    exit 1
 fi
-VERSION=0.3
-NAME=ParallelRngManager
-INSTALL_DIR_NAME=${NAME}-${VERSION}
+DIST_DIR_NAME=${NAME}-${VERSION}
+if [ -z $1 ]; then
+    INSTALL_PATH=${SRC_PATH}/_dist/$DIST_DIR_NAME
+else
+    INSTALL_PATH=$1/$DIST_DIR_NAME
+fi
+
+if [ -z $OPT_ARMADILLO_INT64 ]; then
+    OPT_ARMADILLO_INT64="Off"
+fi
+
 ZIP_FILE=${NAME}-${VERSION}.zip
 TAR_FILE=${NAME}-${VERSION}.tbz2
-INSTALL_PATH=${INSTALL_DIR}/$INSTALL_DIR_NAME
-
 
 BUILD_PATH=${SRC_PATH}/_build/dist
 NUM_PROCS=$(grep -c ^processor /proc/cpuinfo)
@@ -33,15 +47,17 @@ ARGS="${ARGS} -DBUILD_TESTING=On"
 ARGS="${ARGS} -DOPT_DOC=On"
 ARGS="${ARGS} -DOPT_INSTALL_TESTING=On"
 ARGS="${ARGS} -DOPT_EXPORT_BUILD_TREE=Off"
+ARGS="${ARGS} -DOPT_ARMADILLO_INT64=${OPT_ARMADILLO_INT64}"
 
 set -ex
 rm -rf $BUILD_PATH
 rm -rf $INSTALL_PATH
-cmake -H${SRC_PATH} -B$BUILD_PATH -DCMAKE_BUILD_TYPE=Release $ARGS
+
+cmake -H${SRC_PATH} -B$BUILD_PATH -DCMAKE_BUILD_TYPE=Release $ARGS ${@:2}
 cmake --build $BUILD_PATH --target doc -- -j$NUM_PROCS
 cmake --build $BUILD_PATH --target pdf -- -j$NUM_PROCS
 cmake --build $BUILD_PATH --target install -- -j$NUM_PROCS
 
-cd $INSTALL_DIR
-zip -rq $ZIP_FILE $INSTALL_DIR_NAME
-tar cjf $TAR_FILE $INSTALL_DIR_NAME
+cd $INSTALL_PATH/..
+zip -rq $ZIP_FILE $DIST_DIR_NAME
+tar cjf $TAR_FILE $DIST_DIR_NAME

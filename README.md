@@ -1,4 +1,3 @@
-<!--[![Build Status](https://travis-ci.org/markjolah/ParallelRngManager.svg?branch=master)](https://travis-ci.org/markjolah/ParallelRngManager)-->
 <a href="https://travis-ci.org/markjolah/ParallelRngManager"><img src="https://travis-ci.org/markjolah/ParallelRngManager.svg?branch=master"/></a>
 # Parallel RNG Manager
 
@@ -9,9 +8,9 @@ Using a single random number generator seed makes deterministic testing and debu
 More generally, a _parallel random number generator_ (PRNG) provides a set of N random number generator streams for multi-threaded applications, where each stream is produced from a single underlying random number generator with a single global seed.  For certain classes of random number generators, a single stream can efficiently be partitioned into N threads without communication overhead. The [`parallel_rng::ParallelRngManager`](https://markjolah.github.io/ParallelRngManager/classparallel__rng_1_1ParallelRngManager.html) class functions as an OpenMP-aware manager for the PRNGs from the [Tina's Random Number Generator (TRNG) Library](https://www.numbercrunch.de/trng/).
 
 ## Features
- * *ParallelRngManager* is CMake based, and provides `ParallelRngManagerConfig.cmake` files allowing `find_pacakge(ParallelRngManager)` to find the package in either the build or install trees.
- * *ParallelRngManager* can automatically configure and install TRNG and alongside itself if it does not exist on the system.
- * *ParallelRngManager* is designed to work seamlessly with OpenMP.  It automatically manages the number of RNG streams based on hardware concurrency and prevents false sharing.
+ * `ParallelRngManager` is CMake based, and provides `ParallelRngManagerConfig.cmake` files allowing `find_pacakge(ParallelRngManager)` to find the package in either the build or install trees.
+ * `ParallelRngManager` can automatically configure and install TRNG and alongside itself if it does not exist on the system.
+ * `ParallelRngManager` is designed to work seamlessly with OpenMP.  It automatically manages the number of RNG streams based on hardware concurrency and prevents false sharing.
 
  * A *ParallelRngManager* object manages a single stream and uses OpenMP `get_num_threads()` to  allocate the correct number of sub-streams, which are kept on separate cache lines using [`aligned_array::AArray<RngT>`](https://github.com/markjolah/AlignedArray).
 
@@ -25,9 +24,9 @@ The ParallelRngManager Doxygen documentation can be build with the `OPT_DOC` CMa
 
 The easiest method is to use the default build script, which can be easily customized.  The default build directory is `./_build` and the default install directory is `./_install`.
 
-    > git clone https://github.com/markjolah/ParallelRngManager.git
-    > cd ParallelRngManager
-    > ./build.sh
+    $ git clone https://github.com/markjolah/ParallelRngManager.git
+    $ cd ParallelRngManager
+    $ ./build.sh
 
 If TRNG is not available on the system, it is important to have `CMAKE_INSTALL_PREFIX` set to a valid install directory, even if it is just a local directory, as the autotools build is designed to install into the `CMAKE_INSTALL_PREFIX` and ParallelRngManager is then expecting to find the TRNG library there.
 

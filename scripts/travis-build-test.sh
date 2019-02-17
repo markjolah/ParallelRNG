@@ -30,7 +30,7 @@ else
 fi
 
 set -ex
-rm -rf $INSTALL_PATH $BUILD_PATH
+rm -rf $BUILD_PATH
 cmake -H$SRC_PATH -B$BUILD_PATH -DCMAKE_BUILD_TYPE=$BUILD_TYPE $ARGS $@
 VERBOSE=1 cmake --build $BUILD_PATH --target install -- -j$NUM_PROCS
 
