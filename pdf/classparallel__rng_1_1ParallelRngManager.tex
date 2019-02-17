@@ -1,278 +1,451 @@
-\hypertarget{classparallel__rng_1_1ParallelRngManager}{\subsection{parallel\-\_\-rng\-:\-:Parallel\-Rng\-Manager$<$ Rng\-T, Float\-T $>$ Class Template Reference}
-\label{classparallel__rng_1_1ParallelRngManager}\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager$<$ Rng\-T, Float\-T $>$@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager$<$ Rng\-T, Float\-T $>$}}
-}
+\hypertarget{classparallel__rng_1_1ParallelRngManager}{}\subsection{parallel\+\_\+rng\+:\+:Parallel\+Rng\+Manager$<$ RngT, FloatT $>$ Class Template Reference}
+\label{classparallel__rng_1_1ParallelRngManager}\index{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager$<$ Rng\+T, Float\+T $>$@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager$<$ Rng\+T, Float\+T $>$}}
 
 
-{\ttfamily \#include $<$/home/travis/build/markjolah/\-Parallel\-Rng\-Manager/include/\-Parallel\-Rng\-Manager/\-Parallel\-Rng\-Manager.\-h$>$}
+{\ttfamily \#include $<$/home/travis/build/markjolah/\+Parallel\+Rng\+Manager/include/\+Parallel\+Rng\+Manager/\+Parallel\+Rng\+Manager.\+h$>$}
 
 \subsubsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
-using \hyperlink{classparallel__rng_1_1ParallelRngManager_a85a7225592fc063e7c0bb6d1c947f177}{Vec\-T} = arma\-::\-Col$<$ Float\-T $>$
+using \hyperlink{classparallel__rng_1_1ParallelRngManager_a85a7225592fc063e7c0bb6d1c947f177}{VecT} = arma\+::\+Col$<$ FloatT $>$
 \item 
-using \hyperlink{classparallel__rng_1_1ParallelRngManager_af73ca29a72b66f92794f435a6163770d}{Mat\-T} = arma\-::\-Mat$<$ Float\-T $>$
+using \hyperlink{classparallel__rng_1_1ParallelRngManager_af73ca29a72b66f92794f435a6163770d}{MatT} = arma\+::\+Mat$<$ FloatT $>$
 \item 
-using \hyperlink{classparallel__rng_1_1ParallelRngManager_a8eebc9754ce2a75faeca6b9736d2872f}{Normal\-Dist\-T} = std\-::normal\-\_\-distribution$<$ Float\-T $>$
+using \hyperlink{classparallel__rng_1_1ParallelRngManager_a8eebc9754ce2a75faeca6b9736d2872f}{Normal\+DistT} = std\+::normal\+\_\+distribution$<$ FloatT $>$
 \item 
-using \hyperlink{classparallel__rng_1_1ParallelRngManager_a5df9dbb440b976fbc769d564dfccb597}{Uniform\-Dist\-T} = std\-::uniform\-\_\-real\-\_\-distribution$<$ Float\-T $>$
+using \hyperlink{classparallel__rng_1_1ParallelRngManager_a5df9dbb440b976fbc769d564dfccb597}{Uniform\+DistT} = std\+::uniform\+\_\+real\+\_\+distribution$<$ FloatT $>$
 \item 
-using \hyperlink{classparallel__rng_1_1ParallelRngManager_a199ad0d83c322a1f4415280002dcb386}{result\-\_\-type} = typename Rng\-T\-::result\-\_\-type
+using \hyperlink{classparallel__rng_1_1ParallelRngManager_a199ad0d83c322a1f4415280002dcb386}{result\+\_\+type} = typename Rng\+T\+::result\+\_\+type
 \end{DoxyCompactItemize}
 \subsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classparallel__rng_1_1ParallelRngManager_a496be695fb13bb12b157995751b27c36}{Parallel\-Rng\-Manager} ()
+\hyperlink{classparallel__rng_1_1ParallelRngManager_a496be695fb13bb12b157995751b27c36}{Parallel\+Rng\+Manager} ()
 \item 
-\hyperlink{classparallel__rng_1_1ParallelRngManager_aa355c6c8171aab195ab4d1b99482c1dd}{Parallel\-Rng\-Manager} (\hyperlink{namespaceparallel__rng_a462b8721a1aabe3b86582e864640c707}{Seed\-T} \hyperlink{classparallel__rng_1_1ParallelRngManager_a27fce29ff0415e0652d1cad60c3caea6}{seed})
+\hyperlink{classparallel__rng_1_1ParallelRngManager_aa355c6c8171aab195ab4d1b99482c1dd}{Parallel\+Rng\+Manager} (\hyperlink{namespaceparallel__rng_a462b8721a1aabe3b86582e864640c707}{SeedT} \hyperlink{classparallel__rng_1_1ParallelRngManager_a27fce29ff0415e0652d1cad60c3caea6}{seed})
 \item 
-\hyperlink{classparallel__rng_1_1ParallelRngManager_a04140678f44723851da5a9fd2d15e4a7}{Parallel\-Rng\-Manager} (\hyperlink{namespaceparallel__rng_a462b8721a1aabe3b86582e864640c707}{Seed\-T} \hyperlink{classparallel__rng_1_1ParallelRngManager_a27fce29ff0415e0652d1cad60c3caea6}{seed}, \hyperlink{namespaceparallel__rng_aa22fa3e339aee5927780aac099dfc6f3}{Idx\-T} max\-\_\-threads)
+\hyperlink{classparallel__rng_1_1ParallelRngManager_a04140678f44723851da5a9fd2d15e4a7}{Parallel\+Rng\+Manager} (\hyperlink{namespaceparallel__rng_a462b8721a1aabe3b86582e864640c707}{SeedT} \hyperlink{classparallel__rng_1_1ParallelRngManager_a27fce29ff0415e0652d1cad60c3caea6}{seed}, \hyperlink{namespaceparallel__rng_aa22fa3e339aee5927780aac099dfc6f3}{IdxT} max\+\_\+threads)
 \item 
-void \hyperlink{classparallel__rng_1_1ParallelRngManager_a27fce29ff0415e0652d1cad60c3caea6}{seed} (\hyperlink{namespaceparallel__rng_a462b8721a1aabe3b86582e864640c707}{Seed\-T} seed)
+void \hyperlink{classparallel__rng_1_1ParallelRngManager_a27fce29ff0415e0652d1cad60c3caea6}{seed} (\hyperlink{namespaceparallel__rng_a462b8721a1aabe3b86582e864640c707}{SeedT} seed)
 \item 
 void \hyperlink{classparallel__rng_1_1ParallelRngManager_ae2d6bfb8558004b9a89c5de84d9beab6}{reset} ()
 \item 
-void \hyperlink{classparallel__rng_1_1ParallelRngManager_a62a8227d353a02dbaa52836520cde365}{reset} (\hyperlink{namespaceparallel__rng_a462b8721a1aabe3b86582e864640c707}{Seed\-T} \hyperlink{classparallel__rng_1_1ParallelRngManager_a27fce29ff0415e0652d1cad60c3caea6}{seed})
+void \hyperlink{classparallel__rng_1_1ParallelRngManager_a62a8227d353a02dbaa52836520cde365}{reset} (\hyperlink{namespaceparallel__rng_a462b8721a1aabe3b86582e864640c707}{SeedT} \hyperlink{classparallel__rng_1_1ParallelRngManager_a27fce29ff0415e0652d1cad60c3caea6}{seed})
 \item 
-void \hyperlink{classparallel__rng_1_1ParallelRngManager_a239005e74c441129856969702e2461f4}{reset} (\hyperlink{namespaceparallel__rng_a462b8721a1aabe3b86582e864640c707}{Seed\-T} \hyperlink{classparallel__rng_1_1ParallelRngManager_a27fce29ff0415e0652d1cad60c3caea6}{seed}, \hyperlink{namespaceparallel__rng_aa22fa3e339aee5927780aac099dfc6f3}{Idx\-T} max\-\_\-threads)
+void \hyperlink{classparallel__rng_1_1ParallelRngManager_a239005e74c441129856969702e2461f4}{reset} (\hyperlink{namespaceparallel__rng_a462b8721a1aabe3b86582e864640c707}{SeedT} \hyperlink{classparallel__rng_1_1ParallelRngManager_a27fce29ff0415e0652d1cad60c3caea6}{seed}, \hyperlink{namespaceparallel__rng_aa22fa3e339aee5927780aac099dfc6f3}{IdxT} max\+\_\+threads)
 \item 
-\hyperlink{namespaceparallel__rng_a462b8721a1aabe3b86582e864640c707}{Seed\-T} \hyperlink{classparallel__rng_1_1ParallelRngManager_a415ec367ffcf7828b47d941dd881bfb7}{get\-\_\-init\-\_\-seed} () const 
+\hyperlink{namespaceparallel__rng_a462b8721a1aabe3b86582e864640c707}{SeedT} \hyperlink{classparallel__rng_1_1ParallelRngManager_a415ec367ffcf7828b47d941dd881bfb7}{get\+\_\+init\+\_\+seed} () const 
 \item 
-\hyperlink{namespaceparallel__rng_a462b8721a1aabe3b86582e864640c707}{Seed\-T} \hyperlink{classparallel__rng_1_1ParallelRngManager_ab11a27b2a5f33ecda2969a3eb42b9e3c}{get\-\_\-num\-\_\-threads} () const 
+\hyperlink{namespaceparallel__rng_a462b8721a1aabe3b86582e864640c707}{SeedT} \hyperlink{classparallel__rng_1_1ParallelRngManager_ab11a27b2a5f33ecda2969a3eb42b9e3c}{get\+\_\+num\+\_\+threads} () const 
 \item 
-Rng\-T \& \hyperlink{classparallel__rng_1_1ParallelRngManager_a969cdf585fbcf56bbc819c6fc83c58c6}{generator} ()
+RngT \& \hyperlink{classparallel__rng_1_1ParallelRngManager_a00c61e3387693dce69cc8227a5114494}{generator} ()
 \item 
-any\-\_\-rng\-::\-Any\-Rng$<$ \hyperlink{classparallel__rng_1_1ParallelRngManager_a199ad0d83c322a1f4415280002dcb386}{result\-\_\-type} $>$ \hyperlink{classparallel__rng_1_1ParallelRngManager_a7868b3d416636d9a6054dee7ea9cb5a6}{generic\-\_\-generator} ()
+any\+\_\+rng\+::\+Any\+Rng$<$ \hyperlink{classparallel__rng_1_1ParallelRngManager_a199ad0d83c322a1f4415280002dcb386}{result\+\_\+type} $>$ \hyperlink{classparallel__rng_1_1ParallelRngManager_ac3109130042d1292626312fe92164064}{generic\+\_\+generator} ()
 \item 
-\hyperlink{classparallel__rng_1_1ParallelRngManager_a199ad0d83c322a1f4415280002dcb386}{result\-\_\-type} \hyperlink{classparallel__rng_1_1ParallelRngManager_a47112a035567940db2fd55669661d3fd}{operator()} ()
+\hyperlink{classparallel__rng_1_1ParallelRngManager_a199ad0d83c322a1f4415280002dcb386}{result\+\_\+type} \hyperlink{classparallel__rng_1_1ParallelRngManager_ab94314c0bea77cfb072c4ae272805262}{operator()} ()
 \item 
-Float\-T \hyperlink{classparallel__rng_1_1ParallelRngManager_ae739518cd6d23a283e38f8e3d1e1608b}{randu} ()
+FloatT \hyperlink{classparallel__rng_1_1ParallelRngManager_ae739518cd6d23a283e38f8e3d1e1608b}{randu} ()
 \item 
-Float\-T \hyperlink{classparallel__rng_1_1ParallelRngManager_a5de4e9e9d6e29912c7433b5c3b447ec9}{randn} ()
+FloatT \hyperlink{classparallel__rng_1_1ParallelRngManager_a5de4e9e9d6e29912c7433b5c3b447ec9}{randn} ()
 \item 
-\hyperlink{classparallel__rng_1_1ParallelRngManager_a85a7225592fc063e7c0bb6d1c947f177}{Vec\-T} \hyperlink{classparallel__rng_1_1ParallelRngManager_ab38cd0beff70131e8e2f8863489c1f63}{randu} (\hyperlink{namespaceparallel__rng_aa22fa3e339aee5927780aac099dfc6f3}{Idx\-T} N)
+\hyperlink{classparallel__rng_1_1ParallelRngManager_a85a7225592fc063e7c0bb6d1c947f177}{VecT} \hyperlink{classparallel__rng_1_1ParallelRngManager_a19a2e2c003cb33b41b9b7698520a103f}{randu} (\hyperlink{namespaceparallel__rng_aa22fa3e339aee5927780aac099dfc6f3}{IdxT} N)
 \item 
-\hyperlink{classparallel__rng_1_1ParallelRngManager_a85a7225592fc063e7c0bb6d1c947f177}{Vec\-T} \hyperlink{classparallel__rng_1_1ParallelRngManager_a84c2c76aef6083e80cd2ab6668d6e7d6}{randn} (\hyperlink{namespaceparallel__rng_aa22fa3e339aee5927780aac099dfc6f3}{Idx\-T} N)
+\hyperlink{classparallel__rng_1_1ParallelRngManager_a85a7225592fc063e7c0bb6d1c947f177}{VecT} \hyperlink{classparallel__rng_1_1ParallelRngManager_abb5c39dbd2645d8613762353a5004c50}{randn} (\hyperlink{namespaceparallel__rng_aa22fa3e339aee5927780aac099dfc6f3}{IdxT} N)
 \item 
-\hyperlink{classparallel__rng_1_1ParallelRngManager_af73ca29a72b66f92794f435a6163770d}{Mat\-T} \hyperlink{classparallel__rng_1_1ParallelRngManager_a877c1742bbe45a4e53ad0c6ba69a96b5}{randu} (\hyperlink{namespaceparallel__rng_aa22fa3e339aee5927780aac099dfc6f3}{Idx\-T} rows, \hyperlink{namespaceparallel__rng_aa22fa3e339aee5927780aac099dfc6f3}{Idx\-T} cols)
+\hyperlink{classparallel__rng_1_1ParallelRngManager_af73ca29a72b66f92794f435a6163770d}{MatT} \hyperlink{classparallel__rng_1_1ParallelRngManager_a662041dbc151464056feb403e0dc8180}{randu} (\hyperlink{namespaceparallel__rng_aa22fa3e339aee5927780aac099dfc6f3}{IdxT} rows, \hyperlink{namespaceparallel__rng_aa22fa3e339aee5927780aac099dfc6f3}{IdxT} cols)
 \item 
-\hyperlink{classparallel__rng_1_1ParallelRngManager_af73ca29a72b66f92794f435a6163770d}{Mat\-T} \hyperlink{classparallel__rng_1_1ParallelRngManager_a38ad5e7224e35275d94d84c66c62cb60}{randn} (\hyperlink{namespaceparallel__rng_aa22fa3e339aee5927780aac099dfc6f3}{Idx\-T} rows, \hyperlink{namespaceparallel__rng_aa22fa3e339aee5927780aac099dfc6f3}{Idx\-T} cols)
+\hyperlink{classparallel__rng_1_1ParallelRngManager_af73ca29a72b66f92794f435a6163770d}{MatT} \hyperlink{classparallel__rng_1_1ParallelRngManager_ad58c85e40c34638c9388cebd7cb68eed}{randn} (\hyperlink{namespaceparallel__rng_aa22fa3e339aee5927780aac099dfc6f3}{IdxT} rows, \hyperlink{namespaceparallel__rng_aa22fa3e339aee5927780aac099dfc6f3}{IdxT} cols)
 \item 
-{\footnotesize template$<$class Weights  = Vec\-T, class Idx\-T  = Idx\-T$>$ }\\\hyperlink{namespaceparallel__rng_aa22fa3e339aee5927780aac099dfc6f3}{Idx\-T} \hyperlink{classparallel__rng_1_1ParallelRngManager_add4bd5a95d4923135406e4b9eb72737d}{resample\-\_\-dist} (const Weights \&weights)
+{\footnotesize template$<$class Weights  = VecT, class IdxT  = IdxT$>$ }\\\hyperlink{namespaceparallel__rng_aa22fa3e339aee5927780aac099dfc6f3}{IdxT} \hyperlink{classparallel__rng_1_1ParallelRngManager_add4bd5a95d4923135406e4b9eb72737d}{resample\+\_\+dist} (const Weights \&weights)
 \item 
-{\footnotesize template$<$class Weights  = Vec\-T, class Idx\-T  = Idx\-T$>$ }\\arma\-::\-Col$<$ \hyperlink{namespaceparallel__rng_aa22fa3e339aee5927780aac099dfc6f3}{Idx\-T} $>$ \hyperlink{classparallel__rng_1_1ParallelRngManager_a6251dc0cbf866e03d568b7b0e1896681}{resample\-\_\-dist} (const Weights \&weights, \hyperlink{namespaceparallel__rng_aa22fa3e339aee5927780aac099dfc6f3}{Idx\-T} N)
+{\footnotesize template$<$class Weights  = VecT, class IdxT  = IdxT$>$ }\\arma\+::\+Col$<$ \hyperlink{namespaceparallel__rng_aa22fa3e339aee5927780aac099dfc6f3}{IdxT} $>$ \hyperlink{classparallel__rng_1_1ParallelRngManager_a8c26d916f3641fd22893fb6725c9b975}{resample\+\_\+dist} (const Weights \&weights, \hyperlink{namespaceparallel__rng_aa22fa3e339aee5927780aac099dfc6f3}{IdxT} N)
 \end{DoxyCompactItemize}
 
 
 \subsubsection{Detailed Description}
-\subsubsection*{template$<$class Rng\-T = Default\-Parallel\-Rng\-T, class Float\-T = double$>$class parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager$<$ Rng\-T, Float\-T $>$}
+\subsubsection*{template$<$class RngT = Default\+Parallel\+RngT, class FloatT = double$>$\\*
+class parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager$<$ Rng\+T, Float\+T $>$}
 
 
 
-Definition at line 80 of file Parallel\-Rng\-Manager.\-h.
+Definition at line 80 of file Parallel\+Rng\+Manager.\+h.
 
 
 
 \subsubsection{Member Typedef Documentation}
-\hypertarget{classparallel__rng_1_1ParallelRngManager_af73ca29a72b66f92794f435a6163770d}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!Mat\-T@{Mat\-T}}
-\index{Mat\-T@{Mat\-T}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
-\paragraph[{Mat\-T}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ using {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::{\bf Mat\-T} =  arma\-::\-Mat$<$Float\-T$>$}}\label{classparallel__rng_1_1ParallelRngManager_af73ca29a72b66f92794f435a6163770d}
+\index{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}!MatT@{MatT}}
+\index{MatT@{MatT}!parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}}
+\paragraph[{\texorpdfstring{MatT}{MatT}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class RngT = Default\+Parallel\+RngT, class FloatT = double$>$ using {\bf parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}$<$ RngT, FloatT $>$\+::{\bf MatT} =  arma\+::\+Mat$<$FloatT$>$}\hypertarget{classparallel__rng_1_1ParallelRngManager_af73ca29a72b66f92794f435a6163770d}{}\label{classparallel__rng_1_1ParallelRngManager_af73ca29a72b66f92794f435a6163770d}
 
 
-Definition at line 84 of file Parallel\-Rng\-Manager.\-h.
+Definition at line 84 of file Parallel\+Rng\+Manager.\+h.
 
-\hypertarget{classparallel__rng_1_1ParallelRngManager_a8eebc9754ce2a75faeca6b9736d2872f}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!Normal\-Dist\-T@{Normal\-Dist\-T}}
-\index{Normal\-Dist\-T@{Normal\-Dist\-T}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
-\paragraph[{Normal\-Dist\-T}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ using {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::{\bf Normal\-Dist\-T} =  std\-::normal\-\_\-distribution$<$Float\-T$>$}}\label{classparallel__rng_1_1ParallelRngManager_a8eebc9754ce2a75faeca6b9736d2872f}
-
-
-Definition at line 85 of file Parallel\-Rng\-Manager.\-h.
-
-\hypertarget{classparallel__rng_1_1ParallelRngManager_a199ad0d83c322a1f4415280002dcb386}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!result\-\_\-type@{result\-\_\-type}}
-\index{result\-\_\-type@{result\-\_\-type}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
-\paragraph[{result\-\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ using {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::{\bf result\-\_\-type} =  typename Rng\-T\-::result\-\_\-type}}\label{classparallel__rng_1_1ParallelRngManager_a199ad0d83c322a1f4415280002dcb386}
+\index{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}!Normal\+DistT@{Normal\+DistT}}
+\index{Normal\+DistT@{Normal\+DistT}!parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}}
+\paragraph[{\texorpdfstring{Normal\+DistT}{NormalDistT}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class RngT = Default\+Parallel\+RngT, class FloatT = double$>$ using {\bf parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}$<$ RngT, FloatT $>$\+::{\bf Normal\+DistT} =  std\+::normal\+\_\+distribution$<$FloatT$>$}\hypertarget{classparallel__rng_1_1ParallelRngManager_a8eebc9754ce2a75faeca6b9736d2872f}{}\label{classparallel__rng_1_1ParallelRngManager_a8eebc9754ce2a75faeca6b9736d2872f}
 
 
-Definition at line 87 of file Parallel\-Rng\-Manager.\-h.
+Definition at line 85 of file Parallel\+Rng\+Manager.\+h.
 
-\hypertarget{classparallel__rng_1_1ParallelRngManager_a5df9dbb440b976fbc769d564dfccb597}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!Uniform\-Dist\-T@{Uniform\-Dist\-T}}
-\index{Uniform\-Dist\-T@{Uniform\-Dist\-T}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
-\paragraph[{Uniform\-Dist\-T}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ using {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::{\bf Uniform\-Dist\-T} =  std\-::uniform\-\_\-real\-\_\-distribution$<$Float\-T$>$}}\label{classparallel__rng_1_1ParallelRngManager_a5df9dbb440b976fbc769d564dfccb597}
-
-
-Definition at line 86 of file Parallel\-Rng\-Manager.\-h.
-
-\hypertarget{classparallel__rng_1_1ParallelRngManager_a85a7225592fc063e7c0bb6d1c947f177}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!Vec\-T@{Vec\-T}}
-\index{Vec\-T@{Vec\-T}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
-\paragraph[{Vec\-T}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ using {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::{\bf Vec\-T} =  arma\-::\-Col$<$Float\-T$>$}}\label{classparallel__rng_1_1ParallelRngManager_a85a7225592fc063e7c0bb6d1c947f177}
+\index{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}!result\+\_\+type@{result\+\_\+type}}
+\index{result\+\_\+type@{result\+\_\+type}!parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}}
+\paragraph[{\texorpdfstring{result\+\_\+type}{result_type}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class RngT = Default\+Parallel\+RngT, class FloatT = double$>$ using {\bf parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}$<$ RngT, FloatT $>$\+::{\bf result\+\_\+type} =  typename Rng\+T\+::result\+\_\+type}\hypertarget{classparallel__rng_1_1ParallelRngManager_a199ad0d83c322a1f4415280002dcb386}{}\label{classparallel__rng_1_1ParallelRngManager_a199ad0d83c322a1f4415280002dcb386}
 
 
-Definition at line 83 of file Parallel\-Rng\-Manager.\-h.
+Definition at line 87 of file Parallel\+Rng\+Manager.\+h.
+
+\index{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}!Uniform\+DistT@{Uniform\+DistT}}
+\index{Uniform\+DistT@{Uniform\+DistT}!parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}}
+\paragraph[{\texorpdfstring{Uniform\+DistT}{UniformDistT}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class RngT = Default\+Parallel\+RngT, class FloatT = double$>$ using {\bf parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}$<$ RngT, FloatT $>$\+::{\bf Uniform\+DistT} =  std\+::uniform\+\_\+real\+\_\+distribution$<$FloatT$>$}\hypertarget{classparallel__rng_1_1ParallelRngManager_a5df9dbb440b976fbc769d564dfccb597}{}\label{classparallel__rng_1_1ParallelRngManager_a5df9dbb440b976fbc769d564dfccb597}
+
+
+Definition at line 86 of file Parallel\+Rng\+Manager.\+h.
+
+\index{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}!VecT@{VecT}}
+\index{VecT@{VecT}!parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}}
+\paragraph[{\texorpdfstring{VecT}{VecT}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class RngT = Default\+Parallel\+RngT, class FloatT = double$>$ using {\bf parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}$<$ RngT, FloatT $>$\+::{\bf VecT} =  arma\+::\+Col$<$FloatT$>$}\hypertarget{classparallel__rng_1_1ParallelRngManager_a85a7225592fc063e7c0bb6d1c947f177}{}\label{classparallel__rng_1_1ParallelRngManager_a85a7225592fc063e7c0bb6d1c947f177}
+
+
+Definition at line 83 of file Parallel\+Rng\+Manager.\+h.
 
 
 
 \subsubsection{Constructor \& Destructor Documentation}
-\hypertarget{classparallel__rng_1_1ParallelRngManager_a496be695fb13bb12b157995751b27c36}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!Parallel\-Rng\-Manager@{Parallel\-Rng\-Manager}}
-\index{Parallel\-Rng\-Manager@{Parallel\-Rng\-Manager}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
-\paragraph[{Parallel\-Rng\-Manager}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T , class Float\-T $>$ {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::{\bf Parallel\-Rng\-Manager} (
+\index{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}!Parallel\+Rng\+Manager@{Parallel\+Rng\+Manager}}
+\index{Parallel\+Rng\+Manager@{Parallel\+Rng\+Manager}!parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}}
+\paragraph[{\texorpdfstring{Parallel\+Rng\+Manager()}{ParallelRngManager()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class RngT , class FloatT $>$ {\bf parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}$<$ RngT, FloatT $>$\+::{\bf Parallel\+Rng\+Manager} (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{classparallel__rng_1_1ParallelRngManager_a496be695fb13bb12b157995751b27c36}
+)}\hypertarget{classparallel__rng_1_1ParallelRngManager_a496be695fb13bb12b157995751b27c36}{}\label{classparallel__rng_1_1ParallelRngManager_a496be695fb13bb12b157995751b27c36}
 
 
-Definition at line 157 of file Parallel\-Rng\-Manager.\-h.
+Definition at line 157 of file Parallel\+Rng\+Manager.\+h.
 
-\hypertarget{classparallel__rng_1_1ParallelRngManager_aa355c6c8171aab195ab4d1b99482c1dd}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!Parallel\-Rng\-Manager@{Parallel\-Rng\-Manager}}
-\index{Parallel\-Rng\-Manager@{Parallel\-Rng\-Manager}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
-\paragraph[{Parallel\-Rng\-Manager}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T , class Float\-T $>$ {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::{\bf Parallel\-Rng\-Manager} (
+\index{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}!Parallel\+Rng\+Manager@{Parallel\+Rng\+Manager}}
+\index{Parallel\+Rng\+Manager@{Parallel\+Rng\+Manager}!parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}}
+\paragraph[{\texorpdfstring{Parallel\+Rng\+Manager(\+Seed\+T seed)}{ParallelRngManager(SeedT seed)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class RngT , class FloatT $>$ {\bf parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}$<$ RngT, FloatT $>$\+::{\bf Parallel\+Rng\+Manager} (
 \begin{DoxyParamCaption}
-\item[{{\bf Seed\-T}}]{seed}
+\item[{{\bf SeedT}}]{seed}
 \end{DoxyParamCaption}
-)}}\label{classparallel__rng_1_1ParallelRngManager_aa355c6c8171aab195ab4d1b99482c1dd}
+)}\hypertarget{classparallel__rng_1_1ParallelRngManager_aa355c6c8171aab195ab4d1b99482c1dd}{}\label{classparallel__rng_1_1ParallelRngManager_aa355c6c8171aab195ab4d1b99482c1dd}
 
 
-Definition at line 162 of file Parallel\-Rng\-Manager.\-h.
+Definition at line 162 of file Parallel\+Rng\+Manager.\+h.
 
-\hypertarget{classparallel__rng_1_1ParallelRngManager_a04140678f44723851da5a9fd2d15e4a7}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!Parallel\-Rng\-Manager@{Parallel\-Rng\-Manager}}
-\index{Parallel\-Rng\-Manager@{Parallel\-Rng\-Manager}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
-\paragraph[{Parallel\-Rng\-Manager}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T , class Float\-T $>$ {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::{\bf Parallel\-Rng\-Manager} (
+\index{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}!Parallel\+Rng\+Manager@{Parallel\+Rng\+Manager}}
+\index{Parallel\+Rng\+Manager@{Parallel\+Rng\+Manager}!parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}}
+\paragraph[{\texorpdfstring{Parallel\+Rng\+Manager(\+Seed\+T seed, Idx\+T max\+\_\+threads)}{ParallelRngManager(SeedT seed, IdxT max_threads)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class RngT , class FloatT $>$ {\bf parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}$<$ RngT, FloatT $>$\+::{\bf Parallel\+Rng\+Manager} (
 \begin{DoxyParamCaption}
-\item[{{\bf Seed\-T}}]{seed, }
-\item[{{\bf Idx\-T}}]{max\-\_\-threads}
+\item[{{\bf SeedT}}]{seed, }
+\item[{{\bf IdxT}}]{max\+\_\+threads}
 \end{DoxyParamCaption}
-)}}\label{classparallel__rng_1_1ParallelRngManager_a04140678f44723851da5a9fd2d15e4a7}
+)}\hypertarget{classparallel__rng_1_1ParallelRngManager_a04140678f44723851da5a9fd2d15e4a7}{}\label{classparallel__rng_1_1ParallelRngManager_a04140678f44723851da5a9fd2d15e4a7}
 
 
-Definition at line 167 of file Parallel\-Rng\-Manager.\-h.
+Definition at line 167 of file Parallel\+Rng\+Manager.\+h.
 
 
 
 \subsubsection{Member Function Documentation}
-\hypertarget{classparallel__rng_1_1ParallelRngManager_a969cdf585fbcf56bbc819c6fc83c58c6}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!generator@{generator}}
-\index{generator@{generator}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
-\paragraph[{generator}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ Rng\-T\& {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::generator (
+\index{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}!generator@{generator}}
+\index{generator@{generator}!parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}}
+\paragraph[{\texorpdfstring{generator()}{generator()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class RngT , class FloatT $>$ RngT \& {\bf parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}$<$ RngT, FloatT $>$\+::generator (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{classparallel__rng_1_1ParallelRngManager_a969cdf585fbcf56bbc819c6fc83c58c6}
-\hypertarget{classparallel__rng_1_1ParallelRngManager_a7868b3d416636d9a6054dee7ea9cb5a6}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!generic\-\_\-generator@{generic\-\_\-generator}}
-\index{generic\-\_\-generator@{generic\-\_\-generator}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
-\paragraph[{generic\-\_\-generator}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ any\-\_\-rng\-::\-Any\-Rng$<${\bf result\-\_\-type}$>$ {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::generic\-\_\-generator (
+)}\hypertarget{classparallel__rng_1_1ParallelRngManager_a00c61e3387693dce69cc8227a5114494}{}\label{classparallel__rng_1_1ParallelRngManager_a00c61e3387693dce69cc8227a5114494}
+
+
+Definition at line 235 of file Parallel\+Rng\+Manager.\+h.
+
+
+
+Referenced by parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager$<$ Rng\+T, Float\+T $>$\+::operator()(), and parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager$<$ Rng\+T, Float\+T $>$\+::resample\+\_\+dist().
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classparallel__rng_1_1ParallelRngManager_a00c61e3387693dce69cc8227a5114494_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}!generic\+\_\+generator@{generic\+\_\+generator}}
+\index{generic\+\_\+generator@{generic\+\_\+generator}!parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}}
+\paragraph[{\texorpdfstring{generic\+\_\+generator()}{generic_generator()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class RngT , class FloatT $>$ any\+\_\+rng\+::\+Any\+Rng$<$ typename {\bf Parallel\+Rng\+Manager}$<$ RngT, FloatT $>$\+::{\bf result\+\_\+type} $>$ {\bf parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}$<$ RngT, FloatT $>$\+::generic\+\_\+generator (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{classparallel__rng_1_1ParallelRngManager_a7868b3d416636d9a6054dee7ea9cb5a6}
-\hypertarget{classparallel__rng_1_1ParallelRngManager_a415ec367ffcf7828b47d941dd881bfb7}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!get\-\_\-init\-\_\-seed@{get\-\_\-init\-\_\-seed}}
-\index{get\-\_\-init\-\_\-seed@{get\-\_\-init\-\_\-seed}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
-\paragraph[{get\-\_\-init\-\_\-seed}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ {\bf Seed\-T} {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::get\-\_\-init\-\_\-seed (
+)}\hypertarget{classparallel__rng_1_1ParallelRngManager_ac3109130042d1292626312fe92164064}{}\label{classparallel__rng_1_1ParallelRngManager_ac3109130042d1292626312fe92164064}
+
+
+Definition at line 243 of file Parallel\+Rng\+Manager.\+h.
+
+\index{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}!get\+\_\+init\+\_\+seed@{get\+\_\+init\+\_\+seed}}
+\index{get\+\_\+init\+\_\+seed@{get\+\_\+init\+\_\+seed}!parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}}
+\paragraph[{\texorpdfstring{get\+\_\+init\+\_\+seed() const }{get_init_seed() const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class RngT , class FloatT $>$ {\bf SeedT} {\bf parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}$<$ RngT, FloatT $>$\+::get\+\_\+init\+\_\+seed (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-) const}}\label{classparallel__rng_1_1ParallelRngManager_a415ec367ffcf7828b47d941dd881bfb7}
-\hypertarget{classparallel__rng_1_1ParallelRngManager_ab11a27b2a5f33ecda2969a3eb42b9e3c}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!get\-\_\-num\-\_\-threads@{get\-\_\-num\-\_\-threads}}
-\index{get\-\_\-num\-\_\-threads@{get\-\_\-num\-\_\-threads}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
-\paragraph[{get\-\_\-num\-\_\-threads}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ {\bf Seed\-T} {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::get\-\_\-num\-\_\-threads (
+) const}\hypertarget{classparallel__rng_1_1ParallelRngManager_a415ec367ffcf7828b47d941dd881bfb7}{}\label{classparallel__rng_1_1ParallelRngManager_a415ec367ffcf7828b47d941dd881bfb7}
+
+
+Definition at line 223 of file Parallel\+Rng\+Manager.\+h.
+
+\index{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}!get\+\_\+num\+\_\+threads@{get\+\_\+num\+\_\+threads}}
+\index{get\+\_\+num\+\_\+threads@{get\+\_\+num\+\_\+threads}!parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}}
+\paragraph[{\texorpdfstring{get\+\_\+num\+\_\+threads() const }{get_num_threads() const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class RngT , class FloatT $>$ {\bf SeedT} {\bf parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}$<$ RngT, FloatT $>$\+::get\+\_\+num\+\_\+threads (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-) const}}\label{classparallel__rng_1_1ParallelRngManager_ab11a27b2a5f33ecda2969a3eb42b9e3c}
-\hypertarget{classparallel__rng_1_1ParallelRngManager_a47112a035567940db2fd55669661d3fd}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!operator()@{operator()}}
-\index{operator()@{operator()}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
-\paragraph[{operator()}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ {\bf result\-\_\-type} {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::operator() (
+) const}\hypertarget{classparallel__rng_1_1ParallelRngManager_ab11a27b2a5f33ecda2969a3eb42b9e3c}{}\label{classparallel__rng_1_1ParallelRngManager_ab11a27b2a5f33ecda2969a3eb42b9e3c}
+
+
+Definition at line 229 of file Parallel\+Rng\+Manager.\+h.
+
+\index{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}!operator()@{operator()}}
+\index{operator()@{operator()}!parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}}
+\paragraph[{\texorpdfstring{operator()()}{operator()()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class RngT , class FloatT $>$ {\bf Parallel\+Rng\+Manager}$<$ RngT, FloatT $>$\+::{\bf result\+\_\+type} {\bf parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}$<$ RngT, FloatT $>$\+::operator() (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{classparallel__rng_1_1ParallelRngManager_a47112a035567940db2fd55669661d3fd}
-\hypertarget{classparallel__rng_1_1ParallelRngManager_a5de4e9e9d6e29912c7433b5c3b447ec9}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!randn@{randn}}
-\index{randn@{randn}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
-\paragraph[{randn}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ Float\-T {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::randn (
+)}\hypertarget{classparallel__rng_1_1ParallelRngManager_ab94314c0bea77cfb072c4ae272805262}{}\label{classparallel__rng_1_1ParallelRngManager_ab94314c0bea77cfb072c4ae272805262}
+Random 64-\/bit integer 
+
+Definition at line 252 of file Parallel\+Rng\+Manager.\+h.
+
+
+
+References parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager$<$ Rng\+T, Float\+T $>$\+::generator().
+
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classparallel__rng_1_1ParallelRngManager_ab94314c0bea77cfb072c4ae272805262_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}!randn@{randn}}
+\index{randn@{randn}!parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}}
+\paragraph[{\texorpdfstring{randn()}{randn()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class RngT , class FloatT $>$ FloatT {\bf parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}$<$ RngT, FloatT $>$\+::randn (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{classparallel__rng_1_1ParallelRngManager_a5de4e9e9d6e29912c7433b5c3b447ec9}
-\hypertarget{classparallel__rng_1_1ParallelRngManager_a84c2c76aef6083e80cd2ab6668d6e7d6}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!randn@{randn}}
-\index{randn@{randn}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
-\paragraph[{randn}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ {\bf Vec\-T} {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::randn (
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classparallel__rng_1_1ParallelRngManager_a5de4e9e9d6e29912c7433b5c3b447ec9}{}\label{classparallel__rng_1_1ParallelRngManager_a5de4e9e9d6e29912c7433b5c3b447ec9}
+Random standard normal variate 
+
+Definition at line 268 of file Parallel\+Rng\+Manager.\+h.
+
+\index{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}!randn@{randn}}
+\index{randn@{randn}!parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}}
+\paragraph[{\texorpdfstring{randn(\+Idx\+T N)}{randn(IdxT N)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class RngT , class FloatT $>$ {\bf Parallel\+Rng\+Manager}$<$ RngT, FloatT $>$\+::{\bf VecT} {\bf parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}$<$ RngT, FloatT $>$\+::randn (
 \begin{DoxyParamCaption}
-\item[{{\bf Idx\-T}}]{N}
+\item[{{\bf IdxT}}]{N}
 \end{DoxyParamCaption}
-)}}\label{classparallel__rng_1_1ParallelRngManager_a84c2c76aef6083e80cd2ab6668d6e7d6}
-\hypertarget{classparallel__rng_1_1ParallelRngManager_a38ad5e7224e35275d94d84c66c62cb60}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!randn@{randn}}
-\index{randn@{randn}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
-\paragraph[{randn}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ {\bf Mat\-T} {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::randn (
+)}\hypertarget{classparallel__rng_1_1ParallelRngManager_abb5c39dbd2645d8613762353a5004c50}{}\label{classparallel__rng_1_1ParallelRngManager_abb5c39dbd2645d8613762353a5004c50}
+Vector of standard normal variate 
+
+Definition at line 290 of file Parallel\+Rng\+Manager.\+h.
+
+\index{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}!randn@{randn}}
+\index{randn@{randn}!parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}}
+\paragraph[{\texorpdfstring{randn(\+Idx\+T rows, Idx\+T cols)}{randn(IdxT rows, IdxT cols)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class RngT , class FloatT $>$ {\bf Parallel\+Rng\+Manager}$<$ RngT, FloatT $>$\+::{\bf MatT} {\bf parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}$<$ RngT, FloatT $>$\+::randn (
 \begin{DoxyParamCaption}
-\item[{{\bf Idx\-T}}]{rows, }
-\item[{{\bf Idx\-T}}]{cols}
+\item[{{\bf IdxT}}]{rows, }
+\item[{{\bf IdxT}}]{cols}
 \end{DoxyParamCaption}
-)}}\label{classparallel__rng_1_1ParallelRngManager_a38ad5e7224e35275d94d84c66c62cb60}
-\hypertarget{classparallel__rng_1_1ParallelRngManager_ae739518cd6d23a283e38f8e3d1e1608b}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!randu@{randu}}
-\index{randu@{randu}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
-\paragraph[{randu}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ Float\-T {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::randu (
+)}\hypertarget{classparallel__rng_1_1ParallelRngManager_ad58c85e40c34638c9388cebd7cb68eed}{}\label{classparallel__rng_1_1ParallelRngManager_ad58c85e40c34638c9388cebd7cb68eed}
+Matrix of standard normal variate 
+
+Definition at line 316 of file Parallel\+Rng\+Manager.\+h.
+
+\index{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}!randu@{randu}}
+\index{randu@{randu}!parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}}
+\paragraph[{\texorpdfstring{randu()}{randu()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class RngT , class FloatT $>$ FloatT {\bf parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}$<$ RngT, FloatT $>$\+::randu (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{classparallel__rng_1_1ParallelRngManager_ae739518cd6d23a283e38f8e3d1e1608b}
-\hypertarget{classparallel__rng_1_1ParallelRngManager_ab38cd0beff70131e8e2f8863489c1f63}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!randu@{randu}}
-\index{randu@{randu}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
-\paragraph[{randu}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ {\bf Vec\-T} {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::randu (
+)}\hypertarget{classparallel__rng_1_1ParallelRngManager_ae739518cd6d23a283e38f8e3d1e1608b}{}\label{classparallel__rng_1_1ParallelRngManager_ae739518cd6d23a283e38f8e3d1e1608b}
+Random FloatT uniform on \mbox{[}0,1) 
+
+Definition at line 259 of file Parallel\+Rng\+Manager.\+h.
+
+\index{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}!randu@{randu}}
+\index{randu@{randu}!parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}}
+\paragraph[{\texorpdfstring{randu(\+Idx\+T N)}{randu(IdxT N)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class RngT , class FloatT $>$ {\bf Parallel\+Rng\+Manager}$<$ RngT, FloatT $>$\+::{\bf VecT} {\bf parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}$<$ RngT, FloatT $>$\+::randu (
 \begin{DoxyParamCaption}
-\item[{{\bf Idx\-T}}]{N}
+\item[{{\bf IdxT}}]{N}
 \end{DoxyParamCaption}
-)}}\label{classparallel__rng_1_1ParallelRngManager_ab38cd0beff70131e8e2f8863489c1f63}
-\hypertarget{classparallel__rng_1_1ParallelRngManager_a877c1742bbe45a4e53ad0c6ba69a96b5}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!randu@{randu}}
-\index{randu@{randu}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
-\paragraph[{randu}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ {\bf Mat\-T} {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::randu (
+)}\hypertarget{classparallel__rng_1_1ParallelRngManager_a19a2e2c003cb33b41b9b7698520a103f}{}\label{classparallel__rng_1_1ParallelRngManager_a19a2e2c003cb33b41b9b7698520a103f}
+Vector of Random FloatT uniform on \mbox{[}0,1) 
+
+Definition at line 277 of file Parallel\+Rng\+Manager.\+h.
+
+\index{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}!randu@{randu}}
+\index{randu@{randu}!parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}}
+\paragraph[{\texorpdfstring{randu(\+Idx\+T rows, Idx\+T cols)}{randu(IdxT rows, IdxT cols)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class RngT , class FloatT $>$ {\bf Parallel\+Rng\+Manager}$<$ RngT, FloatT $>$\+::{\bf MatT} {\bf parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}$<$ RngT, FloatT $>$\+::randu (
 \begin{DoxyParamCaption}
-\item[{{\bf Idx\-T}}]{rows, }
-\item[{{\bf Idx\-T}}]{cols}
+\item[{{\bf IdxT}}]{rows, }
+\item[{{\bf IdxT}}]{cols}
 \end{DoxyParamCaption}
-)}}\label{classparallel__rng_1_1ParallelRngManager_a877c1742bbe45a4e53ad0c6ba69a96b5}
-\hypertarget{classparallel__rng_1_1ParallelRngManager_add4bd5a95d4923135406e4b9eb72737d}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!resample\-\_\-dist@{resample\-\_\-dist}}
-\index{resample\-\_\-dist@{resample\-\_\-dist}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
-\paragraph[{resample\-\_\-dist}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ template$<$class Weights  = Vec\-T, class Idx\-T  = Idx\-T$>$ {\bf Idx\-T} {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::resample\-\_\-dist (
+)}\hypertarget{classparallel__rng_1_1ParallelRngManager_a662041dbc151464056feb403e0dc8180}{}\label{classparallel__rng_1_1ParallelRngManager_a662041dbc151464056feb403e0dc8180}
+Matrix of Random FloatT uniform on \mbox{[}0,1) 
+
+Definition at line 303 of file Parallel\+Rng\+Manager.\+h.
+
+\index{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}!resample\+\_\+dist@{resample\+\_\+dist}}
+\index{resample\+\_\+dist@{resample\+\_\+dist}!parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}}
+\paragraph[{\texorpdfstring{resample\+\_\+dist(const Weights \&weights)}{resample_dist(const Weights &weights)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class RngT , class FloatT $>$ template$<$class Weights , class IdxT $>$ {\bf IdxT} {\bf parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}$<$ RngT, FloatT $>$\+::resample\+\_\+dist (
 \begin{DoxyParamCaption}
 \item[{const Weights \&}]{weights}
 \end{DoxyParamCaption}
-)}}\label{classparallel__rng_1_1ParallelRngManager_add4bd5a95d4923135406e4b9eb72737d}
-\hypertarget{classparallel__rng_1_1ParallelRngManager_a6251dc0cbf866e03d568b7b0e1896681}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!resample\-\_\-dist@{resample\-\_\-dist}}
-\index{resample\-\_\-dist@{resample\-\_\-dist}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
-\paragraph[{resample\-\_\-dist}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ template$<$class Weights  = Vec\-T, class Idx\-T  = Idx\-T$>$ arma\-::\-Col$<${\bf Idx\-T}$>$ {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::resample\-\_\-dist (
+)}\hypertarget{classparallel__rng_1_1ParallelRngManager_add4bd5a95d4923135406e4b9eb72737d}{}\label{classparallel__rng_1_1ParallelRngManager_add4bd5a95d4923135406e4b9eb72737d}
+
+
+Definition at line 329 of file Parallel\+Rng\+Manager.\+h.
+
+
+
+References parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager$<$ Rng\+T, Float\+T $>$\+::generator().
+
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classparallel__rng_1_1ParallelRngManager_add4bd5a95d4923135406e4b9eb72737d_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}!resample\+\_\+dist@{resample\+\_\+dist}}
+\index{resample\+\_\+dist@{resample\+\_\+dist}!parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}}
+\paragraph[{\texorpdfstring{resample\+\_\+dist(const Weights \&weights, Idx\+T N)}{resample_dist(const Weights &weights, IdxT N)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class RngT , class FloatT $>$ template$<$class Weights , class IdxT $>$ arma\+::\+Col$<$ {\bf IdxT} $>$ {\bf parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}$<$ RngT, FloatT $>$\+::resample\+\_\+dist (
 \begin{DoxyParamCaption}
 \item[{const Weights \&}]{weights, }
-\item[{{\bf Idx\-T}}]{N}
+\item[{{\bf IdxT}}]{N}
 \end{DoxyParamCaption}
-)}}\label{classparallel__rng_1_1ParallelRngManager_a6251dc0cbf866e03d568b7b0e1896681}
-\hypertarget{classparallel__rng_1_1ParallelRngManager_ae2d6bfb8558004b9a89c5de84d9beab6}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!reset@{reset}}
-\index{reset@{reset}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
-\paragraph[{reset}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ void {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::reset (
+)}\hypertarget{classparallel__rng_1_1ParallelRngManager_a8c26d916f3641fd22893fb6725c9b975}{}\label{classparallel__rng_1_1ParallelRngManager_a8c26d916f3641fd22893fb6725c9b975}
+
+
+Definition at line 338 of file Parallel\+Rng\+Manager.\+h.
+
+
+
+References parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager$<$ Rng\+T, Float\+T $>$\+::generator().
+
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classparallel__rng_1_1ParallelRngManager_a8c26d916f3641fd22893fb6725c9b975_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}!reset@{reset}}
+\index{reset@{reset}!parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}}
+\paragraph[{\texorpdfstring{reset()}{reset()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class RngT , class FloatT $>$ void {\bf parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}$<$ RngT, FloatT $>$\+::reset (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{classparallel__rng_1_1ParallelRngManager_ae2d6bfb8558004b9a89c5de84d9beab6}
-\hypertarget{classparallel__rng_1_1ParallelRngManager_a62a8227d353a02dbaa52836520cde365}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!reset@{reset}}
-\index{reset@{reset}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
-\paragraph[{reset}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ void {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::reset (
-\begin{DoxyParamCaption}
-\item[{{\bf Seed\-T}}]{seed}
-\end{DoxyParamCaption}
-)}}\label{classparallel__rng_1_1ParallelRngManager_a62a8227d353a02dbaa52836520cde365}
-\hypertarget{classparallel__rng_1_1ParallelRngManager_a239005e74c441129856969702e2461f4}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!reset@{reset}}
-\index{reset@{reset}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
-\paragraph[{reset}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ void {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::reset (
-\begin{DoxyParamCaption}
-\item[{{\bf Seed\-T}}]{seed, }
-\item[{{\bf Idx\-T}}]{max\-\_\-threads}
-\end{DoxyParamCaption}
-)}}\label{classparallel__rng_1_1ParallelRngManager_a239005e74c441129856969702e2461f4}
-\hypertarget{classparallel__rng_1_1ParallelRngManager_a27fce29ff0415e0652d1cad60c3caea6}{\index{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}!seed@{seed}}
-\index{seed@{seed}!parallel_rng::ParallelRngManager@{parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}}
-\paragraph[{seed}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ void {\bf parallel\-\_\-rng\-::\-Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$\-::seed (
-\begin{DoxyParamCaption}
-\item[{{\bf Seed\-T}}]{seed}
-\end{DoxyParamCaption}
-)}}\label{classparallel__rng_1_1ParallelRngManager_a27fce29ff0415e0652d1cad60c3caea6}
+)}\hypertarget{classparallel__rng_1_1ParallelRngManager_ae2d6bfb8558004b9a89c5de84d9beab6}{}\label{classparallel__rng_1_1ParallelRngManager_ae2d6bfb8558004b9a89c5de84d9beab6}
 
 
-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+Definition at line 196 of file Parallel\+Rng\+Manager.\+h.
+
+
+
+Referenced by parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager$<$ Rng\+T, Float\+T $>$\+::reset(), and parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager$<$ Rng\+T, Float\+T $>$\+::seed().
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classparallel__rng_1_1ParallelRngManager_ae2d6bfb8558004b9a89c5de84d9beab6_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}!reset@{reset}}
+\index{reset@{reset}!parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}}
+\paragraph[{\texorpdfstring{reset(\+Seed\+T seed)}{reset(SeedT seed)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class RngT , class FloatT $>$ void {\bf parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}$<$ RngT, FloatT $>$\+::reset (
+\begin{DoxyParamCaption}
+\item[{{\bf SeedT}}]{seed}
+\end{DoxyParamCaption}
+)}\hypertarget{classparallel__rng_1_1ParallelRngManager_a62a8227d353a02dbaa52836520cde365}{}\label{classparallel__rng_1_1ParallelRngManager_a62a8227d353a02dbaa52836520cde365}
+
+
+Definition at line 202 of file Parallel\+Rng\+Manager.\+h.
+
+
+
+References parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager$<$ Rng\+T, Float\+T $>$\+::reset().
+
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classparallel__rng_1_1ParallelRngManager_a62a8227d353a02dbaa52836520cde365_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}!reset@{reset}}
+\index{reset@{reset}!parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}}
+\paragraph[{\texorpdfstring{reset(\+Seed\+T seed, Idx\+T max\+\_\+threads)}{reset(SeedT seed, IdxT max_threads)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class RngT , class FloatT $>$ void {\bf parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}$<$ RngT, FloatT $>$\+::reset (
+\begin{DoxyParamCaption}
+\item[{{\bf SeedT}}]{seed, }
+\item[{{\bf IdxT}}]{max\+\_\+threads}
+\end{DoxyParamCaption}
+)}\hypertarget{classparallel__rng_1_1ParallelRngManager_a239005e74c441129856969702e2461f4}{}\label{classparallel__rng_1_1ParallelRngManager_a239005e74c441129856969702e2461f4}
+
+
+Definition at line 208 of file Parallel\+Rng\+Manager.\+h.
+
+\index{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}!seed@{seed}}
+\index{seed@{seed}!parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager@{parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}}
+\paragraph[{\texorpdfstring{seed(\+Seed\+T seed)}{seed(SeedT seed)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class RngT , class FloatT $>$ void {\bf parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager}$<$ RngT, FloatT $>$\+::seed (
+\begin{DoxyParamCaption}
+\item[{{\bf SeedT}}]{seed}
+\end{DoxyParamCaption}
+)}\hypertarget{classparallel__rng_1_1ParallelRngManager_a27fce29ff0415e0652d1cad60c3caea6}{}\label{classparallel__rng_1_1ParallelRngManager_a27fce29ff0415e0652d1cad60c3caea6}
+
+
+Definition at line 186 of file Parallel\+Rng\+Manager.\+h.
+
+
+
+References parallel\+\_\+rng\+::\+Parallel\+Rng\+Manager$<$ Rng\+T, Float\+T $>$\+::reset().
+
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classparallel__rng_1_1ParallelRngManager_a27fce29ff0415e0652d1cad60c3caea6_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-\hyperlink{ParallelRngManager_8h}{Parallel\-Rng\-Manager.\-h}\end{DoxyCompactItemize}
+\hyperlink{ParallelRngManager_8h}{Parallel\+Rng\+Manager.\+h}\end{DoxyCompactItemize}

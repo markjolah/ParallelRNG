@@ -1,137 +1,112 @@
-\hypertarget{namespaceparallel__rng}{\subsection{parallel\-\_\-rng Namespace Reference}
-\label{namespaceparallel__rng}\index{parallel\-\_\-rng@{parallel\-\_\-rng}}
-}
+\hypertarget{namespaceparallel__rng}{}\subsection{parallel\+\_\+rng Namespace Reference}
+\label{namespaceparallel__rng}\index{parallel\+\_\+rng@{parallel\+\_\+rng}}
 \subsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-class \hyperlink{classparallel__rng_1_1ParallelRngManagerError}{Parallel\-Rng\-Manager\-Error}
+class \hyperlink{classparallel__rng_1_1ParallelRngManager}{Parallel\+Rng\+Manager}
 \item 
-class \hyperlink{classparallel__rng_1_1ParallelRngManager}{Parallel\-Rng\-Manager}
+class \hyperlink{classparallel__rng_1_1ParallelRngManagerError}{Parallel\+Rng\+Manager\+Error}
 \end{DoxyCompactItemize}
 \subsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-using \hyperlink{namespaceparallel__rng_a4cb66b089d51a2a89cf6deac41c9b15f}{Default\-Parallel\-Rng\-T} = trng\-::lcg64\-\_\-shift
-\begin{DoxyCompactList}\small\item\em Suggested default Parallel\-R\-N\-G type. \end{DoxyCompactList}\item 
-using \hyperlink{namespaceparallel__rng_a462b8721a1aabe3b86582e864640c707}{Seed\-T} = uint64\-\_\-t
+using \hyperlink{namespaceparallel__rng_a4cb66b089d51a2a89cf6deac41c9b15f}{Default\+Parallel\+RngT} = trng\+::lcg64\+\_\+shift
+\begin{DoxyCompactList}\small\item\em Suggested default Parallel\+R\+NG type. \end{DoxyCompactList}\item 
+using \hyperlink{namespaceparallel__rng_a462b8721a1aabe3b86582e864640c707}{SeedT} = uint64\+\_\+t
 \begin{DoxyCompactList}\small\item\em Use the true random interface to generate a truly random seed. \end{DoxyCompactList}\item 
-using \hyperlink{namespaceparallel__rng_aa22fa3e339aee5927780aac099dfc6f3}{Idx\-T} = arma\-::uword
+using \hyperlink{namespaceparallel__rng_aa22fa3e339aee5927780aac099dfc6f3}{IdxT} = arma\+::uword
 \end{DoxyCompactItemize}
 \subsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{namespaceparallel__rng_a462b8721a1aabe3b86582e864640c707}{Seed\-T} \hyperlink{namespaceparallel__rng_ae9d03797791785f0b9512fc2ef69bfb7}{generate\-\_\-seed} ()
+\hyperlink{namespaceparallel__rng_a462b8721a1aabe3b86582e864640c707}{SeedT} \hyperlink{namespaceparallel__rng_ae9d03797791785f0b9512fc2ef69bfb7}{generate\+\_\+seed} ()
 \item 
-\hyperlink{namespaceparallel__rng_aa22fa3e339aee5927780aac099dfc6f3}{Idx\-T} \hyperlink{namespaceparallel__rng_a6165820e910d529d0287c1b1314be94e}{openmp\-\_\-estimate\-\_\-max\-\_\-threads} ()
+\hyperlink{namespaceparallel__rng_aa22fa3e339aee5927780aac099dfc6f3}{IdxT} \hyperlink{namespaceparallel__rng_a6165820e910d529d0287c1b1314be94e}{openmp\+\_\+estimate\+\_\+max\+\_\+threads} ()
 \begin{DoxyCompactList}\small\item\em Use openmp to estimate the maximum number of threads that will be generated. \end{DoxyCompactList}\item 
-{\footnotesize template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ }\\\hyperlink{classparallel__rng_1_1ParallelRngManager}{Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$ \hyperlink{namespaceparallel__rng_a1442f14113d25568626a66f85c40e4ee}{make\-\_\-parallel\-\_\-rng\-\_\-manager} ()
+{\footnotesize template$<$class RngT  = Default\+Parallel\+RngT, class FloatT  = double$>$ }\\\hyperlink{classparallel__rng_1_1ParallelRngManager}{Parallel\+Rng\+Manager}$<$ RngT, FloatT $>$ \hyperlink{namespaceparallel__rng_a1442f14113d25568626a66f85c40e4ee}{make\+\_\+parallel\+\_\+rng\+\_\+manager} ()
 \item 
-{\footnotesize template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ }\\\hyperlink{classparallel__rng_1_1ParallelRngManager}{Parallel\-Rng\-Manager}$<$ Rng\-T, Float\-T $>$ \hyperlink{namespaceparallel__rng_a3d16c2aa5295d7ebeacbb87cb38c8e85}{make\-\_\-parallel\-\_\-rng\-\_\-manager} (\hyperlink{namespaceparallel__rng_a462b8721a1aabe3b86582e864640c707}{Seed\-T} seed)
-\end{DoxyCompactItemize}
-\subsubsection*{Variables}
-\begin{DoxyCompactItemize}
-\item 
-\hyperlink{namespaceparallel__rng_af6082f576781284b1b4566ec1a287bcd}{rngs} \{num\-\_\-threads,cache\-\_\-alignment, Rng\-T\{seeder\}\}
-\item 
-\hyperlink{namespaceparallel__rng_a049383bd0d1effa65defa02ed2a9ac1b}{norm\-\_\-dist} \{num\-\_\-threads,cache\-\_\-alignment, Normal\-Dist\-T\{\}\}
+{\footnotesize template$<$class RngT  = Default\+Parallel\+RngT, class FloatT  = double$>$ }\\\hyperlink{classparallel__rng_1_1ParallelRngManager}{Parallel\+Rng\+Manager}$<$ RngT, FloatT $>$ \hyperlink{namespaceparallel__rng_a3d16c2aa5295d7ebeacbb87cb38c8e85}{make\+\_\+parallel\+\_\+rng\+\_\+manager} (\hyperlink{namespaceparallel__rng_a462b8721a1aabe3b86582e864640c707}{SeedT} seed)
 \end{DoxyCompactItemize}
 
 
 \subsubsection{Typedef Documentation}
-\hypertarget{namespaceparallel__rng_a4cb66b089d51a2a89cf6deac41c9b15f}{\index{parallel\-\_\-rng@{parallel\-\_\-rng}!Default\-Parallel\-Rng\-T@{Default\-Parallel\-Rng\-T}}
-\index{Default\-Parallel\-Rng\-T@{Default\-Parallel\-Rng\-T}!parallel_rng@{parallel\-\_\-rng}}
-\paragraph[{Default\-Parallel\-Rng\-T}]{\setlength{\rightskip}{0pt plus 5cm}using {\bf parallel\-\_\-rng\-::\-Default\-Parallel\-Rng\-T} = typedef trng\-::lcg64\-\_\-shift}}\label{namespaceparallel__rng_a4cb66b089d51a2a89cf6deac41c9b15f}
+\index{parallel\+\_\+rng@{parallel\+\_\+rng}!Default\+Parallel\+RngT@{Default\+Parallel\+RngT}}
+\index{Default\+Parallel\+RngT@{Default\+Parallel\+RngT}!parallel\+\_\+rng@{parallel\+\_\+rng}}
+\paragraph[{\texorpdfstring{Default\+Parallel\+RngT}{DefaultParallelRngT}}]{\setlength{\rightskip}{0pt plus 5cm}using {\bf parallel\+\_\+rng\+::\+Default\+Parallel\+RngT} = typedef trng\+::lcg64\+\_\+shift}\hypertarget{namespaceparallel__rng_a4cb66b089d51a2a89cf6deac41c9b15f}{}\label{namespaceparallel__rng_a4cb66b089d51a2a89cf6deac41c9b15f}
 
 
-Suggested default Parallel\-R\-N\-G type. 
+Suggested default Parallel\+R\+NG type. 
 
-lcg64\-\_\-shift is one of the fastest Parallel\-R\-N\-G types with shifting to correct for poor lower order bit randomness in regular lcg64 
+lcg64\+\_\+shift is one of the fastest Parallel\+R\+NG types with shifting to correct for poor lower order bit randomness in regular lcg64 
 
-Definition at line 58 of file Parallel\-Rng\-Manager.\-h.
+Definition at line 58 of file Parallel\+Rng\+Manager.\+h.
 
-\hypertarget{namespaceparallel__rng_aa22fa3e339aee5927780aac099dfc6f3}{\index{parallel\-\_\-rng@{parallel\-\_\-rng}!Idx\-T@{Idx\-T}}
-\index{Idx\-T@{Idx\-T}!parallel_rng@{parallel\-\_\-rng}}
-\paragraph[{Idx\-T}]{\setlength{\rightskip}{0pt plus 5cm}using {\bf parallel\-\_\-rng\-::\-Idx\-T} = typedef arma\-::uword}}\label{namespaceparallel__rng_aa22fa3e339aee5927780aac099dfc6f3}
+\index{parallel\+\_\+rng@{parallel\+\_\+rng}!IdxT@{IdxT}}
+\index{IdxT@{IdxT}!parallel\+\_\+rng@{parallel\+\_\+rng}}
+\paragraph[{\texorpdfstring{IdxT}{IdxT}}]{\setlength{\rightskip}{0pt plus 5cm}using {\bf parallel\+\_\+rng\+::\+IdxT} = typedef arma\+::uword}\hypertarget{namespaceparallel__rng_aa22fa3e339aee5927780aac099dfc6f3}{}\label{namespaceparallel__rng_aa22fa3e339aee5927780aac099dfc6f3}
 
 
-Definition at line 72 of file Parallel\-Rng\-Manager.\-h.
+Definition at line 72 of file Parallel\+Rng\+Manager.\+h.
 
-\hypertarget{namespaceparallel__rng_a462b8721a1aabe3b86582e864640c707}{\index{parallel\-\_\-rng@{parallel\-\_\-rng}!Seed\-T@{Seed\-T}}
-\index{Seed\-T@{Seed\-T}!parallel_rng@{parallel\-\_\-rng}}
-\paragraph[{Seed\-T}]{\setlength{\rightskip}{0pt plus 5cm}using {\bf parallel\-\_\-rng\-::\-Seed\-T} = typedef uint64\-\_\-t}}\label{namespaceparallel__rng_a462b8721a1aabe3b86582e864640c707}
+\index{parallel\+\_\+rng@{parallel\+\_\+rng}!SeedT@{SeedT}}
+\index{SeedT@{SeedT}!parallel\+\_\+rng@{parallel\+\_\+rng}}
+\paragraph[{\texorpdfstring{SeedT}{SeedT}}]{\setlength{\rightskip}{0pt plus 5cm}using {\bf parallel\+\_\+rng\+::\+SeedT} = typedef uint64\+\_\+t}\hypertarget{namespaceparallel__rng_a462b8721a1aabe3b86582e864640c707}{}\label{namespaceparallel__rng_a462b8721a1aabe3b86582e864640c707}
 
 
 Use the true random interface to generate a truly random seed. 
 
 
 
-Definition at line 71 of file Parallel\-Rng\-Manager.\-h.
+Definition at line 71 of file Parallel\+Rng\+Manager.\+h.
 
 
 
 \subsubsection{Function Documentation}
-\hypertarget{namespaceparallel__rng_ae9d03797791785f0b9512fc2ef69bfb7}{\index{parallel\-\_\-rng@{parallel\-\_\-rng}!generate\-\_\-seed@{generate\-\_\-seed}}
-\index{generate\-\_\-seed@{generate\-\_\-seed}!parallel_rng@{parallel\-\_\-rng}}
-\paragraph[{generate\-\_\-seed}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Seed\-T} parallel\-\_\-rng\-::generate\-\_\-seed (
+\index{parallel\+\_\+rng@{parallel\+\_\+rng}!generate\+\_\+seed@{generate\+\_\+seed}}
+\index{generate\+\_\+seed@{generate\+\_\+seed}!parallel\+\_\+rng@{parallel\+\_\+rng}}
+\paragraph[{\texorpdfstring{generate\+\_\+seed()}{generate_seed()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf SeedT} parallel\+\_\+rng\+::generate\+\_\+seed (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{namespaceparallel__rng_ae9d03797791785f0b9512fc2ef69bfb7}
+)}\hypertarget{namespaceparallel__rng_ae9d03797791785f0b9512fc2ef69bfb7}{}\label{namespaceparallel__rng_ae9d03797791785f0b9512fc2ef69bfb7}
 
 
-Definition at line 14 of file Parallel\-Rng\-Manager.\-cpp.
+Definition at line 14 of file Parallel\+Rng\+Manager.\+cpp.
 
-\hypertarget{namespaceparallel__rng_a1442f14113d25568626a66f85c40e4ee}{\index{parallel\-\_\-rng@{parallel\-\_\-rng}!make\-\_\-parallel\-\_\-rng\-\_\-manager@{make\-\_\-parallel\-\_\-rng\-\_\-manager}}
-\index{make\-\_\-parallel\-\_\-rng\-\_\-manager@{make\-\_\-parallel\-\_\-rng\-\_\-manager}!parallel_rng@{parallel\-\_\-rng}}
-\paragraph[{make\-\_\-parallel\-\_\-rng\-\_\-manager}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ {\bf Parallel\-Rng\-Manager}$<$Rng\-T,Float\-T$>$ parallel\-\_\-rng\-::make\-\_\-parallel\-\_\-rng\-\_\-manager (
+\index{parallel\+\_\+rng@{parallel\+\_\+rng}!make\+\_\+parallel\+\_\+rng\+\_\+manager@{make\+\_\+parallel\+\_\+rng\+\_\+manager}}
+\index{make\+\_\+parallel\+\_\+rng\+\_\+manager@{make\+\_\+parallel\+\_\+rng\+\_\+manager}!parallel\+\_\+rng@{parallel\+\_\+rng}}
+\paragraph[{\texorpdfstring{make\+\_\+parallel\+\_\+rng\+\_\+manager()}{make_parallel_rng_manager()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class RngT  = Default\+Parallel\+RngT, class FloatT  = double$>$ {\bf Parallel\+Rng\+Manager}$<$RngT,FloatT$>$ parallel\+\_\+rng\+::make\+\_\+parallel\+\_\+rng\+\_\+manager (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{namespaceparallel__rng_a1442f14113d25568626a66f85c40e4ee}
+)}\hypertarget{namespaceparallel__rng_a1442f14113d25568626a66f85c40e4ee}{}\label{namespaceparallel__rng_a1442f14113d25568626a66f85c40e4ee}
 
 
-Definition at line 143 of file Parallel\-Rng\-Manager.\-h.
+Definition at line 143 of file Parallel\+Rng\+Manager.\+h.
 
-\hypertarget{namespaceparallel__rng_a3d16c2aa5295d7ebeacbb87cb38c8e85}{\index{parallel\-\_\-rng@{parallel\-\_\-rng}!make\-\_\-parallel\-\_\-rng\-\_\-manager@{make\-\_\-parallel\-\_\-rng\-\_\-manager}}
-\index{make\-\_\-parallel\-\_\-rng\-\_\-manager@{make\-\_\-parallel\-\_\-rng\-\_\-manager}!parallel_rng@{parallel\-\_\-rng}}
-\paragraph[{make\-\_\-parallel\-\_\-rng\-\_\-manager}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Rng\-T  = Default\-Parallel\-Rng\-T, class Float\-T  = double$>$ {\bf Parallel\-Rng\-Manager}$<$Rng\-T,Float\-T$>$ parallel\-\_\-rng\-::make\-\_\-parallel\-\_\-rng\-\_\-manager (
+\index{parallel\+\_\+rng@{parallel\+\_\+rng}!make\+\_\+parallel\+\_\+rng\+\_\+manager@{make\+\_\+parallel\+\_\+rng\+\_\+manager}}
+\index{make\+\_\+parallel\+\_\+rng\+\_\+manager@{make\+\_\+parallel\+\_\+rng\+\_\+manager}!parallel\+\_\+rng@{parallel\+\_\+rng}}
+\paragraph[{\texorpdfstring{make\+\_\+parallel\+\_\+rng\+\_\+manager(\+Seed\+T seed)}{make_parallel_rng_manager(SeedT seed)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class RngT  = Default\+Parallel\+RngT, class FloatT  = double$>$ {\bf Parallel\+Rng\+Manager}$<$RngT,FloatT$>$ parallel\+\_\+rng\+::make\+\_\+parallel\+\_\+rng\+\_\+manager (
 \begin{DoxyParamCaption}
-\item[{Seed\-T}]{seed}
+\item[{{\bf SeedT}}]{seed}
 \end{DoxyParamCaption}
-)}}\label{namespaceparallel__rng_a3d16c2aa5295d7ebeacbb87cb38c8e85}
+)}\hypertarget{namespaceparallel__rng_a3d16c2aa5295d7ebeacbb87cb38c8e85}{}\label{namespaceparallel__rng_a3d16c2aa5295d7ebeacbb87cb38c8e85}
 
 
-Definition at line 149 of file Parallel\-Rng\-Manager.\-h.
+Definition at line 149 of file Parallel\+Rng\+Manager.\+h.
 
-\hypertarget{namespaceparallel__rng_a6165820e910d529d0287c1b1314be94e}{\index{parallel\-\_\-rng@{parallel\-\_\-rng}!openmp\-\_\-estimate\-\_\-max\-\_\-threads@{openmp\-\_\-estimate\-\_\-max\-\_\-threads}}
-\index{openmp\-\_\-estimate\-\_\-max\-\_\-threads@{openmp\-\_\-estimate\-\_\-max\-\_\-threads}!parallel_rng@{parallel\-\_\-rng}}
-\paragraph[{openmp\-\_\-estimate\-\_\-max\-\_\-threads}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Idx\-T} parallel\-\_\-rng\-::openmp\-\_\-estimate\-\_\-max\-\_\-threads (
+\index{parallel\+\_\+rng@{parallel\+\_\+rng}!openmp\+\_\+estimate\+\_\+max\+\_\+threads@{openmp\+\_\+estimate\+\_\+max\+\_\+threads}}
+\index{openmp\+\_\+estimate\+\_\+max\+\_\+threads@{openmp\+\_\+estimate\+\_\+max\+\_\+threads}!parallel\+\_\+rng@{parallel\+\_\+rng}}
+\paragraph[{\texorpdfstring{openmp\+\_\+estimate\+\_\+max\+\_\+threads()}{openmp_estimate_max_threads()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf IdxT} parallel\+\_\+rng\+::openmp\+\_\+estimate\+\_\+max\+\_\+threads (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{namespaceparallel__rng_a6165820e910d529d0287c1b1314be94e}
+)}\hypertarget{namespaceparallel__rng_a6165820e910d529d0287c1b1314be94e}{}\label{namespaceparallel__rng_a6165820e910d529d0287c1b1314be94e}
 
 
 Use openmp to estimate the maximum number of threads that will be generated. 
 
 
 
-Definition at line 20 of file Parallel\-Rng\-Manager.\-cpp.
-
-
-
-\subsubsection{Variable Documentation}
-\hypertarget{namespaceparallel__rng_a049383bd0d1effa65defa02ed2a9ac1b}{\index{parallel\-\_\-rng@{parallel\-\_\-rng}!norm\-\_\-dist@{norm\-\_\-dist}}
-\index{norm\-\_\-dist@{norm\-\_\-dist}!parallel_rng@{parallel\-\_\-rng}}
-\paragraph[{norm\-\_\-dist}]{\setlength{\rightskip}{0pt plus 5cm}parallel\-\_\-rng\-::norm\-\_\-dist \{num\-\_\-threads,cache\-\_\-alignment, Normal\-Dist\-T\{\}\}}}\label{namespaceparallel__rng_a049383bd0d1effa65defa02ed2a9ac1b}
-
-
-Definition at line 173 of file Parallel\-Rng\-Manager.\-h.
-
-\hypertarget{namespaceparallel__rng_af6082f576781284b1b4566ec1a287bcd}{\index{parallel\-\_\-rng@{parallel\-\_\-rng}!rngs@{rngs}}
-\index{rngs@{rngs}!parallel_rng@{parallel\-\_\-rng}}
-\paragraph[{rngs}]{\setlength{\rightskip}{0pt plus 5cm}parallel\-\_\-rng\-::rngs \{num\-\_\-threads,cache\-\_\-alignment, Rng\-T\{seeder\}\}}}\label{namespaceparallel__rng_af6082f576781284b1b4566ec1a287bcd}
-
-
-Definition at line 172 of file Parallel\-Rng\-Manager.\-h.
+Definition at line 20 of file Parallel\+Rng\+Manager.\+cpp.
 
