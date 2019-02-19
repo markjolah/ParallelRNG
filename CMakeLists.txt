@@ -18,7 +18,6 @@ endif()
 option(OPT_DOC "Build documentation" OFF)
 option(OPT_INSTALL_TESTING "Install testing executables" OFF)
 option(OPT_EXPORT_BUILD_TREE "Configure the package so it is usable from the build tree.  Useful for development." OFF)
-option(OPT_ARMADILLO_INT64 "Use 64-bit integers for Armadillo, BLAS, and LAPACK." OFF)
 
 if(NOT BUILD_SHARED_LIBS AND NOT BUILD_STATIC_LIBS)
   set (BUILD_SHARED_LIBS ON)  #Must build at least one of SHARED_ and STATIC_LIBS.  Default SHARED_
@@ -31,7 +30,6 @@ message(STATUS "OPTION: BUILD_TESTING: ${BUILD_TESTING}")
 message(STATUS "OPTION: OPT_DOC: ${OPT_DOC}")
 message(STATUS "OPTION: OPT_INSTALL_TESTING: ${OPT_INSTALL_TESTING}")
 message(STATUS "OPTION: OPT_EXPORT_BUILD_TREE: ${OPT_EXPORT_BUILD_TREE}")
-message(STATUS "OPTION: OPT_ARMADILLO_INT64: ${OPT_ARMADILLO_INT64}")
 
 #Add UcommonCmakeModules git subpreo to path.
 list(INSERT CMAKE_MODULE_PATH 0 ${CMAKE_CURRENT_LIST_DIR}/cmake/UncommonCMakeModules)
@@ -49,16 +47,8 @@ if(BUILD_STATIC_LIBS)
 endif()
 add_external_autotools_dependency(NAME TRNG URL "https://github.com/rabauke/trng4.git" ${DEPENDENT_LIBRARY_TYPES})
 
-#OpenMP
 find_package(OpenMP REQUIRED)
-
-# Find Blas and Lapack using pkg-config in cross-compilation aware way.  Using local FindBLAS.cmake and FindLAPACK.cmake.
-if(OPT_ARMADILLO_INT64)
-    set(ARMADILLO_INT64_COMPONENT INT64) #Enable INT64 interface for armadillo, Blas and Lapack
-else()
-    set(ARMADILLO_INT64_COMPONENT)
-endif()
-find_package(Armadillo REQUIRED COMPONENTS CXX11 ${ARMADILLO_INT64_COMPONENT})
+find_package(Armadillo REQUIRED COMPONENTS CXX11)
 set_property(DIRECTORY APPEND PROPERTY COMPILE_DEFINITIONS ${ARMADILLO_PRIVATE_COMPILE_DEFINITIONS})
 
 
@@ -70,8 +60,7 @@ include(ConfigureDebugBuilds)
 include(ExportPackageWizzard)
 set(EXPORTED_FIND_MODULES cmake/UncommonCMakeModules/FindArmadillo.cmake
                           cmake/UncommonCMakeModules/FindTRNG.cmake)
-export_package_wizzard(PROVIDED_COMPONENTS ${ARMADILLO_INT64_COMPONENT}
-                       FIND_MODULES ${EXPORTED_FIND_MODULES})
+export_package_wizzard(FIND_MODULES ${EXPORTED_FIND_MODULES})
 
 ### Source directories
 add_subdirectory(src)
