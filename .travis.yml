@@ -14,13 +14,8 @@ matrix:
   include:
       - env:
           - MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9"
-          - OPT_ARMADILLO_INT64=On
-      - env:
-          - MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9"
-          - OPT_ARMADILLO_INT64=Off
       - env:
           - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
-          - OPT_ARMADILLO_INT64=On
 
       ##Documentation build
       - env: DOC=On PDFDOC=On
