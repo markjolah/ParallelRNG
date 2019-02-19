@@ -51,7 +51,6 @@ add_external_autotools_dependency(NAME TRNG URL "https://github.com/rabauke/trng
 
 #OpenMP
 find_package(OpenMP REQUIRED)
-find_package(Pthread REQUIRED)
 
 # Find Blas and Lapack using pkg-config in cross-compilation aware way.  Using local FindBLAS.cmake and FindLAPACK.cmake.
 if(OPT_ARMADILLO_INT64)
