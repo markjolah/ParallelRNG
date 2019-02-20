@@ -38,7 +38,7 @@ The following CMake options control the build.
  * `OPT_DOC` - Build documentation
  * `OPT_INSTALL_TESTING` - Install testing executables in install-tree.
  * `OPT_EXPORT_BUILD_TREE` - Configure the package so it is usable from the build tree.  Useful for development.
- * `OPT_ARMADILLO_INT64` - Use 64-bit integers for Armadillo, BLAS, and LAPACK.
+ * `OPT_BLAS_INT64` - Use 64-bit integers for Armadillo, BLAS, and LAPACK.
 
 ## Dependencies
 

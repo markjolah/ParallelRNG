@@ -5,7 +5,7 @@
 #
 # Environment variables to be set:
 #  BUILD_TYPE
-#  OPT_ARMADILLO_INT64
+#  OPT_BLAS_INT64
 #
 PACKAGE_NAME=ParallelRngManager
 if [ -z "$BUILD_TYPE" ]; then
