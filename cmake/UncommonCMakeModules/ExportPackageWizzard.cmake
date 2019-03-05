@@ -35,7 +35,7 @@
 #                               Any - Totally ignore BuildType
 #  CONFIG_INSTALL_DIR - [Default: lib/${NAME}/cmake/] Relative path from ${CMAKE_INSTALL_PREFIX} at which to install PackageConfig.cmake files
 #  SHARED_CMAKE_INSTALL_DIR - [Default: share/${NAME}/cmake/] Relative path from ${CMAKE_INSTALL_PREFIX} at which to install PackageConfig.cmake files
-#  SHARED_CMAKE_SOURCE_DIR - [Default: ${CMAKE_SOURCE_DIR}/cmake] Relative path from ${CMAKE_INSTALL_PREFIX} at which to install PackageConfig.cmake files
+#  SHARED_CMAKE_SOURCE_DIR - [Default: ${CMAKE_SOURCE_DIR}/cmake] Relative path from ${CMAKE_SOURCE_DIR} from which build-time useage of cmake files
 # Multi-Argument Keywords
 #   PROVIDED_COMPONENTS - List of provided components which enables the version file to check for required components and reject builds with missing required components.
 #                         If this variable is not set, the component check with PackageConfigVersion.cmake is disabled.
@@ -155,7 +155,8 @@ install(FILES ${ARG_CONFIG_DIR}/${ARG_PACKAGE_CONFIG_INSTALL_TREE_FILE} RENAME $
 if(ARG_EXPORT_TARGETS_NAME) #set to OFF to disable exporting Targets.cmake file
     install(EXPORT ${ARG_EXPORT_TARGETS_NAME}
             NAMESPACE ${ARG_NAMESPACE}::
-            DESTINATION ${ARG_CONFIG_INSTALL_DIR} COMPONENT Development)
+            DESTINATION ${ARG_CONFIG_INSTALL_DIR}/${CMAKE_SYSTEM_NAME} #Allows per-system targets in the same prefix.
+            COMPONENT Development)
 endif()
 
 #install provided Find<XXX>.cmake modules into the install tree
@@ -177,7 +178,9 @@ if(ARG_EXPORT_BUILD_TREE)
         configure_file(${module_path} ${ARG_CONFIG_DIR}/${module_name} COPYONLY)
     endforeach()
     #Make a ProjectTargets file for use in the build tree
-    export(EXPORT ${ARG_EXPORT_TARGETS_NAME} FILE ${ARG_CONFIG_DIR}/${ARG_EXPORT_TARGETS_NAME}.cmake NAMESPACE ${ARG_NAMESPACE}::)
+    export(EXPORT ${ARG_EXPORT_TARGETS_NAME}
+           FILE ${ARG_CONFIG_DIR}/${CMAKE_SYSTEM_NAME}/${ARG_EXPORT_TARGETS_NAME}.cmake #Match the ${CMAKE_SYSTEM_NAME} subdir used by install-tree variant
+           NAMESPACE ${ARG_NAMESPACE}::)
     #Add this project build tree to the CMake user package registry
     export(PACKAGE ${ARG_NAME})
 endif()
